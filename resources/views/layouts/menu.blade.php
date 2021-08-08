@@ -1,0 +1,150 @@
+<style type="text/css">
+    .nav-link{
+        margin-right: 45px;
+    }
+    *.icon-blue {
+  color: #0088cc;
+}
+
+*.icon-grey {
+  color: grey;
+}
+
+.add_to_card_icon {
+  /* width: 100px; */
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+}
+
+.add_to_card_badge:after {
+    content: attr(data-count);
+    position: absolute;
+    background: #ff6600;
+    height: 25px;
+    top: 0px;
+    right: -7px;
+    width: 25px;
+    text-align: center;
+    line-height: -4px;
+    font-size: 20px;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid #ff6600;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+</style>
+<div class="row">
+    <div class="top_layer text-center mb-3">
+        <img width="30%" src="{{asset('public/images/Drik images logo.png')}}">
+    </div>
+</div>
+<div class="header">
+        <nav class="navbar navbar-expand-lg bg-transparent bg-white">
+            <a class="navbar-brand" href="index-2.html">
+                <img class="w-100" src="images/logo-ts.png" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <!-- @foreach($categories as $category)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('filter',['category' => $category->id])}}">{{$category->cat_name}}</a>
+                        </li>
+                    @endforeach -->
+                    @if(!is_null(auth()->user()))
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('your-dashboard')}}">Dashboard</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                       <a class="nav-link" href="{{url('/')}}">Home</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">About Us</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Services</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Photoghapers</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Stock</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Contact</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="#">Faq</a>
+                   </li>
+
+
+                </ul>
+
+                <div class="header_actions text-right navbar p-0">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item dropdown">
+                           <!--  <a class="nav-link" href="sign-in.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-user"></i>asdasd
+                            </a> -->
+                            @if(isset($user)== false)
+                                <a href="{{route('user-login')}}" class="btn btn-block theme-btn sign-up">Log In</a>
+                            @else
+                        <a href="{{route('your-dashboard')}}" class="btn theme-btn ">
+                                    <img width="40" class="rounded-circle" src="{{ asset($user->upload_img) }}" alt="">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            @endif
+                            <div class="dropdown-menu user-custom" aria-labelledby="navbarDropdown">
+                                @if(isset($user) == true)
+                                <div class="author">
+                                    <div class="author-img">
+                                        <img class="w-100" src="images/img-21.jpg" alt="">
+                                    </div>
+                                    <div class="author-info">
+                                        <span class="author-name">{{$user->name}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="actions text-center">
+                                    <button class="btn author-action-button"><i class="icofont-like"></i>&nbsp;50</button>
+                                    <button class="btn author-action-button"><i class="icofont-star"></i>&nbsp;50</button>
+                                    <button class="btn author-action-button"><i class="icofont-share"></i>&nbsp;50</button>
+
+                                    <div class="form-row mt-3">
+                                        <div class="col-md-6">
+                                            <a href="sign-in.html" class="btn btn-block theme-btn sign-in">Profile</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{route('user-logout')}}" class="btn btn-block theme-btn sign-up">Log Out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                   <!--  <div class="form-row mt-3">
+                                        <div class="col-md-12">
+                                            <a href="{{route('user-login')}}" class="btn btn-block theme-btn sign-up">Log In</a>
+                                        </div>
+                                    </div> -->
+                                @endif
+
+                            </div>
+                        </li>
+                        
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="openNav" onclick="cart_open()"><i data-count="@if(session()->has('cart')){{count(session()->get('cart'))}} @else 0 @endif" class="add_to_card_icon fa fa-shopping-cart fa-2x fa-border icon-grey add_to_card_badge"></i></a>
+                                {{-- <a class="nav-link" href="#" id="openNav" onclick="cart_open()"><i class="icofont-cart"></i></a> --}}
+                            </li>
+            
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>

@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Drikimages | Search</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" type="image/x-icon" href="images/logo.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+
+<body class="checkout-body">
+    <!-- Preloader -->
+    <div class="preloader-wrap">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Header Part Start -->
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-transparent bg-white">
+            <a class="navbar-brand" href="index-2.html">
+                <img class="w-100" src="images/logo-ts.png" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="search-result.html">Nature</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">Creative</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">Food</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">Flowers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">City</a>
+                    </li>
+                </ul>
+
+                <div class="header_actions text-right navbar p-0">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="sign-in.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-user"></i>
+                            </a>
+                            <div class="dropdown-menu user-custom" aria-labelledby="navbarDropdown">
+                                <div class="author">
+                                    <div class="author-img">
+                                        <img class="w-100" src="images/img-21.jpg" alt="">
+                                    </div>
+                                    <div class="author-info">
+                                        <span class="author-name">Author Name</span>
+                                    </div>
+                                </div>
+
+                                <div class="actions text-center">
+                                    <button class="btn author-action-button"><i class="icofont-like"></i>&nbsp;50</button>
+                                    <button class="btn author-action-button"><i class="icofont-star"></i>&nbsp;50</button>
+                                    <button class="btn author-action-button"><i class="icofont-share"></i>&nbsp;50</button>
+                                </div>
+
+
+                                <div class="form-row mt-3">
+                                    <div class="col-md-6">
+                                        <a href="sign-in.html" class="btn btn-block theme-btn sign-in">Profile</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#" class="btn btn-block theme-btn sign-up">Log Out</a>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="openNav" onclick="cart_open()"><i class="icofont-cart"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Header Part End -->
+
+    <!--Cart sidebar start-->
+    <div class="cart_sidebar w3-bar-block w3-card w3-animate-left"id="mySidebar">
+        <div class="cart">
+            <div class="cart-header d-flex align-items-center justify-content-between">
+                <button class="btn btn-sm border px-2" onclick="cart_close()">Close &times;</button>
+                <h5 class="mb-0 text-total"><i class="icofont-prestashop"></i> 15 Items </h5>
+            </div>
+
+            <div class="product-list">
+                <table class="table mb-0">
+                    <tbody>
+                        <tr>
+                            <td class="v-align-middle w-5">
+                                <button class="btn btn-sm"><i class="icofont-simple-up"></i></button>
+                                <span class="btn btn-sm">01</span>
+                                <button class="btn btn-sm"><i class="icofont-simple-down"></i></button>
+                            </td>
+                            <td class="v-align-middle">
+                                <div class="product d-flex align-items-center">
+                                    <div class="product-image">
+                                        <img class="w-100" src="images/img-12.jpg" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <table class="table table-bordered mb-0 m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Creative image&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>License type:</td>
+                                                    <td>Royalty-free|View license summaries</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="v-align-middle w-10 text-right">৳ 859</td>
+                        </tr>
+
+                        <tr>
+                            <td class="v-align-middle w-5">
+                                <button class="btn btn-sm"><i class="icofont-simple-up"></i></button>
+                                <span class="btn btn-sm">01</span>
+                                <button class="btn btn-sm"><i class="icofont-simple-down"></i></button>
+                            </td>
+                            <td class="v-align-middle">
+                                <div class="product d-flex align-items-center">
+                                    <div class="product-image">
+                                        <img class="w-100" src="images/img-13.jpg" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <table class="table-bordered m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Creative image&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>License type:</td>
+                                                    <td>Royalty-free|View license summaries</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="v-align-middle w-10 text-right">৳ 859</td>
+                        </tr>
+
+                        <tr>
+                            <td class="v-align-middle w-5">
+                                <button class="btn btn-sm"><i class="icofont-simple-up"></i></button>
+                                <span class="btn btn-sm">01</span>
+                                <button class="btn btn-sm"><i class="icofont-simple-down"></i></button>
+                            </td>
+                            <td class="v-align-middle">
+                                <div class="product d-flex align-items-center">
+                                    <div class="product-image">
+                                        <img class="w-100" src="images/img-4.jpg" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <table class="table table-bordered mb-0 m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Creative image&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>License type:</td>
+                                                    <td>Royalty-free|View license summaries</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="v-align-middle w-10 text-right">৳ 859</td>
+                        </tr>
+
+                        <tr>
+                            <td class="v-align-middle w-5">
+                                <button class="btn btn-sm"><i class="icofont-simple-up"></i></button>
+                                <span class="btn btn-sm">01</span>
+                                <button class="btn btn-sm"><i class="icofont-simple-down"></i></button>
+                            </td>
+                            <td class="v-align-middle">
+                                <div class="product d-flex align-items-center">
+                                    <div class="product-image">
+                                        <img class="w-100" src="images/img-5.jpg" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <table class="table table-bordered mb-0 m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Creative image&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>License type:</td>
+                                                    <td>Royalty-free|View license summaries</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="v-align-middle w-10 text-right">৳ 859</td>
+                        </tr>
+
+                        <tr>
+                            <td class="v-align-middle w-5">
+                                <button class="btn btn-sm"><i class="icofont-simple-up"></i></button>
+                                <span class="btn btn-sm">01</span>
+                                <button class="btn btn-sm"><i class="icofont-simple-down"></i></button>
+                            </td>
+                            <td class="v-align-middle">
+                                <div class="product d-flex align-items-center m-0">
+                                    <div class="product-image">
+                                        <img class="w-100" src="images/img-2.jpg" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <table class="table table-bordered mb-0 m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Creative image&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>License type:</td>
+                                                    <td>Royalty-free|View license summaries</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="v-align-middle w-10 text-right">৳ 859</td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cart-footer d-flex align-items-center justify-content-between">
+                <div class="">
+                    <!-- <h6 class="mb-0 text-secondary">Items selected for purchase: 2</h6> -->
+                    <h5 class="mb-0 text-total">Subtotal : ৳998.00 BDT</h5>
+                </div>
+                <div class="text-right">
+                    <a href="#" class="btn btn-sm theme-btn">Continue with purchase</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cart sidebar End-->
+
+    <div class="container">
+        <div class="form-row mt-3 mb-3">
+            <div class="col-md-6">
+                <div class="left border">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <h4 class="">Payment</h4>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="icons">
+                                <img src="images/visa.png" />
+                                <img src="images/mastercard-logo.png" />
+                                <img src="images/maestro.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="card_holder_name">Cardholder's name:</label>
+                                <input type="text" class="form-control" id="card_holder_name" name="card_holder_name" value=""  placeholder="Enter Cardholder's name" />
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="card_number">Card Number:</label>
+                                <input type="text" class="form-control" id="card_number" name="card_number" value=""  placeholder="0000 0000 0000 0000"/>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="expiry_date">Expiry date:</label>
+                                <input type="text" class="form-control" id="expiry_date" name="expiry_date" value=""  placeholder="DD/MM/YYYY"/>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="card_cvv">CVV:</label>
+                                <input type="text" class="form-control" id="card_cvv" name="card_cvv" value=""  placeholder="CVV"/>
+                            </div>
+
+                            <div class="form-check col-md-12">
+                                <input type="checkbox" class="form-check-input" id="save_card">
+                                <label class="form-check-label" for="save_card">Save card details to wallet</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="right border">
+                    <div class="summary-header d-flex align-items-center">
+                        <div class="w-50 text-left">
+                            <h4>Order Summary</h4>
+                        </div>
+                        <div class="w-50 text-right">
+                            <h6>2 items</h6>
+                        </div>
+                    </div>
+
+                    <div class="summary-items">
+                        <div class="form-row item align-items-center">
+                            <div class="col-2">
+                                <img class="img-fluid" src="images/img-22.jpg" />
+                            </div>
+                            <div class="col-10">
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <td class="p-1" colspan="2">
+                                            <b>৳ 859</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1">Name</td>
+                                        <td class="p-1">Creative image&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1205797237</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="p-1">Size</td>
+                                        <td class="p-1">4445 x 6668 px</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1" colspan="2"><b>Qty: 1</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-row item align-items-center">
+                            <div class="col-2">
+                                <img class="img-fluid" src="images/img-20.jpg" />
+                            </div>
+                            <div class="col-10">
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <td class="p-1" colspan="2">
+                                            <b>৳ 859</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1">Name</td>
+                                        <td class="p-1">Creative image&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1205797237</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="p-1">Size</td>
+                                        <td class="p-1">4445 x 6668 px</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1" colspan="2"><b>Qty: 1</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-row item align-items-center">
+                            <div class="col-2">
+                                <img class="img-fluid" src="images/img-24.jpg" />
+                            </div>
+                            <div class="col-10">
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <td class="p-1" colspan="2">
+                                            <b>৳ 859</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1">Name</td>
+                                        <td class="p-1">Creative image&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1205797237</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="p-1">Size</td>
+                                        <td class="p-1">4445 x 6668 px</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1" colspan="2"><b>Qty: 1</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-row item align-items-center">
+                            <div class="col-2">
+                                <img class="img-fluid" src="images/img-23.jpg" />
+                            </div>
+                            <div class="col-10">
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <td class="p-1" colspan="2">
+                                            <b>৳ 859</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1">Name</td>
+                                        <td class="p-1">Creative image&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1205797237</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="p-1">Size</td>
+                                        <td class="p-1">4445 x 6668 px</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1" colspan="2"><b>Qty: 1</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary_footer">
+                        <div class="form-row lower">
+                            <div class="col text-left">Subtotal</div>
+                            <div class="col text-right">৳ 859</div>
+                        </div>
+                        <div class="form-row lower">
+                            <div class="col text-left">Delivery</div>
+                            <div class="col text-right">Free</div>
+                        </div>
+                        <div class="form-row lower">
+                            <div class="col text-left"><b>Total to pay</b></div>
+                            <div class="col text-right"><b>৳ 859</b></div>
+                        </div>
+                    </div>
+                    <button class="btn theme-btn btn-block">Place order</button>
+                    <p class="text-muted text-center mt-3">Complimentary Shipping & Returns</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer start -->
+    <div class="footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>SUPPORT</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><span>Phone: &nbsp;&nbsp;&nbsp;&nbsp;</span>+000 333 879 788</li>
+                            <li><span>Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> support@gmail.com</li>
+                            <li><span>Address: &nbsp;</span> king street,avenue</li>
+                        </ul>
+
+                        <div class="footer_social">
+                            <ul class="footer_social_icons">
+                                <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>PRODUCTS</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><i class="icofont-double-right"></i><a href="#">Drik Images API</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Media Manager</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Drikimages.com</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">DrikGallery</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">200k Stock Images</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>SOLUTIONS</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><i class="icofont-double-right"></i><a href="#">Pricing and solutions</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Premium Access</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Rights and clearance</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Image collections</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Custom solutions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>COMPANY</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><i class="icofont-double-right"></i><a href="#">Press room</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Careers</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Affiliates</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Grants and giving</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">200 + Photographers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">© 2021 All Rights Reserved <a target="_blank" href="#">Drik Gallery</a></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="design_by">Design & Developed by <a target="_blank" href="http://nextgenitltd.com/">NEXTGEN IT</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer end -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

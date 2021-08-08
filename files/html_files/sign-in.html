@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Drikimages | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" type="image/x-icon" href="images/logo.png" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/icofont.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-wrap">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="d-lg-flex half">
+        <div class="bg order-1 order-md-2" style="background-image: url('images/img-9.jpg');"></div>
+
+        <div class="contents order-2 order-md-1">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-10">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                <div class="">
+                                    <h3>Sign In</h3>
+                                    <p class="">Welcome to Drikimages!</p>
+                                </div>
+                                <form action="#" method="post">
+                                    <div class="form-group first">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" />
+                                    </div>
+                                    <div class="form-group last mb-3">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" />
+                                    </div>
+
+                                    <div class="d-flex mb-5 align-items-center">
+                                        <div class="form-check text-left">
+                                            <input type="checkbox" class="form-check-input" id="remember_me" />
+                                            <label class="form-check-label" for="remember_me">Remember Me</label>
+                                        </div>
+                                        <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                    </div>
+
+                                    <a href="contributor_dashboard.html" class="btn btn-block btn-primary text-white">Log In</a>
+
+
+                                    <span class="d-block text-center my-4 text-muted">&mdash;&mdash;&mdash;&mdash;&mdash; OR SIGN IN WITH &mdash;&mdash;&mdash;&mdash;&mdash;</span>
+
+                                    <div class="social-login">
+                                        <a href="#" class="facebook btn d-flex justify-content-center align-items-center"> <span class="icon-facebook mr-3"></span> Login with Facebook </a>
+                                        <a href="#" class="google btn d-flex justify-content-center align-items-center"> <span class="icon-google mr-3"></span> Login with Google </a>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+
+                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                <div class="">
+                                    <h3>Register</h3>
+                                    <p>New to Drikimages Images?</p>
+                                </div>
+                                <form action="#" method="post">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group first">
+                                                <label for="user_first_name">First Name</label>
+                                                <input type="text" class="form-control" id="user_first_name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group first">
+                                                <label for="user_last_name">Last Name</label>
+                                                <input type="text" class="form-control" id="user_last_name" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group last">
+                                        <label for="user_type">User Type</label>
+                                        <select class="form-control" id="user_type">
+                                            <option></option>
+                                            <option>Client</option>
+                                            <option>Contributor</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group last mb-3">
+                                        <label for="company_name">Company name (optional)</label>
+                                        <input type="text" class="form-control" id="company_name" />
+                                    </div>
+
+                                    <div class="form-group last mb-3">
+                                        <label for="job_title">Job title <span>(optional)</span></label>
+                                        <input type="job_title" class="form-control" id="job_title" />
+                                    </div>
+                                    <div class="form-group last mb-3">
+                                        <label for="user_email">Email Address</label>
+                                        <input type="email" class="form-control" id="user_email" />
+                                    </div>
+                                    <div class="form-group last mb-3">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" />
+                                    </div>
+
+
+                                    <a href="contributor_dashboard.html" class="btn btn-block btn-primary text-white">Log In</a>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

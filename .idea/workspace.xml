@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e2b6d4ce-e889-4537-9652-fded8baa42a2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ErpPatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ErpPatientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._Logo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._img-16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._logo_reports.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._new_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/._no_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/Logo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/img-16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo_reports.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/new_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/no_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614192229img-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614192229img-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614192229img-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614192230img-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614215994img-10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614215996img-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614215996img-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614215996img-8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614215996img-9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614216053img-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614216053img-13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614216054img-11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142333271.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142333272.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614233377asif_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142337641.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142337643.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614233764asif_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142338442.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142338451.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614233845admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142340271.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142340741.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142341631.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142394561.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142396171.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142396431.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142416701.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142627173.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142627873.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142652253.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142653133.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142653393.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142653743.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142656043.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/16142658313.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/1614265831cat-img-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614192229img-2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614192229img-3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614192229img-4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614192230img-1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614215994img-10.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614215996img-5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614215996img-7.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614215996img-8.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614215996img-9.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614216053img-12.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614216053img-13.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614216054img-11.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/16142653393.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/16142653743.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/16142656043.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/16142658313.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/uploaded_images/thumbnails/1614265831cat-img-6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/kylekatarnls/update-helper" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/nexmo/client" />
+      <path value="$PROJECT_DIR$/vendor/nexmo/client-core" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/pclzip/pclzip" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/laravel/slack-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/laravel/nexmo-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/common" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpword" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-escaper" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/xethron/migrations-generator" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/xethron/laravel-4-generators" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1ocWRdaR93pldYXeiAVsT88MtCx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2b6d4ce-e889-4537-9652-fded8baa42a2" name="Default Changelist" comment="" />
+      <created>1613586351679</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613586351679</updated>
+      <workItem from="1613586352797" duration="141000" />
+      <workItem from="1613706720891" duration="6004000" />
+      <workItem from="1613716107115" duration="956000" />
+      <workItem from="1613732550464" duration="4453000" />
+      <workItem from="1613742599521" duration="17059000" />
+      <workItem from="1613787086332" duration="2554000" />
+      <workItem from="1613792163861" duration="2367000" />
+      <workItem from="1613797191036" duration="3375000" />
+      <workItem from="1613821020324" duration="3720000" />
+      <workItem from="1613892481559" duration="3251000" />
+      <workItem from="1613902463220" duration="480000" />
+      <workItem from="1613921320716" duration="7847000" />
+      <workItem from="1614040229001" duration="2231000" />
+      <workItem from="1614095300644" duration="6048000" />
+      <workItem from="1614126243181" duration="3524000" />
+      <workItem from="1614178815821" duration="9553000" />
+      <workItem from="1614264957860" duration="1044000" />
+<<<<<<< HEAD
+      <workItem from="1614267156346" duration="500000" />
+=======
+      <workItem from="1614267156346" duration="262000" />
+      <workItem from="1614304655984" duration="1306000" />
+      <workItem from="1614309615976" duration="1722000" />
+      <workItem from="1614400131560" duration="4427000" />
+      <workItem from="1614409064750" duration="1051000" />
+      <workItem from="1614438703346" duration="315000" />
+>>>>>>> 5787690719e3cdd6a774dadbe26760badb09a07c
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

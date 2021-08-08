@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Drikimages | Contributor Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" type="image/x-icon" href="images/logo.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-wrap">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Header Part Start -->
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-transparent bg-white">
+            <a class="navbar-brand" href="index-2.html">
+                <img class="w-100" src="images/logo-ts.png" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="search-result.html">Nature</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">Creative</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">Food</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">Flowers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-result.html">City</a>
+                    </li>
+                </ul>
+
+                <div class="header_actions text-right navbar p-0">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="sign-in.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icofont-user"></i>
+                            </a>
+                            <div class="dropdown-menu user-custom" aria-labelledby="navbarDropdown">
+                                <div class="author">
+                                    <div class="author-img">
+                                        <img class="w-100" src="images/img-21.jpg" alt="">
+                                    </div>
+                                    <div class="author-info">
+                                        <span class="author-name">Author Name</span>
+                                    </div>
+                                </div>
+
+                                <div class="actions text-center">
+                                    <button class="btn author-action-button"><i class="icofont-like"></i>&nbsp;50</button>
+                                    <button class="btn author-action-button"><i class="icofont-star"></i>&nbsp;50</button>
+                                    <button class="btn author-action-button"><i class="icofont-share"></i>&nbsp;50</button>
+                                </div>
+
+
+                                <div class="form-row mt-3">
+                                    <div class="col-md-6">
+                                        <a href="sign-in.html" class="btn btn-block theme-btn sign-in">Profile</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#" class="btn btn-block theme-btn sign-up">Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="openNav" onclick="cart_open()"><i class="icofont-cart"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Header Part End -->
+
+    <!-- Contributor dashboard Start -->
+    <div id="Contributor_dashboard">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                    <div class="step mb-3 shadow-sm">
+                        <form id="msform">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li id="step_1" class="active"><strong>Profile Information </strong></li>
+                                <li id="step_2"><strong>Photo Submission </strong></li>
+                            </ul>
+
+                            <!-- fieldsets -->
+                            <fieldset>
+                                <div class="step-box">
+                                    <div class="form-row justify-content-center">
+                                        <div class="col-sm-12 col-md-6 col-lg-4">
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <div class="form-group text-left">
+                                                        <label for="profile_info_facebook">Facebook</label>
+                                                        <input type="text" class="form-control" id="profile_info_facebook" placeholder="Facebook Profile">
+                                                    </div>
+
+                                                    <div class="form-group text-left">
+                                                        <label for="profile_info_instagram">Instagram</label>
+                                                        <input type="text" class="form-control" id="profile_info_instagram" placeholder="Instagram Profile">
+                                                    </div>
+
+                                                    <div class="form-group text-left">
+                                                        <label for="profile_info_website">Website</label>
+                                                        <input type="text" class="form-control" id="profile_info_website" placeholder="Website Link">
+                                                    </div>
+
+                                                    <div class="form-group text-left">
+                                                        <label for="upload_cv">CV (PDF) Upload</label>
+                                                        <input type="file" class="form-control-file" id="upload_cv">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" name="next" class="next action-button" >SAVE AND NEXT</button>
+                            </fieldset>
+
+                            <!-- fieldsets -->
+                            <fieldset>
+                                <div class="step-box">
+                                    <div class="form-row justify-content-center">
+                                        <div class="col-md-10">
+                                            <div class="form-row">
+                                                <div class="col-sm-12">
+                                                    <div class="imgUp">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4">
+                                                                <div class="imagePreview"></div>
+                                                                <label class="btn btn-primary theme-btn">
+                                                                    Upload Your Image<input type="file" class="uploadFile img" value="Upload Photo" >
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="col-md-8">
+                                                                <div class="card shadow-sm">
+                                                                    <div class="card-body iptc_metadata">
+                                                                        <div class="form-row">
+                                                                            <div class="col-md-12 text-left">
+                                                                                <h6>IPTC Metadata</h6>
+                                                                            </div>
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info1 mb-0">Info-1</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info1" placeholder="Info-1">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info2 mb-0">Info-2</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info2" placeholder="Info-2">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info3 mb-0">Info-3</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info3" placeholder="Info-3">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info4 mb-0">Info-4</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info4" placeholder="Info-4">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info5 mb-0">Info-5</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info5" placeholder="Info-5">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info6 mb-0">Info-6</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info6" placeholder="Info-6">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                                                                <div class="col-sm-3 col-md-2 col-lg-3">
+                                                                                    <label for="info7 mb-0">Info-7</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9 col-md-10 col-lg-9">
+                                                                                    <input type="text" class="form-control mb-0" id="info7" placeholder="Info-7">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-sm-12">
+                                                    <span class="btn btn-sm theme-btn imgAdd">Add More</span>
+                                                </div>
+
+
+
+                                            </div><!-- row -->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="finish" class="finish action-button" value="Finish" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contributor dashboard End -->
+
+    <!-- Footer start -->
+    <div class="footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>SUPPORT</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><span>Phone: &nbsp;&nbsp;&nbsp;&nbsp;</span>+000 333 879 788</li>
+                            <li><span>Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> support@gmail.com</li>
+                            <li><span>Address: &nbsp;</span> king street,avenue</li>
+                        </ul>
+
+                        <div class="footer_social">
+                            <ul class="footer_social_icons">
+                                <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>PRODUCTS</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><i class="icofont-double-right"></i><a href="#">Drik Images API</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Media Manager</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Drikimages.com</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">DrikGallery</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">200k Stock Images</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>SOLUTIONS</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><i class="icofont-double-right"></i><a href="#">Pricing and solutions</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Premium Access</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Rights and clearance</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Image collections</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Custom solutions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    <div class="footer_widget">
+                        <div class="footer_widget_title">
+                            <h2>COMPANY</h2>
+                        </div>
+                        <ul class="footer_widget_content">
+                            <li><i class="icofont-double-right"></i><a href="#">Press room</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Careers</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Affiliates</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">Grants and giving</a></li>
+                            <li><i class="icofont-double-right"></i><a href="#">200 + Photographers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">© 2021 All Rights Reserved <a target="_blank" href="#">Drik Gallery</a></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="design_by">Design & Developed by <a target="_blank" href="http://nextgenitltd.com/">NEXTGEN IT</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer end -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(".imgAdd").click(function(){
+            $(this).closest(".row").find('.imgAdd').before('<div class="imgUp" id="imgUp"><div class="row align-items-center"><div class="col-md-4"><div class="imagePreview"></div><label class="btn btn-primary theme-btn">Upload Your Image<input type="file" class="uploadFile img" value="Upload Photo"></label><i class="fa fa-times del"></i></div><div class="col-md-8"><div class="card shadow-sm"><div class="card-body iptc_metadata"><div class="form-row"><div class="col-md-12 text-left"><h6>IPTC Metadata</h6></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info1 mb-0">Info-1</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info1" placeholder="Info-1"></div></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info2 mb-0">Info-2</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info2" placeholder="Info-2"></div></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info3 mb-0">Info-3</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info3" placeholder="Info-3"></div></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info4 mb-0">Info-4</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info4" placeholder="Info-4"></div></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info5 mb-0">Info-5</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info5" placeholder="Info-5"></div></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info6 mb-0">Info-6</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info6" placeholder="Info-6"></div></div><div class="col-sm-12 col-md-12 col-lg-6 form-group text-left form-row align-items-center"><div class="col-sm-3 col-md-2 col-lg-3"><label for="info7 mb-0">Info-7</label></div><div class="col-sm-9 col-md-10 col-lg-9"><input type="text" class="form-control mb-0" id="info7" placeholder="Info-7"></div></div></div></div></div></div></div></div>');
+        });
+
+        $(document).on("click", "i.del" , function() {
+            //  to remove card
+            // $(this).parent().remove();
+            /* $(this).parent("").remove();*/
+            /*  $("#imgUp").remove();*/
+            $(this).closest(".imgUp").remove();
+            // to clear image
+            // $(this).parent().find('.imagePreview').css("background-image","url('')");
+        });
+
+        $(function() {
+            $(document).on("change",".uploadFile", function(){
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return;
+                // no file selected, or no FileReader support
+
+                if (/^image/.test( files[0].type)){ // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
+
+                    reader.onloadend = function(){ // set image data as background of div
+                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                        uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+                    }
+                }
+
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
+
+            setProgressBar(current);
+
+            $(".next").click(function () {
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate(
+                { opacity: 0 },
+                {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            display: "none",
+                            position: "relative",
+                        });
+                        next_fs.css({ opacity: opacity });
+                    },
+                    duration: 500,
+                }
+                );
+            setProgressBar(++current);
+        });
+
+            $(".previous").click(function () {
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate(
+                { opacity: 0 },{
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            display: "none",
+                            position: "relative",
+                        });
+                        previous_fs.css({ opacity: opacity });
+                    },
+                    duration: 500,
+                });
+
+            setProgressBar(--current);
+        });
+
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar").css("width", percent + "%");
+            }
+
+            $(".submit").click(function () {
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
