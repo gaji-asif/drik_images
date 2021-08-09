@@ -41,7 +41,7 @@ class CheckoutController extends Controller {
         $user = User::find($purchase->user_id);
 
         $pdfPath = 'pdf/invoice-'.time().'-'.$purchase->id.'.pdf';
-        $pdf = PDF::loadView('web.invoice.index ', compact('purchase','user'))->save(public_path($pdfPath));
+        $pdf = PDF::loadView('web.invoice.index', compact('purchase','user'))->save(public_path($pdfPath));
 
         $this->sendMail($user,$purchase,$pdfPath);
         return view('success_page', compact('categories', 'page'));

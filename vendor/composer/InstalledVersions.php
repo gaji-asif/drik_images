@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'cd9b4d0b52219bd334a550df11360f711ef4a3e9',
+    'reference' => '525d32427d55b329b07191afeffd4bd79a145432',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -586,7 +586,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'cd9b4d0b52219bd334a550df11360f711ef4a3e9',
+      'reference' => '525d32427d55b329b07191afeffd4bd79a145432',
     ),
     'laravel/sail' => 
     array (
@@ -641,6 +641,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'f3ad69181b8afed2c9edf7be5a2918144ff4ea32',
+    ),
+    'league/fractal' => 
+    array (
+      'pretty_version' => '0.19.2',
+      'version' => '0.19.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '06dc15f6ba38f2dde2f919d3095d13b571190a7c',
     ),
     'league/mime-type-detection' => 
     array (
@@ -1598,6 +1607,60 @@ private static $installed = array (
       array (
       ),
       'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+    ),
+    'yajra/laravel-datatables' => 
+    array (
+      'pretty_version' => 'v1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '50de5e20ef01da1a353e0a81c0ad5f9da6a985ec',
+    ),
+    'yajra/laravel-datatables-buttons' => 
+    array (
+      'pretty_version' => 'v4.13.1',
+      'version' => '4.13.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3e48eca61ea5f23fd38517aa1ca5ab0bc2b2a32a',
+    ),
+    'yajra/laravel-datatables-editor' => 
+    array (
+      'pretty_version' => 'v1.24.1',
+      'version' => '1.24.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd413a8991227b554b5c81a32264647cd63ea691c',
+    ),
+    'yajra/laravel-datatables-fractal' => 
+    array (
+      'pretty_version' => 'v1.6.0',
+      'version' => '1.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0aa387a9b3738248fa61110f0378904ef42b4a73',
+    ),
+    'yajra/laravel-datatables-html' => 
+    array (
+      'pretty_version' => 'v4.38.0',
+      'version' => '4.38.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7171b9fae1b0ad2f161ae61fcea8241eb20017de',
+    ),
+    'yajra/laravel-datatables-oracle' => 
+    array (
+      'pretty_version' => 'v9.18.1',
+      'version' => '9.18.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7148225d52bcdfdd77c24e8d456058f1150b84e7',
     ),
     'zendframework/zend-escaper' => 
     array (

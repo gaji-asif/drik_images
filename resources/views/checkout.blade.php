@@ -47,8 +47,8 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <label for="firstName">Full name</label>
-                                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
-                                               value="John Doe" required>
+                                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="John Doe"
+                                               value="{{old('customer_name')}}" required>
                                         <div class="invalid-feedback">
                                             Valid customer name is required.
                                         </div>
@@ -61,8 +61,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">+88</span>
                                         </div>
-                                        <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
-                                               value="01711xxxxxx" required>
+                                        <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="01711xxxxxx"
+                                               value="{{old('customer_mobile')}}" required>
                                         <div class="invalid-feedback" style="width: 100%;">
                                             Your Mobile number is required.
                                         </div>
@@ -72,7 +72,7 @@
                                 <div class="mb-3">
                                     <label for="email">Email </label>
                                     <input type="email" name="customer_email" class="form-control" id="email"
-                                           placeholder="you@example.com" value="you@example.com" required>
+                                           placeholder="you@example.com" value="{{old('customer_email')}}" required>
                                     <div class="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -80,8 +80,8 @@
                 
                                 <div class="mb-3">
                                     <label for="address">Address</label>
-                                    <input type="text" name="address" class="form-control" id="address" placeholder="1234 Main St"
-                                           value="93 B, New Eskaton Road" required>
+                                    <input type="text" name="address" class="form-control" id="address" placeholder="1234 Main St,93 B, New Eskaton Road"
+                                           value="{{old('address')}}" required>
                                     <div class="invalid-feedback">
                                         Please enter your shipping address.
                                     </div>
@@ -187,7 +187,7 @@
                             <div class="col text-left">Promo Code</div>
                             <span id="" class="text-danger invalid_promo_code invalid_promo_code_display_none">Please insert valid promo code</span>
                             <div class="col text-right">
-                                <input type="text" class="" onchange="getProdCount()" id="promo-code_input" placeholder="Enter Promo code">
+                                <input type="text" class="" onchange="getPromoCode()" id="promo-code_input" placeholder="Enter Promo code">
                                 <input type="hidden" name="promo_code" value="" id="promo_code_input">
                             </div>
                       

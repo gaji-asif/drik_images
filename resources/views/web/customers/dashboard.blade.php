@@ -11,29 +11,13 @@
                     <span>{{ Auth::user()->name }}</span>
                 </p>
                 <hr>
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                       <a class="nav-link active" href="{{ ('your-dashboard') }}">Dashboard</a>
-                   </li>
-                    <li class="nav-item">
-                       <a class="nav-link" href="{{ ('customer-profile') }}">My Profile</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link" href="{{ ('wishlist') }}">My Wishlist</a>
-                   </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ ('promocode') }}">Promo Code</a>
-                    </li>
-                   <li class="nav-item">
-                       <a class="nav-link" href="{{ ('user-logout') }}">Log Out</a>
-                   </li>
-                </ul>
+                @include('web.customers.sidemenu')
             </div>
         </div>
     </div>
     <div class="col-sm-9">
         <div class="card">
-            <div class="col-lg-12">
+            {{-- <div class="col-lg-12">
                 <div class="container">
                     <h3 class="mt-4 mb-4">Total Purchased</h3>
 
@@ -41,7 +25,6 @@
                         <table class="table">
 
                     <div class="table-responsive">          
-<!--                        <table id="example" class="table table-striped table-bordered" style="width:100%">-->
                         <table id="example" class="table table-bordered yajra-datatable">
 
                             <thead>
@@ -59,7 +42,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
