@@ -4,7 +4,6 @@ let masterId = null;
 let lastForm = null;
 let formCount = 1;
 let contributor = null;
-
 $(document).on('focus',".creation-date", function(){
     $(this).datepicker();
 });
@@ -76,7 +75,10 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     imageSubmitBtn.addEventListener("click", function() {
+        //alert("test");
         if(!contributor) return ;
+
+
         masterId = null;
         if(!addImageToList()) {
             imageFormValidationError();
@@ -146,7 +148,6 @@ function readImageMetaData(image, imageForm) {
     imageForm = imageForm[0];
     let formData = new FormData();
     formData.append("image", image);
-  
     fetch(`${baseUrl}/get_image_metas`, {
         method: "POST",
         headers: {
@@ -263,7 +264,8 @@ function addImageToList() {
 
 function uploadImage(event) {
     if(!checkForContributor()) return;
-    showCustomLoader();
+    //showCustomLoader();
+    $("#loader").show();
     let imageObj = images.pop();
     if(!imageObj) {
         swal({
@@ -278,7 +280,8 @@ function uploadImage(event) {
             input.value = '';
         });
         $(".token").remove();
-        removeCustomLoader();
+        //removeCustomLoader();
+        $("#loader").hide();
         return ;
     }
 
