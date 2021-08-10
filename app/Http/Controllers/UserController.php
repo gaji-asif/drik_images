@@ -53,16 +53,15 @@ class UserController extends Controller {
         $user = User::where('email', $request["email"])->first();
         if($user && Hash::check($request["password"], $user->password) && $user->active_status === 1){
             Auth::login($user);
-            // dd($request->session()->has('url'));
             if($request->session()->has('url'))
             {
                 $url = $request->session()->get('url');
                 $request->session()->forget('url');
                 return redirect($url);
             }
-            return redirect()->route('your-dashboard');
+            return redirect()->route('your-dashboard')->with('message-success',"Welcome to your dashboard.$user->name");
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('message-danger',"Your credentials are incorrect");
         }
     }
 

@@ -150,7 +150,7 @@
             <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <div class="form-row align-items-center">
+                        <div class="form-row ">
                             <div class="col-md-9">
                                 <div class="full-img">
                                     <img class="w-100" src="{{$image->image_main_url}}" alt="">
@@ -203,7 +203,7 @@
                                 <div class="purchase">
                                     <h6>PURCHASE A LICENSE</h6>
 
-                                    <div class="list-group">
+                                    {{-- <div class="list-group">
                                         <div
                                             class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                                             <div class="form-check">
@@ -236,7 +236,7 @@
 
                                             <span class="badge badge-pill">৳{{$image->large_price}}</span>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     {{-- <div class="enter-promo_code">
                                         <div class="form-group form-row align-items-center">
@@ -261,6 +261,15 @@
                                             data-dismiss="modal"><i class="icofont-download"></i> Add to cart</button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-12 pt-2">
+                                <p><font style=""><strong>Title: </strong></font>{{$image->title}}</p>
+                                <p><font style=""><strong>Caption: </strong></font>{{$image->caption}}</p>
+                                <p><font style=""><strong>Category: </strong></font>{{$image->category}}</p>
+                                <p><font style=""><strong>Sub Category: </strong></font>{{$image->sub_category}}</p>
+                                <p><font style=""><strong>Author: </strong></font>{{$image->author}}</p>
+                                <p><font style=""><strong>Height: </strong></font>{{$image->height}}</p>
+                                <p><font style=""><strong>Width: </strong></font>{{$image->width}} </p>
                             </div>
                         </div>
                     </div>

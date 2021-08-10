@@ -17,32 +17,28 @@
     </div>
     <div class="col-sm-9">
         <div class="card">
-            {{-- <div class="col-lg-12">
+            <div class="col-lg-12">
                 <div class="container">
-                    <h3 class="mt-4 mb-4">Total Purchased</h3>
-
-                    <div class="table-responsive">
-                        <table class="table">
-
-                    <div class="table-responsive">          
-                        <table id="example" class="table table-bordered yajra-datatable">
-
-                            <thead>
-                                <tr>
-                                    <th>SL</th>
-                                    <th>Item Name</th>
-                                    <th>Date</th>
-                                    <th>Price</th>
-                                    <th>Payment Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                    <div class="pt-2 pb-2">
+                        @if(session()->has('message-success'))
+                        <div class="alert alert-success mb-3 background-success" role="alert">
+                            {{ session()->get('message-success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @elseif(session()->has('message-danger'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('message-danger') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
                     </div>
+                
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

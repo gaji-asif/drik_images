@@ -106,7 +106,7 @@
                 <div class="purchase">
                     <h6>PURCHASE A LICENSE</h6>
 
-                    <div class="list-group">
+                    {{-- <div class="list-group">
                         <div
                             class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                             <div class="form-check">
@@ -139,7 +139,7 @@
 
                             <span class="badge badge-pill">৳{{$image->large_price}}</span>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="download mt-2">
                         <button onclick="addToCart('{{$image->id}}')" class="btn btn-block download-btn"

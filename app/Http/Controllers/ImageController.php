@@ -7,6 +7,8 @@ use App\Helpers\ImageHelper;
 use App\Helpers\SearchImage;
 use App\Http\Controllers\Controller;
 use App\ImageChild;
+use App\ImageUsageName;
+use App\ImageUsagPrice;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -129,7 +131,23 @@ class ImageController extends Controller {
     public function image_list_all() {
         $images = ImageChild::where('id', '>', 1)->paginate(10);
         $total_images = ImageChild::where('id', '>', 1)->get();
+        // $imageUsageNames = ImageUsageName::all()->toArray();
+        // $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
+        // foreach($images as $image) {
+        //     $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
+        //     $image->imageUsagePrice = $imageUsagePrice;        
+        // }
+        // dd($images);
         return view('backEnd.images.index', compact('images', 'total_images'));
+    }
+    public function imageUsageNameMap($imageUsageNames)
+    {
+        $imageUsageNameArray = array();
+        foreach($imageUsageNames as $item)
+        {
+            $imageUsageNameMap[$item['id']] = $item['name'];
+        }
+        return $imageUsageNameMap;
     }
 
     public function getAllImages() {

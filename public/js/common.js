@@ -232,7 +232,8 @@ function addToCart(imageId) {
 
     let form = document.getElementById(`image_details-${imageId}`);
     // console.log(form);
-    let size = form.querySelector('.form-check-input:checked').value;
+    // let size = form.querySelector('.form-check-input:checked').value;
+    let size = 10;
     let formData = new FormData();
     formData.append('imageId', imageId);
     formData.append('size', size);

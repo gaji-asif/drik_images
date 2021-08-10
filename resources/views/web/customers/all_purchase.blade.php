@@ -21,7 +21,7 @@
         <div class="card">
             <div class="col-lg-12">
                 <div class="container">
-                    <h5 class="mt-4 mb-4">All Purchased Images @if(isset($purcharse) && count($purcharse)>0)({{count($purcharse)}})@else(0) @endif</h5>
+                    <h5 class="mt-4 mb-4">All Purchased @if(isset($purcharse) && count($purcharse)>0)({{count($purcharse)}})@else(0) @endif</h5>
 
                     <div class="table-responsive">
                         <table class="table">
@@ -34,8 +34,8 @@
                                     <th>SL</th>
                                     <th>Id</th>
                                     <th>Total Amount</th>
-                                    <th>Payment Status</th>
                                     <th>Payment Date</th>
+                                    <th>Payment Status</th> 
                                     <th>Payment Method</th>
                                     <th>Action</th>
                                 </tr>
@@ -75,7 +75,7 @@
         ajax: "{{ route('purchased-list') }}",
         columns: [
             {data: 'DT_RowIndex'},
-            {data: 'id'},
+            {data: 'transaction_id',orderable: false},
             {data: 'total'},
             {data: 'payment_date'},
             {data: "payment_status"},

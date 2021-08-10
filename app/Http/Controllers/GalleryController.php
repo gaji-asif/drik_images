@@ -38,6 +38,7 @@ class GalleryController extends Controller {
        // abort_if($images->isEmpty(),204);
         $user = Auth::user();
         $home = 'home';
+        // dd($images);
         return view('welcome', compact('images', 'categories', 'user', 'home'));
     }
     public function shareImage($id) {
@@ -48,6 +49,7 @@ class GalleryController extends Controller {
         if(is_null($image)) {
             return redirect('/');
         }
+       
         return view('sharePage', compact('image', 'categories', 'user', 'page'));
     }
 

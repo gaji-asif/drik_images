@@ -42,6 +42,21 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+                        @if(session()->has('message-success'))
+                        <div class="alert alert-success mb-3 background-success" role="alert">
+                            {{ session()->get('message-success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @elseif(session()->has('message-danger'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('message-danger') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
                         <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
                             <div class="">
                                 <h3>Sign In</h3>
@@ -57,13 +72,13 @@
                                     <input type="password" name="password" class="form-control" id="password" required="required" />
                                 </div>
 
-                                <div class="d-flex mb-5 align-items-center">
+                                {{-- <div class="d-flex mb-5 align-items-center">
                                     <div class="form-check text-left">
                                         <input type="checkbox" class="form-check-input" id="remember_me" />
                                         <label class="form-check-label" for="remember_me">Remember Me</label>
                                     </div>
                                     <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
-                                </div>
+                                </div> --}}
 
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
@@ -106,15 +121,15 @@
 
 
                                 <div class="form-group last">
-                                    <label for="user_type">User Type</label>
+                                    <label for="user_type">Register as - Buyer, Contributer</label>
                                     <select name="user_type" class="form-control" id="user_type" required="required">
                                         <option></option>
-                                        <option value="2">Client</option>
+                                        <option value="2">Buyer</option>
                                         <option value="1">Contributor</option>
                                     </select>
 
                                 </div>
-
+                               
                                 <div class="form-group last mb-3">
                                     <label for="company_name">Company name (optional)</label>
                                     <input name="company_name" type="text" class="form-control" id="company_name" required="required" />

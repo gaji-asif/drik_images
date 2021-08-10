@@ -94,16 +94,16 @@
                            <!--  <a class="nav-link" href="sign-in.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icofont-user"></i>asdasd
                             </a> -->
-                            @if(isset($user)== false)
+                            @if(is_null(auth()->user()))
                                 <a href="{{route('user-login')}}" class="btn btn-block theme-btn sign-up">Log In</a>
                             @else
-                        <a href="{{route('your-dashboard')}}" class="btn theme-btn ">
-                                    <img width="40" class="rounded-circle" src="{{ asset($user->upload_img) }}" alt="">
+                                <a href="{{route('your-dashboard')}}" class="btn theme-btn ">
+                                    <img width="40" class="rounded-circle" src="{{ asset(auth()->user()->upload_img) }}" alt="">
                                     {{ Auth::user()->name }}
                                 </a>
                             @endif
                             <div class="dropdown-menu user-custom" aria-labelledby="navbarDropdown">
-                                @if(isset($user) == true)
+                                @if(!is_null(auth()->user()))
                                 <div class="author">
                                     <div class="author-img">
                                         <img class="w-100" src="images/img-21.jpg" alt="">

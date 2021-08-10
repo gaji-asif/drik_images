@@ -13,7 +13,8 @@ class CartController extends Controller {
         $id = $request["imageId"];
         $size = $request["size"];
         $image = ImageChild::find($id);
-        $image->price = $image[$size];
+        // $image->price = $image[$size];
+        $image->price = 100.00;
         $cart = session()->get('cart');
         if(!$cart) {
             $cart = [

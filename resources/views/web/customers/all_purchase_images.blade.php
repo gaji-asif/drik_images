@@ -3,7 +3,7 @@
  .theBox {
       overflow: hidden;
       /* width: 240px; */
-      height: 200px;
+      height: 100px;
    }
 
    .theBox img {
@@ -31,7 +31,7 @@
         <div class="card">
             <div class="col-lg-12">
                 <div class="container">
-                    <h5 class="mt-4 mb-4">All Purchased @if(isset($purchaseDetail) && count($purchaseDetail)>0)({{count($purchaseDetail)}})@else(0) @endif</h5>
+                    <h5 class="mt-4 mb-4">All Purchased Images @if(isset($purchaseDetail) && count($purchaseDetail)>0)({{count($purchaseDetail)}})@else(0) @endif</h5>
 
                     <div class="table-responsive">
                         <table class="table">
@@ -42,8 +42,8 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th width="40%">Image</th>
                                     <th>Purcharse Id</th>
+                                    <th width="20%">Image</th>
                                     <th>Title</th>
                                     <th>Rrice</th>
                                     <th>Action</th>
@@ -91,14 +91,14 @@ $(document).ready(function() {
         ajax: url,
         columnDefs: [
         {
-            "targets": 1, // your case first column
+            "targets": 2, // your case first column
             "className": "text-center",
-            "width": "40%"
+            "width": "20%"
         }],
         columns: [
             {data: 'DT_RowIndex'},
-            {data: 'image'},
             {data: 'purchase_id'},
+            {data: 'image'},
             {data: "title"},
             {data: "price"},
             {data: 'action', orderable: false, searchable: false}

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Svg\Tag\Image;
 use App\Category;
+use App\Promocode;
 use App\Purchase;
 use App\PurchaseDetail;
 use App\User;
@@ -45,7 +46,7 @@ class CustomerController extends Controller {
     {
         $user = Auth::user();
 
-        $data = Purchase::where('user_id', $user->id)->get(); 
+        $data = Purchase::where('user_id', $user->id)->orderBy('id', 'DESC')->get(); 
      
         return Datatables::of($data)
             ->addIndexColumn()
@@ -153,11 +154,22 @@ class CustomerController extends Controller {
         $categories = Category::all();
         $page = 'Invoice';
         $purchase = Purchase::where('id',$id)->with('purchase_details')->first();
+        $promocode = Promocode::where('promocode',$purchase->promo_code)->first();
+        if(isset($promocode)){
+            $purchase->promocode_amount = $promocode->amount; 
+        }
+        else
+        {
+            $purchase->promocode_amount = ''; 
+        }
+      
+
         foreach ($purchase->purchase_details as $purchase_detail) {
             $imageChild = ImageChild::where('id', $purchase_detail->image_id)->first();   
             $purchase_detail->thumbnail = $imageChild->thumbnail_url; 
             $purchase_detail->author = $imageChild->author; 
             $purchase_detail->title = $imageChild->title; 
+        
         }
         $user = User::find($purchase->user_id);
 
@@ -199,11 +211,11 @@ class CustomerController extends Controller {
             foreach ($purchase as $purchase_detail_id) {
                 array_push($purchaseIds, $purchase_detail_id->id);
             }
-            $data = PurchaseDetail::whereIn('purchase_id', $purchaseIds)->where('status',1)->get(); 
+            $data = PurchaseDetail::whereIn('purchase_id', $purchaseIds)->orderBy('id', 'DESC')->where('status',1)->get(); 
         }
         else
         {
-            $data = PurchaseDetail::where('purchase_id', $id)->where('status',1)->get(); 
+            $data = PurchaseDetail::where('purchase_id', $id)->orderBy('id', 'DESC')->where('status',1)->get(); 
         }
 
         if(!is_null($data))
@@ -216,7 +228,7 @@ class CustomerController extends Controller {
             }
         }
         
-      
+    
     
         return Datatables::of($data)
             ->addIndexColumn()
