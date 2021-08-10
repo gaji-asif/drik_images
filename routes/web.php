@@ -257,3 +257,9 @@ Route::get('invoice', 'InvoiceController@index');
 
 Route::resource('promocode', 'PromoCodeController');
 Route::get('delete-promocode/{id}', 'PromoCodeController@deletePromocode');
+
+
+//contact page 
+
+route::get('contact', 'WebController@contact');
+route::post('submit-contact', 'WebController@submitContact');
