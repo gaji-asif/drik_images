@@ -249,8 +249,6 @@ function addToCart(imageId) {
         })
 }
 
-
-
 function removeFromCart(productId) {
     let formData = new FormData();
     formData.append('productId', productId);
@@ -268,7 +266,7 @@ function removeFromCart(productId) {
             refreshCart();
         });
 }
-function getProdCount(){
+function getPromoCode(){
     let promoCode =  $("#promo-code_input").val();
  
     $.ajaxSetup({

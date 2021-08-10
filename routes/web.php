@@ -198,6 +198,10 @@ Route::post('approve_contributor', 'ContributorController@approveContributor');
 
 // Route::get('your-dashboard', 'ErpPatientController@index');
 Route::get('your-dashboard', ['as' => 'your-dashboard', 'uses' => 'CustomerController@index']);
+Route::get('all-purchase', ['as' => 'all-purchase', 'uses' => 'CustomerController@allPurchase']);
+Route::get('all-purchased-list/{id}','CustomerController@allPurchasedList');
+Route::get('all-purchase-images/{id}', ['as' => 'all-purchase-images', 'uses' => 'CustomerController@allPurchaseImages']);
+Route::get('preview-invoice/{id}', 'CustomerController@previewInvoice');
 Route::get('purchased-list', ['as' => 'purchased-list', 'uses' => 'CustomerController@getPurchasedInfo']);
 Route::get('customer-profile', ['as' => 'customer-profile', 'uses' => 'CustomerController@profile']);
 Route::put('customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'CustomerController@edit_profile']);
@@ -205,7 +209,7 @@ Route::get('wishlist', ['as' => 'wishlist', 'uses' => 'CustomerController@wishli
 
 Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
 
-Route::get('promocode', ['as' => 'promocode', 'uses' => 'CustomerController@promocode']);
+Route::get('promocodes', ['as' => 'promocode', 'uses' => 'CustomerController@promocode']);
 //Email
 Route::get('send-mail', function () {
    
@@ -248,3 +252,8 @@ Route::get('share-image/{id}', 'GalleryController@shareImage');
 // invoice
 
 Route::get('invoice', 'InvoiceController@index');
+
+//promocode at admin panel
+
+Route::resource('promocode', 'PromoCodeController');
+Route::get('delete-promocode/{id}', 'PromoCodeController@deletePromocode');

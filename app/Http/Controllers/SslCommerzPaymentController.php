@@ -34,7 +34,7 @@ class SslCommerzPaymentController extends Controller
             return redirect('/user-login');
         }
         $post_data = array();
-        $post_data['total_amount'] = $request->subtotal; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->total; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
@@ -87,7 +87,7 @@ class SslCommerzPaymentController extends Controller
         $purchase = new Purchase();
         $purchase->transaction_id = $post_data['tran_id'];
         $purchase->user_id = auth()->user()->id;
-        $purchase->sub_total = $post_data['total_amount'];
+        $purchase->sub_total = $request->subtotal;
         $purchase->currency = $post_data['currency'];
         $purchase->total = $request->total;
         $purchase->promo_code = $request->promo_code;
@@ -219,6 +219,8 @@ class SslCommerzPaymentController extends Controller
                 $update_purchase = DB::table('purchases')
                     ->where('transaction_id', $tran_id)
                     ->update(['payment_status' => 'Processing','payment_method' => $request->input('card_type')]);
+
+                $purchaseDetails = PurchaseDetail::where('purchase_id',$purchase->id)->update(['status' => 1]);    
                 // echo "<br >Transaction is successfully Completed";
                 if(session()->has('cart'))
                 {
