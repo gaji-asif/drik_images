@@ -263,3 +263,9 @@ Route::get('delete-promocode/{id}', 'PromoCodeController@deletePromocode');
 
 route::get('contact', 'WebController@contact');
 route::post('submit-contact', 'WebController@submitContact');
+
+//update image price
+route::post('update_image_price', 'ImageController@updateImagePrice');
+
+//image usages sub cateogry
+route::get('image_usages_sub_category', 'ImageController@imageUsagesSubCategory');

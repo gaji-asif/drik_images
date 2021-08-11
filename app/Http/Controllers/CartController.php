@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller {
     public function addItem(Request $request) {
+        // dd($request);
         $id = $request["imageId"];
         $size = $request["size"];
         $image = ImageChild::find($id);
-        // $image->price = $image[$size];
-        $image->price = 100.00;
+        $image->price = $size;
         $cart = session()->get('cart');
         if(!$cart) {
             $cart = [
@@ -23,7 +23,6 @@ class CartController extends Controller {
         } else {
             $cart[$id] = $image;
         }
-
         session()->put('cart', $cart);
         
         $session = session()->get('cart');

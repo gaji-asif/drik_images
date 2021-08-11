@@ -117,8 +117,31 @@
     .copy-text.active .author-action-button:after {
         display: block;
     }
-}
+    
+    @media (min-width: 1200px){
+        .modal-xl {
+            max-width: 1200px;
+        }
+    }
 
+    .accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+    }
+    .accordion .card-header.collapsed:after {
+        /* symbol for "collapsed" panels */
+        content: "\f067"; 
+    }
+
+    .purchase .form-control {
+        padding: .4rem .4rem;
+        font-size: 12px;
+        height: 34px;
+    }
+    .card-bodys{
+        padding: 5px 10px 10px 5px;
+    }
 </style>
 
 <div class="gallery-2">
@@ -145,7 +168,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id={{"image_details-".$image->id}} tabindex="-1" role="dialog"
+        <div class="modal fade " id={{"image_details-".$image->id}} tabindex="-1" role="dialog"
             aria-labelledby="image_detailsTitle" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -154,6 +177,15 @@
                             <div class="col-md-9">
                                 <div class="full-img">
                                     <img class="w-100" src="{{$image->image_main_url}}" alt="">
+                                </div>
+                                <div class=" pt-2">
+                                    <p><font style=""><strong>Title: </strong></font>{{$image->title}}</p>
+                                    <p><font style=""><strong>Caption: </strong></font>{{$image->caption}}</p>
+                                    <p><font style=""><strong>Category: </strong></font>{{$image->category}}</p>
+                                    <p><font style=""><strong>Sub Category: </strong></font>{{$image->sub_category}}</p>
+                                    <p><font style=""><strong>Author: </strong></font>{{$image->author}}</p>
+                                    <p><font style=""><strong>Height: </strong></font>{{$image->height}}</p>
+                                    <p><font style=""><strong>Width: </strong></font>{{$image->width}} </p>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -182,13 +214,13 @@
                                         </div>
                                        
                                     </div> --}}
-                                    <div class="copy-text ">
+                                    <div class="copy-text copy-text-{{$image->id}} ">
                                         <div class="col-lg-12  text-center " >
-                                            <input type="text" class="share_link text" style="width:100%" value="{{url('share-image',$image->id)}}" />
+                                            <input type="text" class="share_link share_link-{{$image->id}} text" style="width:100%" value="{{url('share-image',$image->id)}}" />
                                         </div>
                                         <div class="col-lg-12  ">
                                             <div class="text-center">
-                                                <button class="btn author-action-button" style="width: 80px">
+                                                <button class="btn author-action-button author-action-button-{{$image->id}}" onclick="onClickCopy({{$image->id}})" style="width: 80px">
                                                     <i class="icofont-share"></i>&nbsp;Share
                                                 </button>
                                             </div>
@@ -203,41 +235,80 @@
                                 <div class="purchase">
                                     <h6>PURCHASE A LICENSE</h6>
 
-                                    {{-- <div class="list-group">
-                                        <div
-                                            class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="image-sizes"
-                                                    id="smallRadio" value="small_price">
-                                                <label class="form-check-label" for="smallRadio">Small</label>
-                                            </div>
+                                    @if(!empty($image->usage_names_price))
+                                        <div class="list-group">
+                                            @foreach ($image->usage_names_price as $item)
+                                                <div
+                                                    class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="image-sizes"
+                                                            id="smallRadio-{{$image->id}}-{{$item->id}}" value="{{$item->price}}">
+                                                        <label class="form-check-label" for="smallRadio-{{$image->id}}-{{$item->id}}">{{$imageUsageNameMap[$item->usage_purpose]}}</label>
+                                                    </div>
 
-                                            <span class="badge badge-pill">৳{{$image->small_price}}</span>
+                                                    <span class="badge badge-pill">৳{{$item->price}}</span>
+                                                </div>
+                                            @endforeach
+                                    
+
                                         </div>
+                                    @endif
 
-                                        <div
-                                            class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="image-sizes"
-                                                    id="mediumRadios" value="medium_price">
-                                                <label class="form-check-label" for="mediumRadios">Medium</label>
+                                    <div id="accordion" class="accordion">
+                                        <div class="card mb-0">
+                                            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                                                <a class="card-title">
+                                                    Choose another rights-managed license
+                                                </a>
                                             </div>
-
-                                            <span class="badge badge-pill">৳{{$image->medium_price}}</span>
-                                        </div>
-
-                                        <div
-                                            class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="image-sizes"
-                                                    id="largeRadio" value="large_price">
-                                                <label class="form-check-label" for="largeRadio">Large</label>
+                                            <div id="collapseOne" class="card-body card-bodys collapse" data-parent="#accordion" >
+                                                <div class="form-group">
+                                                     <select class="form-control form-control-lg" id="image_use" onchange="imageUsage(this,{{$image->id}});">
+                                                        <option>Image Use</option>
+                                                        @foreach ($imageUsageCategory as $item)
+                                                            <option value="{{$item->id}}">{{$item->cat_name}}</option>
+                                                        @endforeach
+                                                      </select>
+                                                      <select class="form-control form-control-lg" id="image_usage_sub_cat-{{$image->id}}">
+                                                        <option>Details of use</option>
+                                                      </select>
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Image Size</option>
+                                                      </select>
+                                                     
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Print run</option>
+                                                      </select>
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Inserts</option>
+                                                      </select>
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Placement</option>
+                                                      </select>
+                
+                                                      <div class="form-group text-left">
+                                                        <label for="formGroupExampleInput">Start date</label>
+                                                        <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                                                      </div>
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Duration</option>
+                                                      </select>
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Country</option>
+                                                      </select>
+                                                      <select class="form-control form-control-lg" id="inputPassword">
+                                                        <option>Industry sector</option>
+                                                      </select>
+                                                      <div class="text-right">
+                                                        <h6><font><strong>Price:<span>৳ 0.0</span></strong></font></h6>
+                                                      </div>
+                                                      
+                                                  </div>
+                                           
                                             </div>
-
-                                            <span class="badge badge-pill">৳{{$image->large_price}}</span>
+                                          
                                         </div>
-                                    </div> --}}
-
+                                    </div>
                                     {{-- <div class="enter-promo_code">
                                         <div class="form-group form-row align-items-center">
                                             <label for="promo_code" class="col-sm-7 col-form-label">Discount/Promo
@@ -262,15 +333,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 pt-2">
-                                <p><font style=""><strong>Title: </strong></font>{{$image->title}}</p>
-                                <p><font style=""><strong>Caption: </strong></font>{{$image->caption}}</p>
-                                <p><font style=""><strong>Category: </strong></font>{{$image->category}}</p>
-                                <p><font style=""><strong>Sub Category: </strong></font>{{$image->sub_category}}</p>
-                                <p><font style=""><strong>Author: </strong></font>{{$image->author}}</p>
-                                <p><font style=""><strong>Height: </strong></font>{{$image->height}}</p>
-                                <p><font style=""><strong>Width: </strong></font>{{$image->width}} </p>
-                            </div>
+                      
                         </div>
                     </div>
                 </div>
@@ -320,19 +383,19 @@
 
 </script>
 <script>
-    let copyText = document.querySelector(".copy-text");
-    copyText.querySelector(".author-action-button").addEventListener("click", function () {
-        let input = copyText.querySelector("input.text");
-        input.select();
-        // input.value = $(".share_link").val();
-        document.execCommand("copy");
-        // alert(document.execCommand("copy"))
-        copyText.classList.add("active");
-        window.getSelection().removeAllRanges();
-        setTimeout(function () {
-            copyText.classList.remove("active");
-        }, 500);
-    });
+    function onClickCopy(id) {
+
+        let copyText = document.querySelector(`.copy-text-${id}`);
+            let input = copyText.querySelector(`.share_link-${id}`);
+            console.log(input);
+            input.select();
+            document.execCommand("copy");
+            copyText.classList.add("active");
+            window.getSelection().removeAllRanges();
+            setTimeout(function () {
+                copyText.classList.remove("active");
+            }, 500);
+    }
     
 </script>
 

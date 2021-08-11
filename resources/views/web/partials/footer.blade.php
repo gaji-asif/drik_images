@@ -79,7 +79,7 @@
                     <p class="copyright">© 2021 All Rights Reserved <a target="_blank" href="#">Drik Gallery</a></p>
                 </div>
                 <div class="col-md-6">
-                    <p class="design_by">Design & Developed by <a target="_blank" href="http://nextgenitltd.com/">NEXTGEN IT</a></p>
+                    {{-- <p class="design_by">Design & Developed by <a target="_blank" href="http://nextgenitltd.com/">NEXTGEN IT</a></p> --}}
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ use App\Helpers\SearchImage;
 use App\Http\Controllers\Controller;
 use App\ImageChild;
 use App\ImageUsageName;
+use App\imageUsageSubCategorie;
 use App\ImageUsagPrice;
 use App\User;
 use Illuminate\Http\Request;
@@ -131,13 +132,16 @@ class ImageController extends Controller {
     public function image_list_all() {
         $images = ImageChild::where('id', '>', 1)->paginate(10);
         $total_images = ImageChild::where('id', '>', 1)->get();
-        // $imageUsageNames = ImageUsageName::all()->toArray();
-        // $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
-        // foreach($images as $image) {
-        //     $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
-        //     $image->imageUsagePrice = $imageUsagePrice;        
-        // }
-        // dd($images);
+        $imageUsageNames = ImageUsageName::all()->toArray();
+        $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
+        foreach($images as $image) {
+            $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
+            $image->imageUsagePrice = $imageUsagePrice;    
+
+        }
+ 
+        
+         
         return view('backEnd.images.index', compact('images', 'total_images'));
     }
     public function imageUsageNameMap($imageUsageNames)
@@ -238,5 +242,27 @@ class ImageController extends Controller {
         $categories = Category::all();
         $photographers = User::where('user_type', 1)->get();
         return view('backEnd.images.index', compact('images', 'categories', 'photographers'));
+    }
+
+    public function updateImagePrice(Request $request)
+    {
+        $imageId = $request->imageId;
+        $imagePriceList = json_decode($request->priceList);
+ 
+        foreach($imagePriceList as $key=>$price) {
+            $index = $key + 1;
+            $updateImagePriceList = ImageUsagPrice::where('image_id', $imageId)->where('usage_purpose', $index)->first();
+            $updateImagePriceList->price = $price;
+            $updateImagePriceList->save();
+        }
+
+        return response()->json(['data'=>$imagePriceList], 200);
+    }
+
+    public function imageUsagesSubCategory(Request $request)
+    {
+        $getImageUsagesSubCategories = imageUsageSubCategorie::where('category_id',$request->cat_id)->get(['id','sub_cat_name'])->toArray();
+        $getImageUsagesSubCategories = json_encode($getImageUsagesSubCategories);
+        return $getImageUsagesSubCategories;
     }
 }

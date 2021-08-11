@@ -109,7 +109,7 @@
                                         <img class="w-100" src="images/img-21.jpg" alt="">
                                     </div>
                                     <div class="author-info">
-                                        <span class="author-name">{{$user->name}}</span>
+                                        <span class="author-name">{{auth()->user()->name}}</span>
                                     </div>
                                 </div>
 
