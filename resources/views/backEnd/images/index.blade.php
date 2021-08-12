@@ -118,7 +118,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="image-edit-modal">Update Image Metadata</h5>
+                <h5 class="modal-title" id="image-edit-modal">Update Image</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -129,7 +129,7 @@
                         <div class="card-body iptc_metadata">
                             <ul class="nav nav-tabs" id="myTab">
                                 <li class="nav-item">
-                                  <a class="nav-link active" data-toggle="tab" href="#tabOne">Image Info</a>
+                                  <a class="nav-link active" data-toggle="tab" href="#tabOne">Image Metadata Info</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" data-toggle="tab" href="#tabTwo">Image Price</a>

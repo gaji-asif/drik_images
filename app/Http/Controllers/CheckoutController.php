@@ -51,6 +51,11 @@ class CheckoutController extends Controller {
         $page = 'failed';
         return view('error_page', compact('categories', 'page'));
     }
+    public function cancel_page() {
+        $categories = Category::all();
+        $page = 'Cancel';
+        return view('cancel_page', compact('categories', 'page'));
+    }
     public function sendMail($user,$purchase,$pdfPath) {
         $data["email"] = $user->email;
         $data["title"] = "From drikimages.com";

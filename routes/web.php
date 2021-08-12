@@ -11,10 +11,11 @@
 |
 */
 use App\Http\Controllers\SslCommerzPaymentController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', 'GalleryController@index')->name('index');
-Route::get('index', 'GalleryController@index')->name('index');
+    Route::get('/', 'GalleryController@index')->name('index');
+    Route::get('index', 'GalleryController@index')->name('index');
 
 Route::group(['prefix' => 'admin'], function() {
     // Route::auth();
@@ -245,6 +246,7 @@ Route::post('/ipn', 'SslCommerzPaymentController@ipn');
 Route::post('get_promo_code', 'CheckoutController@getPromoCode');
 Route::get('success_page/{id}', 'CheckoutController@success_page');
 Route::get('failed_page', 'CheckoutController@failed_page');
+Route::get('cancel_page', 'CheckoutController@cancel_page');
 
 // share images 
 Route::get('share-image/{id}', 'GalleryController@shareImage');
@@ -269,3 +271,10 @@ route::post('update_image_price', 'ImageController@updateImagePrice');
 
 //image usages sub cateogry
 route::get('image_usages_sub_category', 'ImageController@imageUsagesSubCategory');
+
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return "Cleared!";
+});

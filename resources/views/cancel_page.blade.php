@@ -205,13 +205,13 @@ h3 {
             <div class="o-circle__sign"></div>  
           </div>
           <div class="text-center">
-            <h3><strong>Failed!</strong></h3>
+            <h3><strong>cancel!</strong></h3>
 
             <div class="progress">
               <div class="progress-bar o-circle__sign--failure"  role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <hr>
-            <h6 class="message">Oops something happend. <a style="color:  rgb(56, 176, 131)" href="{{route('your-dashboard')}}">Dashboard</a></h6> 
+            <h6 class="message">This transaction is cancel. <a style="color:  rgb(56, 176, 131)" href="{{route('your-dashboard')}}">Dashboard</a></h6> 
           </div>
         
        

@@ -115,7 +115,7 @@
         <div class="cart-footer d-flex align-items-center justify-content-between">
             <div class="">
                 <!-- <h6 class="mb-0 text-secondary">Items selected for purchase: 2</h6> -->
-                <h5 class="mb-0 text-total">Subtotal : ৳<span id="cart-total">{{$total}}</span> BDT</h5>
+                <h5 class="mb-0 text-total">Subtotal : ৳<span id="cart-total">{{number_format((float) $total, 2, '.', '')}}</span> BDT</h5>
             </div>
             <div class="text-right">
                 {{-- @if(session()->has('cart') && count(session()->get('cart')) > 0) --}}
