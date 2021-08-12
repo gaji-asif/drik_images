@@ -209,16 +209,50 @@
                                       </select>
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Image Size</option>
+                                        <option value="10">1/8 page</option>
+                                        <option value="1">1/4 page</option>
+                                        <option value="2">1/2 page</option>
+                                        <option value="11">3/4 page</option>
+                                        <option value="3">1 page</option>
+                                        <option value="4">2 page spread</option>
+                                        
                                       </select>
                                      
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Print run</option>
+                                        <option value="103">up to 25,000</option>
+                                        <option value="38">up to 50,000</option>
+                                        <option value="39">up to 100,000</option>
+                                        <option value="102">up to 250,000</option>
+                                        <option value="40">up to 500,000</option>
+                                        <option value="132">up to 750,000</option>
+                                        <option value="41">up to 1 million</option>
+                                        <option value="42">up to 2 million</option>
+                                        <option value="43">up to 5 million</option>
                                       </select>
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Inserts</option>
+                                        <option value="7">1</option>
+                                        <option value="2">2</option>
+                                        <option value="6">3</option>
+                                        <option value="1">4</option>
+                                        <option value="8">5</option>
+                                        <option value="9">6</option>
+                                        <option value="10">7</option>
+                                        <option value="11">8</option>
+                                        <option value="12">9</option>
+                                        <option value="13">10</option>
+                                        <option value="3">less than 15</option>
+                                        <option value="4">less than 20</option>
+                                        <option value="5">less than 25</option>
+                                        <option value="14">more than 25</option>
                                       </select>
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Placement</option>
+                                        <option value="1">Front cover</option>
+                                        <option value="2">Back cover</option>
+                                        <option value="3">Inside cover</option>
+                                        <option value="4">Inside</option></select>
                                       </select>
 
                                       <div class="form-group text-left">
@@ -227,12 +261,21 @@
                                       </div>
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Duration</option>
+                                        <option value="77">up to 1 day</option>
+                                        <option value="11">up to 1 month</option>
+                                        <option value="12">up to 3 months</option>
+                                        <option value="13">up to 6 months</option>
+                                        <option value="14">up to 1 year</option>
+                                        <option value="16">up to 2 years</option>
+                                        <option value="17">up to 3 years</option>
                                       </select>
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Country</option>
+                                        @include('countryNames')
                                       </select>
                                       <select class="form-control form-control-lg" id="inputPassword">
                                         <option>Industry sector</option>
+                                        <option value="D34">Agriculture &amp; fisheries</option><option value="D35">Banking &amp; Finance &amp; Insurance</option><option value="D36">Construction &amp; Property</option><option value="D37">Consumer and household goods</option><option value="D38">Education</option><option value="D50">Entertainment &amp; Leisure</option><option value="D39">General business services</option><option value="D40">Government (local, regional, national)</option><option value="D41">Health, Medical and Pharmaceutical</option><option value="D42">Industrial goods</option><option value="D43">IT Manufacturing and services</option><option value="D44">Legal</option><option value="D45">Media, design &amp; publishing</option><option value="D46">Non Profit - other</option><option value="D47">Telecoms</option><option value="D48">Transport &amp; logistics</option><option value="D49">Travel &amp; tourism</option><option value="D51">Utility companies</option><option value="D52">OTHER</option>
                                       </select>
                                       <div class="text-right">
                                         <h6><font><strong>Price:<span>৳ 0.0</span></strong></font></h6>

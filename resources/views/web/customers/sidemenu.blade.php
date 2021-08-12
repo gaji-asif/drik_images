@@ -18,6 +18,6 @@
         <a class="nav-link" href="{{ url('promocodes') }}">Promo Code</a>
     </li> --}}
     <li class="nav-item">
-       <a class="nav-link" href="{{ ('user-logout') }}">Log Out</a>
+       <a class="nav-link" href="{{ route('user-logout') }}">Log Out</a>
    </li>
 </ul>
