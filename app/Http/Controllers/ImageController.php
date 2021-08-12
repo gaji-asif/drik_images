@@ -146,12 +146,11 @@ class ImageController extends Controller {
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
         foreach($images as $image) {
             $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
-            $image->imageUsagePrice = $imageUsagePrice;    
-
+            if(isset($imageUsagePrice))
+            {
+                $image->imageUsagePrice = $imageUsagePrice;    
+            }
         }
- 
-        
-         
         return view('backEnd.images.index', compact('images', 'total_images'));
     }
     public function imageUsageNameMap($imageUsageNames)
