@@ -42,6 +42,7 @@ class ImageController extends Controller {
     }
 
     public function upload_image(Request $request) {
+       
         ini_set("memory_limit",-1);
         $validator = Validator::make($request->all(), [
             'image' => 'required',
@@ -87,37 +88,46 @@ class ImageController extends Controller {
                 $masterImage = $masterId;
             }
 
-            ImageChild::create([
-                'master_id' => $masterImage,
-                'image_name' => $name,
-                'user_id' => $contributor,
-                'height' => $request['height'],
-                'width' => $request['width'],
-                "specific_people" => $request['specificPeople'],
-                'location' => $request['location'],
-                'author' => isset($metas->Author) ? $metas->Author : "",
-                'country' => isset($metas->Country) ? $metas->Country : "",
-                'city' => isset($metas->City) ? $metas->City : "",
-                'state' => isset($metas->State) ? $metas->State : "",
-                'postal_code' => isset($metas->PostalCode) ? $metas->PostalCode : "",
-                'phone' => isset($metas->Phone) ? $metas->Phone : "",
-                'email' => isset($metas->Email) ? $metas->Email : "",
-                'caption' => isset($metas->Caption) ? $metas->Caption : "",
-                'website' => isset($metas->Website) ? $metas->Website : "",
-                'headline' => isset($metas->Headline) ? $metas->Headline : "",
-                'title' => isset($metas->Title) ? $metas->Title : "",
-                'copy_right' => isset($metas->Copyright) ? $metas->Copyright : "",
-                'keywords' => isset($metas->Keywords) ? $metas->Keywords : "",
-                'category'=>$request["category"],
-                'sub_category'=> isset($request["subCategory"]) ? $request["subCategory"] : null,
-                'orientation' => isset($request["orientation"]) ? $request["orientation"] : null,
-                'no_people' => isset($request["people"]) ? $request["people"] : null,
-                'people_composition' => isset($request["composition"]) ? $request["composition"] : null,
-                'image_main_url' => $image_url,
-                'medium_url' => $medium_url,
-                'small_url' => $small_url,
-                'thumbnail_url' => $thumbnail_url
-            ]);
+                $imageChildId = ImageChild::create([
+                        'master_id' => $masterImage,
+                        'image_name' => $name,
+                        'user_id' => $contributor,
+                        'height' => $request['height'],
+                        'width' => $request['width'],
+                        "specific_people" => $request['specificPeople'],
+                        'location' => $request['location'],
+                        'author' => isset($metas->Author) ? $metas->Author : "",
+                        'country' => isset($metas->Country) ? $metas->Country : "",
+                        'city' => isset($metas->City) ? $metas->City : "",
+                        'state' => isset($metas->State) ? $metas->State : "",
+                        'postal_code' => isset($metas->PostalCode) ? $metas->PostalCode : "",
+                        'phone' => isset($metas->Phone) ? $metas->Phone : "",
+                        'email' => isset($metas->Email) ? $metas->Email : "",
+                        'caption' => isset($metas->Caption) ? $metas->Caption : "",
+                        'website' => isset($metas->Website) ? $metas->Website : "",
+                        'headline' => isset($metas->Headline) ? $metas->Headline : "",
+                        'title' => isset($metas->Title) ? $metas->Title : "",
+                        'copy_right' => isset($metas->Copyright) ? $metas->Copyright : "",
+                        'keywords' => isset($metas->Keywords) ? $metas->Keywords : "",
+                        'category'=>$request["category"],
+                        'sub_category'=> isset($request["subCategory"]) ? $request["subCategory"] : null,
+                        'orientation' => isset($request["orientation"]) ? $request["orientation"] : null,
+                        'no_people' => isset($request["people"]) ? $request["people"] : null,
+                        'people_composition' => isset($request["composition"]) ? $request["composition"] : null,
+                        'image_main_url' => $image_url,
+                        'medium_url' => $medium_url,
+                        'small_url' => $small_url,
+                        'thumbnail_url' => $thumbnail_url
+                    ])->id;
+                    $imageUsagePriceItem =[
+                        ['image_id'=>$imageChildId, 'usage_purpose'=>1,'price'=>100],
+                        ['image_id'=>$imageChildId, 'usage_purpose'=>2,'price'=>100],
+                        ['image_id'=>$imageChildId, 'usage_purpose'=>3,'price'=>130],
+                        ['image_id'=>$imageChildId, 'usage_purpose'=>4,'price'=>140],
+                        ['image_id'=>$imageChildId, 'usage_purpose'=>5,'price'=>130],
+                        ['image_id'=>$imageChildId, 'usage_purpose'=>6,'price'=>250],
+                    ];
+                $imageUsagePrice = ImageUsagPrice::insert($imageUsagePriceItem);
 
         } catch (\Throwable $e) {
             return response()->json(["data" => $masterId, "errors" => $e->getMessage()], 500);
