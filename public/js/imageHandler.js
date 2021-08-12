@@ -9,7 +9,7 @@ $(document).on('focus',".creation-date", function(){
     $(this).datepicker();
 });
 document.addEventListener("DOMContentLoaded", function(){
-    let contributorIdField = document.getElementById("contributor-id");
+    let contributorIdField = document.getElementById("contributor");
     contributor = contributorIdField ? contributorIdField.value : null;
 
     let imageSubmitBtn = document.getElementById("image_upload_btn");
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 formCount++;
             }
 
-            console.log(images);
+            // console.log(images);
 
         });
 
@@ -76,11 +76,15 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     imageSubmitBtn.addEventListener("click", function() {
-        if(!contributor) return ;
+        // alert(contributor);
+        if(!checkForContributor()) return;
+        
         masterId = null;
         if(!addImageToList()) {
+            // console.log("Image not added");
             imageFormValidationError();
         } else {
+            // console.log("Image added");
             uploadImage();
         }
 
