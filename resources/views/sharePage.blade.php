@@ -76,16 +76,47 @@
         animation-direction: reverse;
     }
 
+    .accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+    }
+    .accordion .card-header.collapsed:after {
+        /* symbol for "collapsed" panels */
+        content: "\f067"; 
+    }
+    @media (min-width: 1200px){
+    .container {
+        max-width: 1300px;
+    }
+    .purchase .form-control {
+        padding: .4rem .4rem;
+        font-size: 12px;
+        height: 34px;
+    }
+    .card-bodys{
+        padding: 5px 10px 10px 5px;
+    }
+}
 </style>
 
 
 
-<div class="container ">
+<div class="container">
     <div class="row m-5">
         <div class="form-row "id={{"image_details-".$image->id}}>
             <div class="col-md-9">
                 <div class="full-img">
                     <img class="w-100" src="{{$image->image_main_url}}" alt="">
+                </div>
+                <div class="pt-2">
+                    <p><font style=""><strong>Title: </strong></font>{{$image->title}}</p>
+                    <p><font style=""><strong>Caption: </strong></font>{{$image->caption}}</p>
+                    <p><font style=""><strong>Category: </strong></font>{{$image->category}}</p>
+                    <p><font style=""><strong>Sub Category: </strong></font>{{$image->sub_category}}</p>
+                    <p><font style=""><strong>Author: </strong></font>{{$image->author}}</p>
+                    <p><font style=""><strong>Height: </strong></font>{{$image->height}}</p>
+                    <p><font style=""><strong>Width: </strong></font>{{$image->width}} </p>
                 </div>
             </div>
             <div class="col-md-3">
@@ -106,7 +137,7 @@
                 <div class="purchase">
                     <h6>PURCHASE A LICENSE</h6>
 
-                    <div class="list-group">
+                    {{-- <div class="list-group">
                         <div
                             class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                             <div class="form-check">
@@ -139,14 +170,87 @@
 
                             <span class="badge badge-pill">৳{{$image->large_price}}</span>
                         </div>
-                    </div>
+                    </div> --}}
+                    @if(!empty($image->usage_names_price))
+                    <div class="list-group">
+                        @foreach ($image->usage_names_price as $item)
+                            <div
+                                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="image-sizes"
+                                        id="smallRadio-{{$image->id}}-{{$item->id}}" value="{{$item->price}}">
+                                    <label class="form-check-label" for="smallRadio-{{$image->id}}-{{$item->id}}">{{$imageUsageNameMap[$item->usage_purpose]}}</label>
+                                </div>
 
+                                <span class="badge badge-pill">৳{{$item->price}}</span>
+                            </div>
+                        @endforeach
+                
+
+                    </div>
+                    @endif
+                    <div id="accordion" class="accordion">
+                        <div class="card mb-0">
+                            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                                <a class="card-title">
+                                    Choose another rights-managed license
+                                </a>
+                            </div>
+                            <div id="collapseOne" class="card-body card-bodys collapse" data-parent="#accordion" >
+                                <div class="form-group">
+                                     <select class="form-control form-control-lg" id="image_use-{{$image}}" onchange="imageUsage(this,{{$image->id}});">
+                                        <option>Image Use</option>
+                                        @foreach ($imageUsageCategory as $item)
+                                            <option value="{{$item->id}}">{{$item->cat_name}}</option>
+                                        @endforeach
+                                      </select>
+                                      <select class="form-control form-control-lg" id="image_usage_sub_cat-{{$image->id}}">
+                                        <option>Details of use</option>
+                                      </select>
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Image Size</option>
+                                      </select>
+                                     
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Print run</option>
+                                      </select>
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Inserts</option>
+                                      </select>
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Placement</option>
+                                      </select>
+
+                                      <div class="form-group text-left">
+                                        <label for="formGroupExampleInput">Start date</label>
+                                        <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                                      </div>
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Duration</option>
+                                      </select>
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Country</option>
+                                      </select>
+                                      <select class="form-control form-control-lg" id="inputPassword">
+                                        <option>Industry sector</option>
+                                      </select>
+                                      <div class="text-right">
+                                        <h6><font><strong>Price:<span>৳ 0.0</span></strong></font></h6>
+                                      </div>
+                                      
+                                  </div>
+                           
+                            </div>
+                          
+                        </div>
+                    </div>
                     <div class="download mt-2">
                         <button onclick="addToCart('{{$image->id}}')" class="btn btn-block download-btn"
                             data-dismiss="modal"><i class="icofont-download"></i> Add to cart</button>
                     </div>
                 </div>
             </div>
+         
         </div>
     </div>
 </div>
@@ -184,6 +288,7 @@
     });
 
 </script>
+{{-- <script src="{{asset('public/js/image_usage_calculator.js')}}"></script> --}}
 
 
 

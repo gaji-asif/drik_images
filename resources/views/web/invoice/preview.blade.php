@@ -15,7 +15,7 @@
 .theBox {
       overflow: hidden;
       /* width: 240px; */
-      height: 200px;
+      height: 100px;
    }
 
    .theBox img {
@@ -102,22 +102,22 @@ body{
 
 .invoice-price .invoice-price-right {
     width: 25%;
-    background: #2d353c;
-    color: #fff;
-    font-size: 28px;
+    /* background: #2d353c; */
+    /* color: #fff; */
+    font-size: 15px;
     text-align: right;
     vertical-align: bottom;
-    font-weight: 300
+    /* font-weight: 300 */
 }
 
-.invoice-price .invoice-price-right small {
+/* .invoice-price .invoice-price-right small {
     display: block;
     opacity: .6;
     position: absolute;
     top: 10px;
     left: 10px;
     font-size: 12px
-}
+} */
 
 .invoice-footer {
     border-top: 1px solid #ddd;
@@ -172,29 +172,29 @@ body{
 
          <div class="invoice-header">
             <div class="invoice-from">
-               <small>from</small>
+               <small>From</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">Drik Images</strong><br>
-                  Street Address<br>
+                  {{-- Street Address<br>
                   City, Zip Code<br>
-                  Phone: (123) 456-7890<br>  
+                  Phone: (123) 456-7890<br>   --}}
                </address>
-               </address>
+              
             </div>
             <div class="invoice-to">
-               <small>to</small>
+               <small>To</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$user->name}}</strong><br>
-                  Street Address<br>
+                  {{-- Street Address<br>
                   City, Zip Code<br>
-                  Phone: (123) 456-7890<br>
+                  Phone: (123) 456-7890<br> --}}
                </address>
             </div>
             <div class="invoice-date">
-               <small>Invoice - #{{$purchase->id}}</small>
+               <div class="date text-inverse m-t-5">Invoice - #{{$purchase->id}}</div>
                <div class="date text-inverse m-t-5">{{date('F d,Y',strtotime($purchase->payment_date))}}</div>
                <div class="invoice-detail">
-                  Purchase image license
+                
                </div>
             </div>
          </div>
@@ -205,13 +205,12 @@ body{
             <!-- begin table-responsive -->
             <div class="table-responsive">
                <table class="table table-invoice">
-                  <thead>
+                  <thead style="background-color: #f0f3f4">
                      <tr>
-                        
-                        <th class="text-center" width="40%">Image</th>
-                        <th class="text-center"  >Image No</th>
+                        <th class="text-center"  >Image Id</th>
+                        <th class="text-center" width="20%">Image</th>
+                       
                         <th class="text-center" >Title</th>
-                        <th class="text-center" >Author</th>
                         <th class="text-center" >Quantity</th>
                         <th class="text-right" >Price</th>
                      </tr>
@@ -220,15 +219,17 @@ body{
                      @foreach($purchase->purchase_details as $item)
                         <tr>
                            <td class="text-center">
+                              {{$item->image_id}}
+                           </td>
+                           <td class="text-center">
+
                               <div class="theBox">
                                  <img src="{{$item->thumbnail}}" alt=""> 
                               </div>
                            </td>
-                           <td class="text-center">
-                              {{$item->image_id}}
-                           </td>
+                         
                            
-                           <td class="text-center">{{$item->author}}</td>
+                       
                            <td class="text-center">{{$item->title}}</td>
                            <td class="text-center">1</td>
                            <td class="text-right">৳ {{$item->price}}</td>
@@ -243,10 +244,10 @@ body{
             <div class="invoice-price">
                <div class="invoice-price-left">
                   <div class="invoice-price-row">
-                     <div class="sub-price">
+                     {{-- <div class="sub-price">
                         <small>SUBTOTAL</small>
                         <span class="text-inverse">৳ {{$purchase->sub_total}}</span>
-                     </div>
+                     </div> --}}
                      {{-- <div class="sub-price">
                         <i class="fa fa-plus text-muted"></i>
                      </div>
@@ -257,7 +258,17 @@ body{
                   </div>
                </div>
                <div class="invoice-price-right">
-                  <small>TOTAL</small> <span class="f-w-600">৳ {{$purchase->total}}</span>
+                  <div class="row">
+            
+                     <div class="col-lg-6 text-right">Subtotal</div>
+                     <div class="col-lg-6 text-right">৳ {{number_format((float) $purchase->sub_total, 2, '.', '')}}</div>
+                     <div class="col-lg-6 text-right">Promocode</div>
+                     <div class="col-lg-6 text-right">৳ {{number_format((float) $purchase->promocode_amount, 2, '.', '')}}</div>
+             
+                     <div class="col-lg-6 text-right">Total</div>
+                     <div class="col-lg-6 text-right">৳ {{number_format((float) $purchase->total, 2, '.', '')}}</div>
+           
+                  </div>
                </div>
             </div>
             <!-- end invoice-price -->

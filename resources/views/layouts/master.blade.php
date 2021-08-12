@@ -57,6 +57,7 @@
                 <tbody id="drik-cart">
                 @if(session('cart'))
                     @foreach(session('cart') as $id => $details)
+               
                         <?php $total += $details->price ?>
                         <tr>
                             {{--<td class="v-align-middle w-5">
@@ -252,7 +253,7 @@
                     <p class="copyright">© 2021 All Rights Reserved <a target="_blank" href="#">Drik Gallery</a></p>
                 </div>
                 <div class="col-md-6">
-                    <p class="design_by">Design & Developed by <a target="_blank" href="http://nextgenitltd.com/">NEXTGEN IT</a></p>
+                    {{-- <p class="design_by">Design & Developed by <a target="_blank" href="http://nextgenitltd.com/">NEXTGEN IT</a></p> --}}
                 </div>
             </div>
         </div>
@@ -280,5 +281,7 @@
         document.getElementById("openNav").style.display = "inline-block";
     }
 </script>
+
+<script src="{{asset('public/js/image_usage_calculator.js')}}"></script>
 </body>
 </html>

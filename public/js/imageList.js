@@ -266,3 +266,35 @@ $(document).ready(function () {
         });
      });
 });
+
+
+function ImagePrice(imageId)
+{
+    let priceList = Array();
+    priceList['0'] = $(".price_0").val();
+    priceList["1"] = $(".price_1").val();
+    priceList["2"] = $(".price_2").val();
+    priceList["3"] = $(".price_3").val();
+    priceList["4"] = $(".price_4").val();
+    priceList["5"] = $(".price_5").val();
+    priceList = JSON.stringify(priceList)
+    url = $("#url").val();
+// console.log(priceList);
+    let formData = new FormData();
+    formData.append('priceList', priceList);
+    formData.append('imageId', imageId);
+
+    fetch(`${baseUrl}/update_image_price`, {
+        method: 'POST',
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+        },
+        body: formData
+    })
+        .then(res => res.json())
+        .then(res => {
+            $('#image-edit-modal').modal('hide');
+            swal("Image price updated successfully!");
+        })
+
+}

@@ -14,9 +14,9 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ url('all-purchase-images/0') }}">All purchased images</a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ url('promocodes') }}">Promo Code</a>
-    </li>
+    </li> --}}
     <li class="nav-item">
        <a class="nav-link" href="{{ ('user-logout') }}">Log Out</a>
    </li>

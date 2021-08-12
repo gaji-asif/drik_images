@@ -257,3 +257,15 @@ Route::get('invoice', 'InvoiceController@index');
 
 Route::resource('promocode', 'PromoCodeController');
 Route::get('delete-promocode/{id}', 'PromoCodeController@deletePromocode');
+
+
+//contact page 
+
+route::get('contact', 'WebController@contact');
+route::post('submit-contact', 'WebController@submitContact');
+
+//update image price
+route::post('update_image_price', 'ImageController@updateImagePrice');
+
+//image usages sub cateogry
+route::get('image_usages_sub_category', 'ImageController@imageUsagesSubCategory');

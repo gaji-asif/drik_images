@@ -127,157 +127,240 @@
                 <div class="col-md-12">
                     <div class="shadow-sm">
                         <div class="card-body iptc_metadata">
-                            <div class="form-row">
-                                <!-- <div class="col-md-12 text-left">
-                                    <h6>IPTC Metadata</h6>
-                                </div> -->
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info1 mb-0">Height</label>
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="nav-item">
+                                  <a class="nav-link active" data-toggle="tab" href="#tabOne">Image Info</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" data-toggle="tab" href="#tabTwo">Image Price</a>
+                                </li>
+                            </ul>
+                              <div class="tab-content pt-3" id="myTabContent">
+                                <div class="tab-pane fade active show" id="tabOne">
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-12 text-left">
+                                            <h6>IPTC Metadata</h6>
+                                        </div> -->
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info1 mb-0">Height</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-10 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-height" placeholder="Info-1">
+                                                <div class="invalid-feedback">
+                                                    Height is required
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info2 mb-0">Width</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-10 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-width" placeholder="Info-2">
+                                                <div class="invalid-feedback">
+                                                    Width is required
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="artist mb-0">Author</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-10 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-author" placeholder="Author">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info4 mb-0">Country</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-10 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-country" placeholder="Country">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info5 mb-0">City</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-10 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-city" placeholder="City">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">State</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-state" placeholder="State">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Postal code</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-postal-code" placeholder="Postal code">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info6 mb-0">Caption</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-10 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-caption" placeholder="Caption">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Copyright</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-copyright" placeholder="Copyright">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Email</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Phone</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-phone" placeholder="Phone">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Website</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-website" placeholder="Website">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Headline</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-headline" placeholder="Headline">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
+                                            <div class="col-sm-3 col-md-2 col-lg-3">
+                                                <label for="info7 mb-0">Title</label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control mb-0 image-title" placeholder="Title">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                            <label>Keywords</label>
+                                            <input type="text" class="form-control tags-input" id="tags" value="" />
+                                        </div>
+                                      
                                     </div>
-                                    <div class="col-sm-9 col-md-10 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-height" placeholder="Info-1">
-                                        <div class="invalid-feedback">
-                                            Height is required
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button id="update_image_btn" type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tabTwo">       
+                                    <div class="form-row2">
+                              
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                        <div class="col-sm-3 col-md-2 col-lg-4 text-right">
+                                            <label for="info1 mb-0">Personal use: </label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10 col-lg-8 text-left">
+                                            <input type="text" class="form-control mb-0 price_0" placeholder="Enter Personal use price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[0]->price}}@else 0.0 @endif">
+                                            <div class="invalid-feedback">
+                                                
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info2 mb-0">Width</label>
-                                    </div>
-                                    <div class="col-sm-9 col-md-10 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-width" placeholder="Info-2">
-                                        <div class="invalid-feedback">
-                                            Width is required
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                        <div class="col-sm-3 col-md-2 col-lg-4 text-right">
+                                            <label for="info1 mb-0">Presentation or newsletters: </label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10 col-lg-8 text-left">
+                                            <input type="text" class="form-control mb-0 price_1" placeholder="Enter Presentation or newsletters price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[1]->price}}@else 0.0 @endif">
+                                            <div class="invalid-feedback">
+                                                
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                        <div class="col-sm-3 col-md-2 col-lg-4 text-right">
+                                            <label for="info1 mb-0">Website: </label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10 col-lg-8 text-left">
+                                            <input type="text" class="form-control mb-0 price_2" placeholder="Enter Website price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[2]->price}}@else 0.0 @endif">
+                                            <div class="invalid-feedback">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                        <div class="col-sm-3 col-md-2 col-lg-4 text-right">
+                                            <label for="info1 mb-0">Magazines and books: </label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10 col-lg-8 text-left">
+                                            <input type="text" class="form-control mb-0 price_3" placeholder="Enter Magazines and books price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[3]->price}}@else 0.0 @endif">
+                                            <div class="invalid-feedback">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                        <div class="col-sm-3 col-md-2 col-lg-4 text-right">
+                                            <label for="info1 mb-0">Marketing package: Small business: </label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10 col-lg-8 text-left">
+                                            <input type="text" class="form-control mb-0 price_4" placeholder="Enter Marketing package: Small business: price"  value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[4]->price}}@else 0.0 @endif">
+                                            <div class="invalid-feedback">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
+                                        <div class="col-sm-3 col-md-2 col-lg-4 text-right">
+                                            <label for="info1 mb-0">Marketing package: Large business: </label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-10 col-lg-8 text-left">
+                                            <input type="text" class="form-control mb-0 price_5" placeholder="Enter Marketing package: Large business: price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[5]->price}}@else 0.0 @endif">
+                                            <div class="invalid-feedback">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="image_id" value={{$image->id}}>
+                                    <input type="hidden" id="url" value={{('/')}}>
                                 </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="artist mb-0">Author</label>
-                                    </div>
-                                    <div class="col-sm-9 col-md-10 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-author" placeholder="Author">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info4 mb-0">Country</label>
-                                    </div>
-                                    <div class="col-sm-9 col-md-10 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-country" placeholder="Country">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info5 mb-0">City</label>
-                                    </div>
-                                    <div class="col-sm-9 col-md-10 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-city" placeholder="City">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">State</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-state" placeholder="State">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Postal code</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-postal-code" placeholder="Postal code">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info6 mb-0">Caption</label>
-                                    </div>
-                                    <div class="col-sm-9 col-md-10 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-caption" placeholder="Caption">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Copyright</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-copyright" placeholder="Copyright">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Email</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-email" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Phone</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-phone" placeholder="Phone">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Website</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-website" placeholder="Website">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Headline</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-headline" placeholder="Headline">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
-                                    <div class="col-sm-3 col-md-2 col-lg-3">
-                                        <label for="info7 mb-0">Title</label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-9 col-lg-9">
-                                        <input type="text" class="form-control mb-0 image-title" placeholder="Title">
-                                    </div>
-                                </div>
-                                {{--                                                                            <div class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">--}}
-                                    {{--                                                                                <div class="col-sm-3 col-md-2 col-lg-3">--}}
-                                        {{--                                                                                    <label for="info7 mb-0">Creation date</label>--}}
-                                    {{--                                                                                </div>--}}
-                                    {{--                                                                                <div class="col-sm-12 col-md-9 col-lg-9">--}}
-                                        {{--                                                                                    <input type="text" class="form-control mb-0 image-creation-date" placeholder="Creation date">--}}
-                                    {{--                                                                                </div>--}}
-                                {{--                                                                            </div>--}}
-                                <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center">
-                                    <label>Keywords</label>
-                                    <input type="text" class="form-control tags-input" id="tags" value="" />
-                                </div>
-                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button id="update_price_btn" onclick="ImagePrice({{$image->id}})" type="button" class="btn btn-primary">Save changes</button>
+                                </div></div>
+                              </div>
+                              
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="update_image_btn" type="button" class="btn btn-primary">Save changes</button>
-            </div>
+           
         </div>
     </div>
 </div>
