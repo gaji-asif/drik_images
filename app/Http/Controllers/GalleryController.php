@@ -16,10 +16,11 @@ class GalleryController extends Controller {
     public function index() {
   
         $categories = Category::all();
-        $images = ImageChild::paginate(15);
+        $images = ImageChild::with('categories','subCategories')->paginate(15);
+
         $imageUsageNames = ImageUsageName::all()->toArray();
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
-        foreach( $images as $image ) {
+        foreach( $images as $image) {
             $usage_names_price = ImageUsagPrice::where('image_id', $image->id)->get();
             if(isset($usage_names_price))
             {
@@ -38,7 +39,7 @@ class GalleryController extends Controller {
     public function shareImage($id) {
        
         $categories = Category::all();
-        $image = ImageChild::find($id);
+        $image = ImageChild::with('categories','subCategories')->where('id',$id)->first();
         $imageUsageNames = ImageUsageName::all()->toArray();
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
         $usage_names_price = ImageUsagPrice::where('image_id', $image->id)->get();

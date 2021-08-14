@@ -128,6 +128,12 @@
 							<span class="pcoded-mtext">Category List</span>
 						</a>
 					</li>
+					<li class="user">
+						<a href="{{url('image_use')}}" class="waves-effect waves-dark">
+							<span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
+							<span class="pcoded-mtext">Image Use prices</span>
+						</a>
+					</li>
 {{--					@endcan--}}
 
 {{--					@can('Add/Edit Role')--}}

@@ -158,7 +158,7 @@ body{
          
             
             </span> --}}
-            <div class="col-lg-6">Drik Images</div>
+            <div class="col-lg-6"><img width="25%" src="http://localhost/drik/public/images/Drik images logo.png"></div>
             <div class="col-lg-6 text-right">
                <a href="{{url('all-purchase')}}" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i>Back</a>
                <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
@@ -172,22 +172,25 @@ body{
 
          <div class="invoice-header">
             <div class="invoice-from">
-               <small>From</small>
+               <strong>From</strong>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">Drik Images</strong><br>
-                  {{-- Street Address<br>
-                  City, Zip Code<br>
-                  Phone: (123) 456-7890<br>   --}}
+                  Union Heights, Level :07; 55-2 West, Panthapath<br>
+                  Dhaka,1205<br>
+                  Phone: 02-8141817<br>
                </address>
               
             </div>
             <div class="invoice-to">
-               <small>To</small>
+               <strong>To</strong>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$user->name}}</strong><br>
-                  {{-- Street Address<br>
-                  City, Zip Code<br>
-                  Phone: (123) 456-7890<br> --}}
+                
+                  <address class="m-t-5 m-b-5">
+                     @if(isset($purchase->address)){{$purchase->address}}<br>@endif
+                     @if(isset($purchase->street)){{$purchase->street}},@endif @if(isset($purchase->zip)){{$purchase->zip}}<br>@endif
+                     Phone: @if(isset($purchase->phone)){{$purchase->phone}},<br>@endif
+                  </address>
                </address>
             </div>
             <div class="invoice-date">
@@ -232,7 +235,7 @@ body{
                        
                            <td class="text-center">{{$item->title}}</td>
                            <td class="text-center">1</td>
-                           <td class="text-right">৳ {{$item->price}}</td>
+                           <td class="text-right">{{Config::get('app.curreny')}} {{number_format((float) $item->price, 2, '.', '')}}</td>
                         </tr>
                      @endforeach
                   
@@ -261,12 +264,12 @@ body{
                   <div class="row">
             
                      <div class="col-lg-6 text-right">Subtotal</div>
-                     <div class="col-lg-6 text-right">৳ {{number_format((float) $purchase->sub_total, 2, '.', '')}}</div>
+                     <div class="col-lg-6 text-right">{{Config::get('app.curreny')}} {{number_format((float) $purchase->sub_total, 2, '.', '')}}</div>
                      <div class="col-lg-6 text-right">Promocode</div>
-                     <div class="col-lg-6 text-right">৳ {{number_format((float) $purchase->promocode_amount, 2, '.', '')}}</div>
+                     <div class="col-lg-6 text-right">{{Config::get('app.curreny')}} {{number_format((float) $purchase->promocode_amount, 2, '.', '')}}</div>
              
                      <div class="col-lg-6 text-right">Total</div>
-                     <div class="col-lg-6 text-right">৳ {{number_format((float) $purchase->total, 2, '.', '')}}</div>
+                     <div class="col-lg-6 text-right">{{Config::get('app.curreny')}} {{number_format((float) $purchase->total, 2, '.', '')}}</div>
            
                   </div>
                </div>

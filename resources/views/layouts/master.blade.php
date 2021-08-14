@@ -82,12 +82,12 @@
                                             <tbody>
                                             <tr>
                                                 <td>Name</td>
-                                                <td>{{$details["title"]}}&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                <td>{{$details["title"]}}</td>
                                             </tr>
 
                                             <tr>
-                                                <td>Size</td>
-                                                <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                <td>Image id</td>
+                                                <td>{{$details["id"]}}</td>
                                             </tr>
 
                                             <tr>
@@ -100,7 +100,7 @@
                                 </div>
                             </td>
 
-                            <td class="v-align-middle w-10 text-right">৳ @if(isset($details["price"])) {{$details["price"]}} @endif</td>
+                            <td class="v-align-middle w-10 text-right">{{Config::get('app.curreny')}}  @if(isset($details["price"])) {{$details["price"]}} @endif</td>
                             <td class="v-align-middle w-5 text-right">
                                 <button class="product-minus" onclick="removeFromCart('{{ $id }}')"><i class="icofont-close"></i></button>
                             </td>
@@ -115,7 +115,7 @@
         <div class="cart-footer d-flex align-items-center justify-content-between">
             <div class="">
                 <!-- <h6 class="mb-0 text-secondary">Items selected for purchase: 2</h6> -->
-                <h5 class="mb-0 text-total">Subtotal : ৳<span id="cart-total">{{number_format((float) $total, 2, '.', '')}}</span> BDT</h5>
+                <h5 class="mb-0 text-total">Subtotal :{{Config::get('app.curreny')}} <span id="cart-total">{{number_format((float) $total, 2, '.', '')}}</span> BDT</h5>
             </div>
             <div class="text-right">
                 {{-- @if(session()->has('cart') && count(session()->get('cart')) > 0) --}}

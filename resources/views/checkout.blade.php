@@ -154,7 +154,7 @@
                                         <table class="table table-bordered mb-0">
                                             <tr>
                                                 <td class="p-1" colspan="2">
-                                                    <b>৳ {{$details->price}}</b>
+                                                    <b>{{Config::get('app.curreny')}}  {{$details->price}}</b>
                                                     <input type="hidden" name="price" value={{$details->price}} class="price">
                                                 </td>
                                             </tr>
@@ -180,7 +180,7 @@
                     <div class="summary_footer">
                         <div class="form-row lower">
                             <div class="col text-left">Subtotal</div>
-                            <div class="col text-right " >৳ <span id="subtotal">0.0</span></div>
+                            <div class="col text-right " >{{Config::get('app.curreny')}} <span id="subtotal">0.0</span></div>
                             <input type="hidden" name="subtotal" value="0" id="subtotal_input">
                         </div>
                         <div class="form-row lower promo_code_div">
@@ -195,7 +195,7 @@
                         </div>
                         <div class="form-row lower">
                             <div class="col text-left"><b>Total to pay</b></div>
-                            <div class="col text-right " >৳<span id="total"> 0.0</span></div>
+                            <div class="col text-right " >{{Config::get('app.curreny')}} <span id="total"> 0.0</span></div>
                             <input type="hidden" name="total" value="0" id="total_input">
                         </div>
                     </div>

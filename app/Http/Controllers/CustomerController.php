@@ -18,6 +18,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use DataTables;
+use Illuminate\Support\Facades\Config;
 
 class CustomerController extends Controller {
     public function index() {
@@ -65,7 +66,7 @@ class CustomerController extends Controller {
                 return $status;
             })
             ->addColumn('total', function($data) {
-                $total = '<span >৳ '.$data->total.'</span>';
+                $total = '<span >'.Config::get('app.curreny')." ".$data->total.'</span>';
                 return $total;
             })
             ->addColumn('action', function($data){
@@ -233,7 +234,7 @@ class CustomerController extends Controller {
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('price', function($data) {
-                $price = '<span >৳ '.$data->price.'</span>';
+                $price = '<span >'.Config::get('app.curreny')." ".$data->price.'</span>';
                 return $price;
             })
            ->addColumn('image', function($data) {

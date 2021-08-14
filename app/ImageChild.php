@@ -16,4 +16,12 @@ class ImageChild extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category', 'id');
+    }
+    public function subCategories()
+    {
+        return $this->belongsTo(Category::class, 'sub_category', 'id');
+    }
 }
