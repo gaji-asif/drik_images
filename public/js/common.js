@@ -220,11 +220,11 @@ function refreshCart() {
             cartCount.textContent = products.length;
             let total = 0;
             products.forEach(product => {
-                total += product.price;
+                total += Number(product.price);
                 let productRow = cartItem(product);
                 drikCart.append(productRow);
             });
-            cartTotal.textContent = total;
+            cartTotal.textContent = Number(total).toFixed(2);
         })
 }
 

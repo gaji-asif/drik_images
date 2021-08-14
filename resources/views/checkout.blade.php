@@ -48,7 +48,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="firstName">Full name</label>
                                         <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="John Doe"
-                                               value="{{old('customer_name')}}" required>
+                                               value="@if(!is_null(auth()->user())){{auth()->user()->name}} @else {{old('customer_name')}} @endif" required>
                                         <div class="invalid-feedback">
                                             Valid customer name is required.
                                         </div>
@@ -72,7 +72,7 @@
                                 <div class="mb-3">
                                     <label for="email">Email </label>
                                     <input type="email" name="customer_email" class="form-control" id="email"
-                                           placeholder="you@example.com" value="{{old('customer_email')}}" required>
+                                           placeholder="you@example.com" value="@if(!is_null(auth()->user())){{auth()->user()->email}} @else {{old('customer_email')}} @endif" required>
                                     <div class="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -97,7 +97,7 @@
                                         <label for="country">Country</label>
                                         <select class="custom-select d-block w-100" id="country" name="country" required>
                                             <option value="">Choose...</option>
-                                            <option value="Bangladesh">Bangladesh</option>
+                                            <option value="Bangladesh" >Bangladesh</option>
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid country.

@@ -4,11 +4,12 @@ let masterId = null;
 let lastForm = null;
 let formCount = 1;
 let contributor = null;
+
 $(document).on('focus',".creation-date", function(){
     $(this).datepicker();
 });
 document.addEventListener("DOMContentLoaded", function(){
-    let contributorIdField = document.getElementById("contributor-id");
+    let contributorIdField = document.getElementById("contributor");
     contributor = contributorIdField ? contributorIdField.value : null;
 
     let imageSubmitBtn = document.getElementById("image_upload_btn");
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 formCount++;
             }
 
-            console.log(images);
+            // console.log(images);
 
         });
 
@@ -75,14 +76,15 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     imageSubmitBtn.addEventListener("click", function() {
-        //alert("test");
-        if(!contributor) return ;
-
-
+        // alert(contributor);
+        if(!checkForContributor()) return;
+        
         masterId = null;
         if(!addImageToList()) {
+            // console.log("Image not added");
             imageFormValidationError();
         } else {
+            // console.log("Image added");
             uploadImage();
         }
 
@@ -148,6 +150,7 @@ function readImageMetaData(image, imageForm) {
     imageForm = imageForm[0];
     let formData = new FormData();
     formData.append("image", image);
+  
     fetch(`${baseUrl}/get_image_metas`, {
         method: "POST",
         headers: {
@@ -264,8 +267,7 @@ function addImageToList() {
 
 function uploadImage(event) {
     if(!checkForContributor()) return;
-    //showCustomLoader();
-    $("#loader").show();
+    showCustomLoader();
     let imageObj = images.pop();
     if(!imageObj) {
         swal({
@@ -280,8 +282,7 @@ function uploadImage(event) {
             input.value = '';
         });
         $(".token").remove();
-        //removeCustomLoader();
-        $("#loader").hide();
+        removeCustomLoader();
         return ;
     }
 

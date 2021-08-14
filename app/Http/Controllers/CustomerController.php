@@ -58,7 +58,7 @@ class CustomerController extends Controller {
                 elseif($data->payment_status == 'Pending') {
                     $status = '<label class="label label-warning p-2">'.$data->payment_status.'</label>';
                 }
-                elseif($data->payment_status == 'Failed')
+                elseif($data->payment_status == 'Failed'  || $data->payment_status == 'Canceled' )
                 {
                     $status = '<label class="label label-danger p-2">'.$data->payment_status.'</label>';
                 }

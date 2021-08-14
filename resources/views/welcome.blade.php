@@ -156,7 +156,7 @@
                     <img src="{{$image->image_main_url}}" alt="picture">
 
                     <div class="img-details">
-                        <p class="category-name">{{$image->image_name}}</p>
+                        <p class="category-name">{{$image->title}}</p>
                         <h4 class="image-name">{{$image->author}}</h4>
                     </div>
                     <div class="corner-top"></div>
