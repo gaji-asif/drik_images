@@ -9,12 +9,28 @@ use Illuminate\Support\Facades\Auth;
 
 class WebController extends Controller
 {
+    public function about()
+    {
+        $categories = Category::all();
+        $user = Auth::user();
+        $page = 'About';
+        return view('web.about',compact('categories','user','page'));
+    }
+
+    public function faq()
+    {
+        $categories = Category::all();
+        $user = Auth::user();
+        $page = 'faq';
+        return view('web.faq',compact('categories','user','page'));
+    }
+
     public function contact()
     {
         $categories = Category::all();
         $user = Auth::user();
         $page = 'Contact';
-        return view('contact',compact('categories','user','page'));
+        return view('web.contact',compact('categories','user','page'));
     }
     public function submitContact(Request $request)
     {

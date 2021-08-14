@@ -263,8 +263,7 @@ Route::get('delete-promocode/{id}', 'PromoCodeController@deletePromocode');
 
 //contact page 
 
-route::get('contact', 'WebController@contact');
-route::post('submit-contact', 'WebController@submitContact');
+
 
 //update image price
 route::post('update_image_price', 'ImageController@updateImagePrice');
@@ -273,8 +272,15 @@ route::post('update_image_price', 'ImageController@updateImagePrice');
 route::get('image_usages_sub_category', 'ImageController@imageUsagesSubCategory');
 
 
+<<<<<<< HEAD
 //image usages admin panel
 Route::resource('image_use', ImageUsePricesController::class);
+=======
+route::get('about', 'WebController@about');
+route::get('faq', 'WebController@faq');
+route::get('contact', 'WebController@contact');
+route::post('submit-contact', 'WebController@submitContact');
+>>>>>>> 8e7a38ad27c0bb4bf2e468342a664f1c34678833
 
 Route::get('/clear', function() {
     Artisan::call('cache:clear');
@@ -282,3 +288,4 @@ Route::get('/clear', function() {
     Artisan::call('view:clear');
     return "Cleared!";
 });
+
