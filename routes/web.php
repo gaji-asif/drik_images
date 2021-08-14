@@ -272,6 +272,10 @@ route::post('update_image_price', 'ImageController@updateImagePrice');
 //image usages sub cateogry
 route::get('image_usages_sub_category', 'ImageController@imageUsagesSubCategory');
 
+
+//image usages admin panel
+Route::resource('image_use', ImageUsePricesController::class);
+
 Route::get('/clear', function() {
     Artisan::call('cache:clear');
     Artisan::call('config:cache');

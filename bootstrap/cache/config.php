@@ -10,6 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
+    'curreny' => '৳',
     'key' => 'base64:D0Mp0/qSMXHEg1+LRR/01tda8e7tmKdPZKLCFpz+3X0=',
     'cipher' => 'AES-256-CBC',
     'providers' => 

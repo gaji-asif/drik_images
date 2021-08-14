@@ -232,21 +232,40 @@ function addToCart(imageId) {
 
     let form = document.getElementById(`image_details-${imageId}`);
     // console.log(form);
-    let size = form.querySelector('.form-check-input:checked').value;
-    let formData = new FormData();
-    formData.append('imageId', imageId);
-    formData.append('size', size);
-    fetch(`${baseUrl}/add_to_cart`, {
-        method: 'POST',
-        headers: {
-            "X-CSRF-TOKEN": csrf
-        },
-        body: formData
-    }).then(res => res.json())
-        .then(res => {
-            $(".add_to_card_icon").attr( "data-count", res['cart_item_count'] );
-            refreshCart();
-        })
+    let size = form.querySelector('.form-check-input:checked');
+    let finalPrice = 0;
+    if(size == null) {
+        getFinalPrice = document.getElementById(`final_price-${imageId}`);
+        if(getFinalPrice != null) {
+            finalPrice = getFinalPrice.textContent || getFinalPrice.innerText;
+        }
+        else
+        {
+            return;
+        }
+    }
+    else
+    {
+        finalPrice = size.value;
+    }
+  
+
+    if(finalPrice > 0) {
+        let formData = new FormData();
+        formData.append('imageId', imageId);
+        formData.append('size',finalPrice);
+        fetch(`${baseUrl}/add_to_cart`, {
+            method: 'POST',
+            headers: {
+                "X-CSRF-TOKEN": csrf
+            },
+            body: formData
+        }).then(res => res.json())
+            .then(res => {
+                $(".add_to_card_icon").attr( "data-count", res['cart_item_count'] );
+                refreshCart();
+            })
+    }
 }
 
 function removeFromCart(productId) {

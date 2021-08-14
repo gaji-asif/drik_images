@@ -55,6 +55,7 @@ return array(
     'App\\Http\\Controllers\\GalleryController' => $baseDir . '/app/Http/Controllers/GalleryController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\ImageController' => $baseDir . '/app/Http/Controllers/ImageController.php',
+    'App\\Http\\Controllers\\ImageUsePricesController' => $baseDir . '/app/Http/Controllers/ImageUsePricesController.php',
     'App\\Http\\Controllers\\InvoiceController' => $baseDir . '/app/Http/Controllers/InvoiceController.php',
     'App\\Http\\Controllers\\PromoCodeController' => $baseDir . '/app/Http/Controllers/PromoCodeController.php',
     'App\\Http\\Controllers\\SslCommerzPaymentController' => $baseDir . '/app/Http/Controllers/SslCommerzPaymentController.php',

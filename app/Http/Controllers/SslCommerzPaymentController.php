@@ -93,6 +93,11 @@ class SslCommerzPaymentController extends Controller
         $purchase->promo_code = $request->promo_code;
         $purchase->payment_date = date('Y-m-d');
         $purchase->payment_status = 'Pending';
+        $purchase->address =  $request->address;
+        $purchase->country = $request->country;
+        $purchase->street = $request->city;
+        $purchase->zip = $request->zip;
+        $purchase->phone = $request->customer_mobile;
         $purchase->save();
         foreach ($request->images as $key=>$item) { 
             $purchaseDetails = new PurchaseDetail();

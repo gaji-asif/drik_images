@@ -144,13 +144,16 @@ class ImageController extends Controller {
         $total_images = ImageChild::where('id', '>', 1)->get();
         $imageUsageNames = ImageUsageName::all()->toArray();
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
+   
         foreach($images as $image) {
             $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
-            if(isset($imageUsagePrice))
+            if(count($imageUsagePrice)>0)
             {
                 $image->imageUsagePrice = $imageUsagePrice;    
             }
         }
+
+        // dd($images);
         return view('backEnd.images.index', compact('images', 'total_images'));
     }
     public function imageUsageNameMap($imageUsageNames)
@@ -270,7 +273,7 @@ class ImageController extends Controller {
 
     public function imageUsagesSubCategory(Request $request)
     {
-        $getImageUsagesSubCategories = imageUsageSubCategorie::where('category_id',$request->cat_id)->get(['id','sub_cat_name'])->toArray();
+        $getImageUsagesSubCategories = imageUsageSubCategorie::where('category_id',$request->cat_id)->get(['id','sub_cat_name','price'])->toArray();
         $getImageUsagesSubCategories = json_encode($getImageUsagesSubCategories);
         return $getImageUsagesSubCategories;
     }
