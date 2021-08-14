@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'Laravel',
+    'name' => 'phpShort',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://localhost/drik',
@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:D0Mp0/qSMXHEg1+LRR/01tda8e7tmKdPZKLCFpz+3X0=',
+    'key' => 'base64:1sTkOBLyog0vPMPqHiYovbkxcdD98DY0qFQ1UCjtbY8=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -159,7 +159,7 @@
   ),
   'cache' => 
   array (
-    'default' => 'file',
+    'default' => 'array',
     'stores' => 
     array (
       'apc' => 
@@ -179,7 +179,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\drik\\storage\\framework/cache/data',
+        'path' => 'D:\\xampp\\htdocs\\drik\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -209,7 +209,7 @@
         'connection' => 'cache',
       ),
     ),
-    'prefix' => 'laravel_cache',
+    'prefix' => 'phpshort_cache',
   ),
   'database' => 
   array (
@@ -219,16 +219,16 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'drik_gallery',
+        'database' => 'drik',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
       'mysql' => 
       array (
         'driver' => 'mysql',
-        'host' => '127.0.0.1',
+        'host' => 'localhost',
         'port' => '3306',
-        'database' => 'drik_gallery',
+        'database' => 'drik',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -242,9 +242,9 @@
       'pgsql' => 
       array (
         'driver' => 'pgsql',
-        'host' => '127.0.0.1',
+        'host' => 'localhost',
         'port' => '3306',
-        'database' => 'drik_gallery',
+        'database' => 'drik',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -256,9 +256,9 @@
       'sqlsrv' => 
       array (
         'driver' => 'sqlsrv',
-        'host' => '127.0.0.1',
+        'host' => 'localhost',
         'port' => '3306',
-        'database' => 'drik_gallery',
+        'database' => 'drik',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -347,7 +347,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => 'C:\\xampp\\htdocs\\drik\\storage\\debugbar',
+      'path' => 'D:\\xampp\\htdocs\\drik\\storage\\debugbar',
       'connection' => NULL,
       'provider' => '',
       'hostname' => '127.0.0.1',
@@ -444,10 +444,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'C:\\xampp\\htdocs\\drik\\storage\\fonts/',
-      'font_cache' => 'C:\\xampp\\htdocs\\drik\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\ANIK\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\xampp\\htdocs\\drik',
+      'font_dir' => 'D:\\xampp\\htdocs\\drik\\storage\\fonts/',
+      'font_cache' => 'D:\\xampp\\htdocs\\drik\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\hp\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\xampp\\htdocs\\drik',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
@@ -567,7 +567,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'C:\\xampp\\htdocs\\drik\\storage\\framework/laravel-excel',
+      'local_path' => 'D:\\xampp\\htdocs\\drik\\storage\\framework/laravel-excel',
       'remote_disk' => NULL,
       'remote_prefix' => NULL,
       'force_resync_remote' => NULL,
@@ -582,12 +582,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\drik\\storage\\app',
+        'root' => 'D:\\xampp\\htdocs\\drik\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\drik\\storage\\app/public',
+        'root' => 'D:\\xampp\\htdocs\\drik\\storage\\app/public',
         'url' => 'http://localhost/drik/storage',
         'visibility' => 'public',
       ),
@@ -633,13 +633,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\drik\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\drik\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\drik\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\drik\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -688,22 +688,22 @@
   array (
     'driver' => 'smtp',
     'host' => 'smtp.mailtrap.io',
-    'port' => '587',
+    'port' => '2525',
     'from' => 
     array (
-      'address' => 'billing.info@drikimages.com',
-      'name' => 'drikimages',
+      'address' => NULL,
+      'name' => 'phpShort',
     ),
-    'encryption' => 'tls',
-    'username' => 'ecc9e8d285cd0f',
-    'password' => '4a2d48468774ce',
+    'encryption' => NULL,
+    'username' => NULL,
+    'password' => NULL,
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\drik\\resources\\views/vendor/mail',
+        0 => 'D:\\xampp\\htdocs\\drik\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -839,7 +839,7 @@
     'lifetime' => 120,
     'expire_on_close' => true,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\drik\\storage\\framework/sessions',
+    'files' => 'D:\\xampp\\htdocs\\drik\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -848,7 +848,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'laravel_session',
+    'cookie' => 'phpshort_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => false,
@@ -882,9 +882,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\drik\\resources\\views',
+      0 => 'D:\\xampp\\htdocs\\drik\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\drik\\storage\\framework\\views',
+    'compiled' => 'D:\\xampp\\htdocs\\drik\\storage\\framework\\views',
   ),
   'debug-server' => 
   array (
