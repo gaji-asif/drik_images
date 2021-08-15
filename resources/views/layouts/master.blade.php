@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Drikimages | Home</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="currency" content="{{Config::get('app.curreny')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <script src="{{asset('public/js/drik_js/jquery.min.js')}}"></script>
@@ -35,6 +36,7 @@
     </div>
 </div>
 <?php $total=0 ?>
+
 <!-- Cart sidebar start-->
 <div class="cart_sidebar w3-bar-block w3-card w3-animate-left"id="mySidebar">
     <div class="cart">
@@ -77,22 +79,22 @@
                                     <div class="product-image">
                                         <img class="w-100" src="{{$details["thumbnail_url"]}}" alt="">
                                     </div>
-                                    <div class="product-info">
-                                        <table class="table table-bordered m-0">
+                                    <div class="product-info w-100">
+                                        <table class="table table-bordered  m-0">
                                             <tbody>
                                             <tr>
-                                                <td>Name</td>
+                                                <td>Name: </td>
                                                 <td>{{$details["title"]}}</td>
                                             </tr>
 
                                             <tr>
-                                                <td>Image id</td>
+                                                <td>Image id: </td>
                                                 <td>{{$details["id"]}}</td>
                                             </tr>
 
                                             <tr>
-                                                <td>License type:</td>
-                                                <td>Royalty-free|View license summaries</td>
+                                                <td>License type: </td>
+                                                <td>{{$details["type"]}}</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -115,7 +117,7 @@
         <div class="cart-footer d-flex align-items-center justify-content-between">
             <div class="">
                 <!-- <h6 class="mb-0 text-secondary">Items selected for purchase: 2</h6> -->
-                <h5 class="mb-0 text-total">Subtotal :{{Config::get('app.curreny')}} <span id="cart-total">{{number_format((float) $total, 2, '.', '')}}</span> BDT</h5>
+                <h5 class="mb-0 text-total">Subtotal : {{Config::get('app.curreny')}} <span id="cart-total">{{number_format((float) $total, 2, '.', '')}}</span></h5>
             </div>
             <div class="text-right">
                 {{-- @if(session()->has('cart') && count(session()->get('cart')) > 0) --}}

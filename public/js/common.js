@@ -1,5 +1,6 @@
 const baseUrl = "http://localhost/drik";
 const csrf = $('meta[name="csrf-token"]').attr('content');
+const currency = $('meta[name="currency"]').attr('content');
 
 const preLoader = $("\t<div class=\"theme-loader\">\n" +
     "\t\t<div class=\"loader-track\">\n" +
@@ -170,6 +171,7 @@ function imageGrid(imageObj) {
 }
 
 function cartItem(product) {
+    let price = Number(product.price).toFixed(2)
     let row = $(`<tr>
              
                     <td class="v-align-middle">
@@ -177,27 +179,27 @@ function cartItem(product) {
                             <div class="product-image">
                                 <img class="w-100" src="${product.thumbnail_url}" alt="">
                             </div>
-                            <div class="product-info">
-                                <table class="table table-bordered m-0">
+                            <div class="product-info w-100">
+                                <table class="table  table-bordered m-0">
                                     <tbody>
                                     <tr>
-                                        <td>Name</td>
-                                        <td>${product.title}&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                        <td>Name: </td>
+                                        <td>${product.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Size</td>
-                                        <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                        <td>Image Id: </td>
+                                        <td>${product.id}</td>
                                     </tr>
                                     <tr>
-                                        <td>License type:</td>
-                                        <td>Royalty-free|View license summaries</td>
+                                        <td>License type: </td>
+                                        <td>${product.type}</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </td>
-                    <td class="v-align-middle w-10 text-right">৳ ${product.price}</td>
+                    <td class="v-align-middle w-10 text-right">${currency} ${price}</td>
                     <td class="v-align-middle w-5 text-right">
                         <button onclick="removeFromCart(${product.id})" class="product-minus"><i class="icofont-close"></i></button>
                     </td>
@@ -234,6 +236,7 @@ function addToCart(imageId) {
     // console.log(form);
     let size = form.querySelector('.form-check-input:checked');
     let finalPrice = 0;
+    let type = "Rights-managed license";
     if(size == null) {
         getFinalPrice = document.getElementById(`final_price-${imageId}`);
         if(getFinalPrice != null) {
@@ -247,13 +250,17 @@ function addToCart(imageId) {
     else
     {
         finalPrice = size.value;
+        type = $(size).data('type');
+        
     }
   
+   
 
     if(finalPrice > 0) {
         let formData = new FormData();
         formData.append('imageId', imageId);
         formData.append('size',finalPrice);
+        formData.append('type',type);
         fetch(`${baseUrl}/add_to_cart`, {
             method: 'POST',
             headers: {

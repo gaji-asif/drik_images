@@ -1945,3 +1945,7 @@ li strong{
     }
 }
 
+/* custome drik cart width */
+.custome_width_drik_cart {
+    width: 170%;
+}

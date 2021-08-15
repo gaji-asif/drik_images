@@ -25,13 +25,23 @@ class CustomerController extends Controller {
         $categories = Category::all();
         $images = ImageChild::all();
         $user = Auth::user();
+
+        $purchase = Purchase::where('user_id', $user->id)->where('payment_status','Processing')->Orwhere('payment_status','Complete')->get(); 
+       
+        $purchaseIds = [];
+        foreach ($purchase as $purchase_detail_id) {
+            array_push($purchaseIds, $purchase_detail_id->id);
+        }
+        $purchaseItem = PurchaseDetail::whereIn('purchase_id', $purchaseIds)->orderBy('id', 'DESC')->where('status',1)->get(); 
+
+
         if(is_null($user)) {
             return redirect()->route('user-login');
         }
         if($user->user_type == 1){//contributors
             return view('web.contributors.dashboard', compact('images', 'categories', 'user'));
         }else{
-            return view('web.customers.dashboard', compact('images', 'categories', 'user'));
+            return view('web.customers.dashboard', compact('images', 'categories', 'user','purchase' ,'purchaseItem'));
         }
     }
     
@@ -66,7 +76,7 @@ class CustomerController extends Controller {
                 return $status;
             })
             ->addColumn('total', function($data) {
-                $total = '<span >'.Config::get('app.curreny')." ".$data->total.'</span>';
+                $total = '<span >'.Config::get('app.curreny')." ".number_format((float) $data->total, 2, '.', '').'</span>';
                 return $total;
             })
             ->addColumn('action', function($data){
@@ -234,7 +244,7 @@ class CustomerController extends Controller {
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('price', function($data) {
-                $price = '<span >'.Config::get('app.curreny')." ".$data->price.'</span>';
+                $price = '<span >'.Config::get('app.curreny')." ".number_format((float) $data->price, 2, '.', '').'</span>';
                 return $price;
             })
            ->addColumn('image', function($data) {

@@ -3,7 +3,7 @@ let heightInput, widthInput, authorInput, countryInput, cityInput, stateInput, c
     postalCodeInput, titleInput, websiteInput, phoneInput, emailInput,
     headlineInput, captionInput, tagInput, editingImageId, orientationInput, noPeopleInput, peopleCompositionInput,
     specificPeopleInput, locationInput;
-document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
     let buttonPanel = document.querySelector('.dt-buttons');
 
     heightInput = document.querySelector(".image-height");
@@ -26,6 +26,14 @@ document.addEventListener("DOMContentLoaded", function() {
     peopleCompositionInput = document.querySelector('.people_composition');
     specificPeopleInput = document.querySelector('.specific_people');
     locationInput = document.querySelector('.location');
+
+    price_0 = document.querySelector('.price_0');
+    price_1 = document.querySelector('.price_1');
+    price_2 = document.querySelector('.price_2');
+    price_3 = document.querySelector('.price_3');
+    price_4 = document.querySelector('.price_4');
+    price_5 = document.querySelector('.price_5');
+    image_id = document.querySelector('#image_id');
 
     if(buttonPanel) {
         buttonPanel.classList.add('d-none');
@@ -115,8 +123,9 @@ function editImage(imageId) {
                         method: 'GET'
                     }).then(res => res.json())
                         .then(res => {
-                            console.log("here");
+                           
                             let imageDetails = res.data;
+                            let imageUsagePrice = res.imageUsagePrice;
                             let keywords = imageDetails["keywords"] || [];
                             let {author, height, width, caption, city,
                                 copy_right, country, email, headline, phone,
@@ -147,10 +156,31 @@ function editImage(imageId) {
                                 peopleCompositionInput.value = people_composition;
                             }
 
-                            specificPeopleInput.value = specific_people;
-
-                            locationInput.value = location;
-
+                            if(specific_people) {
+                                specificPeopleInput.value = specific_people ?? "";
+                            }
+                            if(location) {
+                                locationInput.value = location;
+                            }
+                            image_id.value = imageId;
+                            if(imageUsagePrice.length>0) {
+                                price_0.value = imageUsagePrice[0].price;
+                                price_1.value = imageUsagePrice[1].price;
+                                price_2.value = imageUsagePrice[2].price;
+                                price_3.value = imageUsagePrice[3].price;
+                                price_4.value = imageUsagePrice[4].price;
+                                price_5.value = imageUsagePrice[5].price;
+                            }
+                            else
+                            {
+                                price_0.value = "";
+                                price_1.value = "";
+                                price_2.value = "";
+                                price_3.value = "";
+                                price_4.value = "";
+                                price_5.value = "";
+                            }
+                           
                         });
                 }
                 $('#image-edit-modal').modal({show:true});
@@ -268,7 +298,7 @@ $(document).ready(function () {
 });
 
 
-function ImagePrice(imageId)
+function ImagePrice()
 {
     let priceList = Array();
     priceList['0'] = $(".price_0").val();
@@ -279,6 +309,7 @@ function ImagePrice(imageId)
     priceList["5"] = $(".price_5").val();
     priceList = JSON.stringify(priceList)
     url = $("#url").val();
+    imageId = image_id.value;
 // console.log(priceList);
     let formData = new FormData();
     formData.append('priceList', priceList);
@@ -293,6 +324,12 @@ function ImagePrice(imageId)
     })
         .then(res => res.json())
         .then(res => {
+            price_0.value = "";
+            price_1.value = "";
+            price_2.value = "";
+            price_3.value = "";
+            price_4.value = "";
+            price_5.value = "";
             $('#image-edit-modal').modal('hide');
             swal("Image price updated successfully!");
         })

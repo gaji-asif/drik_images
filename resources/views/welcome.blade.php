@@ -241,7 +241,7 @@
                                                 <div
                                                     class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="image-sizes"
+                                                        <input class="form-check-input" type="radio" name="image-sizes" data-type="{{$imageUsageNameMap[$item->usage_purpose]}}"
                                                             id="smallRadio-{{$image->id}}-{{$item->id}}" value="{{$item->price}}">
                                                         <label class="form-check-label text-left" for="smallRadio-{{$image->id}}-{{$item->id}}">{{$imageUsageNameMap[$item->usage_purpose]}}</label>
                                                     </div>

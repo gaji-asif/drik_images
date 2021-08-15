@@ -286,7 +286,7 @@
                                             <label for="info1 mb-0">Personal use: </label>
                                         </div>
                                         <div class="col-sm-9 col-md-10 col-lg-8 text-left">
-                                            <input type="text" class="form-control mb-0 price_0" placeholder="Enter Personal use price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[0]->price}}@else 0.0 @endif">
+                                            <input type="number" step="0.1" min="0.1" class="form-control mb-0 price_0" placeholder="Enter Personal use price">
                                             <div class="invalid-feedback">
                                                 
                                             </div>
@@ -297,7 +297,7 @@
                                             <label for="info1 mb-0">Presentation or newsletters: </label>
                                         </div>
                                         <div class="col-sm-9 col-md-10 col-lg-8 text-left">
-                                            <input type="text" class="form-control mb-0 price_1" placeholder="Enter Presentation or newsletters price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[1]->price}}@else 0.0 @endif">
+                                            <input type="number" step="0.1" min="0.1" class="form-control mb-0 price_1" placeholder="Enter Presentation or newsletters price">
                                             <div class="invalid-feedback">
                                                 
                                             </div>
@@ -308,7 +308,7 @@
                                             <label for="info1 mb-0">Website: </label>
                                         </div>
                                         <div class="col-sm-9 col-md-10 col-lg-8 text-left">
-                                            <input type="text" class="form-control mb-0 price_2" placeholder="Enter Website price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[2]->price}}@else 0.0 @endif">
+                                            <input type="number" step="0.1" min="0.1" class="form-control mb-0 price_2" placeholder="Enter Website price" >
                                             <div class="invalid-feedback">
                                                 
                                             </div>
@@ -319,7 +319,7 @@
                                             <label for="info1 mb-0">Magazines and books: </label>
                                         </div>
                                         <div class="col-sm-9 col-md-10 col-lg-8 text-left">
-                                            <input type="text" class="form-control mb-0 price_3" placeholder="Enter Magazines and books price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[3]->price}}@else 0.0 @endif">
+                                            <input type="number" step="0.1" min="0.1" class="form-control mb-0 price_3" placeholder="Enter Magazines and books price" >
                                             <div class="invalid-feedback">
                                                 
                                             </div>
@@ -330,7 +330,7 @@
                                             <label for="info1 mb-0">Marketing package: Small business: </label>
                                         </div>
                                         <div class="col-sm-9 col-md-10 col-lg-8 text-left">
-                                            <input type="text" class="form-control mb-0 price_4" placeholder="Enter Marketing package: Small business: price"  value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[4]->price}}@else 0.0 @endif">
+                                            <input type="number" step="0.1" min="0.1" class="form-control mb-0 price_4" placeholder="Enter Marketing package: Small business: price"  >
                                             <div class="invalid-feedback">
                                             </div>
                                         </div>
@@ -340,13 +340,13 @@
                                             <label for="info1 mb-0">Marketing package: Large business: </label>
                                         </div>
                                         <div class="col-sm-9 col-md-10 col-lg-8 text-left">
-                                            <input type="text" class="form-control mb-0 price_5" placeholder="Enter Marketing package: Large business: price" value="@if(isset($image->imageUsagePrice)){{$image->imageUsagePrice[5]->price}}@else 0.0 @endif">
+                                            <input type="number" step="0.1" min="0.1" class="form-control mb-0 price_5" placeholder="Enter Marketing package: Large business: price" >
                                             <div class="invalid-feedback">
                                                 
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="image_id" value={{$image->id}}>
+                                    <input type="hidden" id="image_id" >
                                     <input type="hidden" id="url" value={{('/')}}>
                                 </div>
                                 <div class="modal-footer">
