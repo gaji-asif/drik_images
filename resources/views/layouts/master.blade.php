@@ -27,14 +27,14 @@
 
 <body>
 <!-- Preloader -->
-<div class="preloader-wrap">
+{{-- <div class="preloader-wrap">
     <div class="preloader">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
     </div>
-</div>
+</div> --}}
 <?php $total=0 ?>
 
 <!-- Cart sidebar start-->

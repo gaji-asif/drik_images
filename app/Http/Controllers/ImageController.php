@@ -55,6 +55,7 @@ class ImageController extends Controller {
         $image = $request->file("image");
         $contributor = $request["contributor"];
         $masterId = $request["masterId"];
+        $is_portfolio = 0;
         try{
             $width = $request["width"];
             $height = $request["height"];
@@ -79,6 +80,10 @@ class ImageController extends Controller {
             $small_url = config('app.url')."/public/images/uploaded_images/small/".$small_url;
             // db saving
             $image_url = config('app.url').'/public/images/uploaded_images/'.$name;
+
+            if(Auth::user()->user_type == 1 && Auth::user()->active_status == 0) {
+               $is_portfolio = 1;
+            }
 
             if(!$masterId) {
                 $masterImage = DB::table('all_images_masters')->insertGetId([
@@ -117,7 +122,8 @@ class ImageController extends Controller {
                         'image_main_url' => $image_url,
                         'medium_url' => $medium_url,
                         'small_url' => $small_url,
-                        'thumbnail_url' => $thumbnail_url
+                        'thumbnail_url' => $thumbnail_url,
+                        'is_portfolio' => $is_portfolio
                     ])->id;
                     $imageUsagePriceItem =[
                         ['image_id'=>$imageChildId, 'usage_purpose'=>1,'price'=>100],
@@ -145,6 +151,7 @@ class ImageController extends Controller {
        
         return view('backEnd.images.index', compact('images', 'total_images'));
     }
+    
     public function imageUsageNameMap($imageUsageNames)
     {
         $imageUsageNameArray = array();

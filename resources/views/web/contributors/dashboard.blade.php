@@ -11,11 +11,9 @@
                     <span>{{ Auth::user()->name }}</span>
                 </p>
                 <hr>
-                @if( Auth::user()->active_status == 1)
-                    @include('web.contributors.sidemenu_active')
-                @elseif( Auth::user()->active_status == 0) 
-                    @include('web.contributors.sidemenu_deactivate')
-                @endif
+        
+                    @include('web.contributors.sidemenu')
+        
             
             </div>
         </div>
@@ -28,13 +26,13 @@
                         <div class="col-xl-3 col-md-6">
                             <div class="card">
                                 <div class="card-block" style="padding: 32px; text-align: center;">
-                                    <a href="#">
+                                    <a href="{{url('contributor-uploaded-protfolio-images')}}">
                                         <div class="row align-items-center m-l-0">
                                             <div class="col-auto" style="text-align: center;">
                                             </div>
                                             <div class="col-auto">
-                                                <h6 class="text-muted m-b-10">Total Uploads</h6>
-                                                <h2 class="m-b-0">50</h2>
+                                                <h6 class="text-muted m-b-10">Total Uploads (Portfolio)</h6>
+                                                <h2 class="m-b-0">@if(isset($allUploadProtofolios)){{count($allUploadProtofolios)}}@else 0 @endif</h2>
                                             </div>
                                         </div>
                                     </a>
@@ -45,12 +43,12 @@
                         <div class="col-xl-3 col-md-6">
                             <div class="card">
                                 <div class="card-block" style="padding: 32px; text-align: center;">
-                                    <a href="#">
+                                    <a href="{{url('contributor-uploaded-images')}}">
                                         <div class="row align-items-center m-l-0">
                                             <div class="col-auto" style="text-align: center;"></div>
                                             <div class="col-auto">
-                                                <h6 class="text-muted m-b-10">Pending Images</h6>
-                                                <h2 class="m-b-0">45</h2>
+                                                <h6 class="text-muted m-b-10">Total Uploads</h6>
+                                                <h2 class="m-b-0">@if(isset($allUpload)){{count($allUpload)}}@else 0 @endif</h2>
                                             </div>
                                         </div>
                                     </a>

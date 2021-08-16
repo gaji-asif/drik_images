@@ -17,10 +17,10 @@ class IsContributor
     public function handle($request, Closure $next)
     {
         if(Auth::check()) {
-            if(Auth::user()->user_type === "2") {
-                return redirect('/home');
+            if(Auth::user()->user_type == 1) {
+                return $next($request);
             }
-            return $next($request);
+            return redirect('/your-dashboard');
         } else {
             return redirect('/login');
         }

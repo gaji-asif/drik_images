@@ -29,17 +29,17 @@
     <div class="col-sm-9">
         <div class="card ">
             <div class="container mt-4">
-                <h5>All Uploaded Images (@if(isset($images)){{count($images)}}@else 0 @endif)</h5>
+                <h5>All Uploaded Protofolio Images (@if(isset($images)){{count($images)}}@else 0 @endif)</h5>
                 <div class="table-responsive  mt-4 mb-4">          
                     <table id="example" class="table table-bordered " style="width:100%">
                         <thead>
                             <tr>
-                     
+                         
                                 <th>Image Id</th>
                                 <th width="30%" class="text-center">Image</th>
-                                <th>Details</th>
+                                <th >Details</th>
+                               
                              
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,14 +57,8 @@
                                         <p><font style=""><strong>Height: </strong></font>{{$image->height}}</p>
                                         <p><font style=""><strong>Width: </strong></font>{{$image->width}} </p>
                                     </td>
-                                  
-                                    <td>
-                                        @if ($image->status == 1) 
-                                            <span class="badge badge-success p-2">Confirm</span>
-                                        @elseif($image->status == 0) 
-                                            <span class="badge badge-warning p-2">Pending</span>
-                                        @endif
-                                    </td>
+                                   
+                                   
                                 </tr>
                             @endforeach
                         </tbody>

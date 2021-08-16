@@ -26,6 +26,9 @@ class CustomerController extends Controller {
         $images = ImageChild::all();
         $user = Auth::user();
 
+        $allUploadProtofolios = ImageChild::where('user_id',$user->id)->where('is_portfolio',1)->get();
+        $allUpload= ImageChild::where('user_id',$user->id)->where('is_portfolio',0)->get();
+
         $purchase = Purchase::where('user_id', $user->id)->where('payment_status','Processing')->Orwhere('payment_status','Complete')->get(); 
        
         $purchaseIds = [];
@@ -38,8 +41,9 @@ class CustomerController extends Controller {
         if(is_null($user)) {
             return redirect()->route('user-login');
         }
+
         if($user->user_type == 1){//contributors
-            return view('web.contributors.dashboard', compact('images', 'categories', 'user'));
+            return view('web.contributors.dashboard', compact('images', 'categories', 'user','allUploadProtofolios','allUpload'));
         }else{
             return view('web.customers.dashboard', compact('images', 'categories', 'user','purchase' ,'purchaseItem'));
         }
@@ -150,11 +154,8 @@ class CustomerController extends Controller {
 
     public function upload()
     {
-        if(!Auth::check()){
-            return redirect('/');
-        }
         $user = Auth::user();
-        $categories = Category::all();
+        $categories = Category::where('parent_category_id', null)->get();
         return view('web.contributors.upload', compact('categories', 'user'));
     }
     
@@ -268,13 +269,21 @@ class CustomerController extends Controller {
 
     public function uploadedImages()
     {
-        if(!Auth::check()){
-            return redirect('/');
-        }
+
         $user = Auth::user();
         $categories = Category::all();
-        $images = ImageChild::where('user_id',Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $images = ImageChild::where('user_id',Auth::user()->id)->with('categories','subCategories')->orderBy('id', 'DESC')->get();
         return view('web.contributors.uploaded_images', compact('images','categories','user'));
+
+
+    }
+    public function uploadedProtfolioImages()
+    {
+
+        $user = Auth::user();
+        $categories = Category::all();
+        $images = ImageChild::where('user_id',Auth::user()->id)->orderBy('id', 'DESC')->where('is_portfolio',1)->get();
+        return view('web.contributors.uploaded_protfolio_images', compact('images','categories','user'));
 
 
     }

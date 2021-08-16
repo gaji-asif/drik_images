@@ -3,7 +3,7 @@
         <a class="nav-link" href="{{ route('your-dashboard') }}">Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('customer-profile') }}">My Profile</a>
+        <a class="nav-link" href="{{ url('profile') }}">My Profile</a>
     </li>
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ ('wishlist') }}">My Wishlist</a>

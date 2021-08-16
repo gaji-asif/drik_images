@@ -13,6 +13,7 @@
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Middleware\IfContributorActive;
 use App\Http\Middleware\IfContributorDeactivate;
+use App\Http\Middleware\IsContributor;
 use App\Http\Middleware\IsCustomer;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ Route::get('user-logout', 'UserController@logout')->name('user-logout');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('user-login', 'UserController@login')->name('user-login');
+    Route::get('user-register', 'UserController@register')->name('user-register');
     Route::post('user-registration', 'UserController@registration')->name('user-registration');
     Route::post('make-login', 'UserController@make_login')->name('make-login');
 });
@@ -281,23 +283,18 @@ Route::get('/clear', function() {
     Artisan::call('view:clear');
     return "Cleared!";
 });
-// Write active account contributor route here
-Route::middleware([IfContributorActive::class])->group(function () {
-  
-   
+// Write contributor route here
+Route::middleware([IsContributor::class])->group(function () {
+    Route::get('contributor-uploaded-images',"CustomerController@uploadedImages");
+    Route::get('contributor-uploaded-protfolio-images',"CustomerController@uploadedProtfolioImages");
+    Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
 });
 
-// Write deactivate account contributor route here
-Route::middleware([IfContributorDeactivate::class])->group(function () {
- 
 
-});
-Route::get('contributor-uploaded-images',"CustomerController@uploadedImages");
-Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
 // Write customer route here
 
 Route::get('your-dashboard', ['as' => 'your-dashboard', 'uses' => 'CustomerController@index']);
-Route::get('customer-profile', ['as' => 'customer-profile', 'uses' => 'CustomerController@profile']);
+Route::get('profile', ['as' => 'profile', 'uses' => 'CustomerController@profile']);
 Route::put('customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'CustomerController@edit_profile']);
 
 Route::middleware([IsCustomer::class])->group(function () {

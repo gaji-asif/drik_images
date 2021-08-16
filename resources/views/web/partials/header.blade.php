@@ -43,14 +43,14 @@
 
 <body>
 <!-- Preloader -->
-<div class="preloader-wrap">
+{{-- <div class="preloader-wrap">
     <div class="preloader">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
     </div>
-</div>
+</div> --}}
 <?php $total=0 ?>
 <!-- Cart sidebar start-->
 <div class="cart_sidebar w3-bar-block w3-card w3-animate-left"id="mySidebar">

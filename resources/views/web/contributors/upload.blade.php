@@ -12,11 +12,7 @@
                     <span>{{ Auth::user()->name }}</span>
                 </p>
                 <hr>
-                @if( Auth::user()->active_status == 1)
-                    @include('web.contributors.sidemenu_active')
-                @elseif( Auth::user()->active_status == 0) 
-                    @include('web.contributors.sidemenu_deactivate')
-                @endif
+                @include('web.contributors.sidemenu')
             </div>
         </div>
     </div>
@@ -24,6 +20,7 @@
         <input type="hidden" id="contributor" value="{{Auth::user()->id}}">
         <div class="card">
             <div class="col-lg-12">
+               
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -34,6 +31,15 @@
                                         <div class="step-box">
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12">
+                                                    @if(Auth::user()->active_status == 1)
+                                                    <div class="col-md-12 text-left">
+                                                        <h5 >Upload Images</h5>
+                                                    </div>
+                                                    @elseif(Auth::user()->active_status == 0)
+                                                    <div class="text-left">
+                                                        <h5 >Upload Your Portfolio Images</h5></h6>
+                                                    </div>
+                                                    @endif
                                                     <div class="form-row">
                                                         <div class="col-sm-12">
                                                             <div class="imgUp">

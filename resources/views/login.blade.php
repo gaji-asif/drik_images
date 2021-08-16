@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Drikimages | Home</title>
+    <title>Drikimages | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
@@ -35,10 +35,10 @@
                 <div class="col-md-10">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                            <a class="nav-link active"  href="{{url('user-login')}}"  >Sign In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                            <a class="nav-link" href="{{url('user-register')}}" >Register</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -57,6 +57,7 @@
                             </button>
                         </div>
                         @endif
+           
                         <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
                             <div class="">
                                 <h3>Sign In</h3>
@@ -93,67 +94,6 @@
                                 </div> -->
                             </form>
                         </div>
-
-
-
-
-                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                            <div class="">
-                                <h3>Register</h3>
-                                <p>New to Drikimages Images?</p>
-                            </div>
-                            <form action="{{route('user-registration')}}" method="post">
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group first">
-                                            <label for="user_first_name">First Name</label>
-                                            <input name="first_name" type="text" class="form-control" id="user_first_name" required="required" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group first">
-                                            <label for="user_last_name">Last Name</label>
-                                            <input name="last_name" type="text" class="form-control" id="user_last_name" />
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group last">
-                                    <label for="user_type">Register as - Buyer, Contributer</label>
-                                    <select name="user_type" class="form-control" id="user_type" required="required">
-                                        <option></option>
-                                        <option value="2">Buyer</option>
-                                        <option value="1">Contributor</option>
-                                    </select>
-
-                                </div>
-                               
-                                <div class="form-group last mb-3">
-                                    <label for="company_name">Company name (optional)</label>
-                                    <input name="company_name" type="text" class="form-control" id="company_name" required="required" />
-                                </div>
-
-                                <div class="form-group last mb-3">
-                                    <label for="job_title">Job title <span>(optional)</span></label>
-                                    <input name="job_title" class="form-control" id="job_title" />
-                                </div>
-                                <div class="form-group last mb-3">
-                                    <label for="user_email">Email Address</label>
-                                    <input type="email" name="email" class="form-control" id="user_email" />
-                                </div>
-                                <div class="form-group last mb-3">
-                                    <label for="password">Password</label>
-                                    <input name="password" type="password" class="form-control" id="password" required="required" />
-                                </div>
-
-                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-
-                                <button type="submit" class="btn btn-block btn-primary text-white">Register</button>
-
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -164,5 +104,7 @@
 <script src="{{asset('public/js/drik_js/jquery.min.js')}}"></script>
 <script src="{{asset('public/js/drik_js/bootstrap.min.js')}}"></script>
 <script src="{{asset('public/js/drik_js/main.js')}}"></script>
+
+
 </body>
 </html>

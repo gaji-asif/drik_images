@@ -12,13 +12,16 @@ class UserController extends Controller {
     {
         return view('login');
     }
+    public function register()
+    {
+        return view('register');
+    }
 
     public function registration(Request $request)
     {
         
-        request()->validate([
+        $validated = $request->validate([
             'email' => 'required|email|unique:users'
-    
         ]);
 
         $name = $request["first_name"]. " ".$request["last_name"];
