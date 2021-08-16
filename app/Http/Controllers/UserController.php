@@ -16,10 +16,10 @@ class UserController extends Controller {
     public function registration(Request $request)
     {
         
-        // request()->validate([
-        //     'email' => 'required|email|unique:users'
+        request()->validate([
+            'email' => 'required|email|unique:users'
     
-        // ]);
+        ]);
 
         $name = $request["first_name"]. " ".$request["last_name"];
         $userType = $request["user_type"];

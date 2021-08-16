@@ -1,12 +1,12 @@
 <ul class="navbar-nav mx-auto">
     <li class="nav-item">
-       <a class="nav-link active" href="{{ ('your-dashboard') }}">Dashboard</a>
+       <a class="nav-link active" href="{{ url('your-dashboard') }}">Dashboard</a>
    </li>
     <li class="nav-item">
-       <a class="nav-link" href="{{ ('customer-profile') }}">My Profile</a>
+       <a class="nav-link" href="{{ url('customer-profile') }}">My Profile</a>
    </li>
    <li class="nav-item">
-       <a class="nav-link" href="{{ ('wishlist') }}"> Uploaded images</a>
+       <a class="nav-link" href="{{ url('contributor-uploaded-images') }}"> Uploaded images</a>
    </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ ('contributor-upload') }}">Upload Image</a>

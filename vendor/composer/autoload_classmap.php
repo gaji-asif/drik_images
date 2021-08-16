@@ -65,6 +65,8 @@ return array(
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
+    'App\\Http\\Middleware\\IfContributorActive' => $baseDir . '/app/Http/Middleware/IfContributorActive.php',
+    'App\\Http\\Middleware\\IfContributorDeactivate' => $baseDir . '/app/Http/Middleware/IfContributorDeactivate.php',
     'App\\Http\\Middleware\\IsContributor' => $baseDir . '/app/Http/Middleware/IsContributor.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
     'App\\Http\\Middleware\\RevalidateBackHistory' => $baseDir . '/app/Http/Middleware/RevalidateBackHistory.php',

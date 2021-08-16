@@ -8,24 +8,14 @@
    <li class="nav-item">
        <a class="nav-link" href="{{ ('wishlist') }}">My Wishlist</a>
    </li>
+   <li class="nav-item">
+        <a class="nav-link" href="{{ url('contributor-uploaded-images') }}"> Uploaded images</a>
+    </li>
     <li class="nav-item">
-
         <a class="nav-link" href="{{ ('contributor-upload') }}">Upload Image</a>
-
-        
     </li>
     <li class="nav-item">
-
-        <a class="nav-link" href="{{ ('contributor-upload') }}">Uploaded Images</a>
-
-        
-    </li>
-    <li class="nav-item">
-
-
-
         <a class="nav-link" href="{{ ('promocode') }}">Promo Code</a>
-
     </li>
    <li class="nav-item">
        <a class="nav-link" href="{{ ('user-logout') }}">Log Out</a>

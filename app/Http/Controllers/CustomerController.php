@@ -64,14 +64,14 @@ class CustomerController extends Controller {
             ->addColumn('payment_status', function($data) {
                 $status = '';
                 if ($data->payment_status == 'Processing' || $data->payment_status == 'Complete') {
-                    $status = '<label class="label label-success p-2">'.$data->payment_status.'</label>';
+                    $status = '<span class="badge badge-success p-2">'.$data->payment_status.'</span>';
                 } 
                 elseif($data->payment_status == 'Pending') {
-                    $status = '<label class="label label-warning p-2">'.$data->payment_status.'</label>';
+                    $status = '<span class="badge badge-warning p-2">'.$data->payment_status.'</span>';
                 }
                 elseif($data->payment_status == 'Failed'  || $data->payment_status == 'Canceled' )
                 {
-                    $status = '<label class="label label-danger p-2">'.$data->payment_status.'</label>';
+                    $status = '<span class="badge badge-danger p-2">'.$data->payment_status.'</span>';
                 }
                 return $status;
             })
@@ -89,6 +89,10 @@ class CustomerController extends Controller {
 
 
     public function profile(){
+
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $categories = Category::all();
         $images = ImageChild::all();
         $id = Auth::user()->id;
@@ -146,6 +150,9 @@ class CustomerController extends Controller {
 
     public function upload()
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $user = Auth::user();
         $categories = Category::all();
         return view('web.contributors.upload', compact('categories', 'user'));
@@ -257,6 +264,19 @@ class CustomerController extends Controller {
             })
             ->rawColumns(['action','image','price'])
             ->make(true);
+    }
+
+    public function uploadedImages()
+    {
+        if(!Auth::check()){
+            return redirect('/');
+        }
+        $user = Auth::user();
+        $categories = Category::all();
+        $images = ImageChild::where('user_id',Auth::user()->id)->orderBy('id', 'DESC')->get();
+        return view('web.contributors.uploaded_images', compact('images','categories','user'));
+
+
     }
 //    public function send_email(Request $request)
 //    {

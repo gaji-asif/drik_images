@@ -1,6 +1,6 @@
 @include('web.partials.header')
 
-<div class="row col-md-10 offset-md-1" style="min-height: 450px; background-color: #eff0f4; padding-top: 10px; padding-bottom: 5px;">
+<div class="row col-md-12 " style="min-height: 450px; background-color: #eff0f4; padding-top: 10px; padding-bottom: 5px;">
     <input type="hidden" name="contributor_id" id="contributor-id" value="{{$user->id}}">
     <div class="col-sm-3">
         <div class="card">
@@ -21,6 +21,7 @@
         </div>
     </div>
     <div class="col-sm-9">
+        <input type="hidden" id="contributor" value="{{Auth::user()->id}}">
         <div class="card">
             <div class="col-lg-12">
                 <div class="container">

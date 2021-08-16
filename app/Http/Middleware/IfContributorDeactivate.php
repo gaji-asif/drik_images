@@ -18,7 +18,7 @@ class IfContributorDeactivate
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()) {
-            if(Auth::user()->user_type === "2" && Auth::user()->active_status === "0") {
+            if(Auth::user()->user_type == 1 && Auth::user()->active_status == 0) {
                 return $next($request);
             }
             else {

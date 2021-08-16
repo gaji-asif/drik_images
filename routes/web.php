@@ -13,11 +13,12 @@
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Middleware\IfContributorActive;
 use App\Http\Middleware\IfContributorDeactivate;
+use App\Http\Middleware\IsCustomer;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
     Route::get('/', 'GalleryController@index')->name('index');
-    Route::get('index', 'GalleryController@index')->name('index');
+    // Route::get('index', 'GalleryController@index')->name('index');
 
 Route::group(['prefix' => 'admin'], function() {
     // Route::auth();
@@ -199,18 +200,8 @@ Route::post('approve_contributor', 'ContributorController@approveContributor');
 });
 
 
-// Route::get('your-dashboard', 'ErpPatientController@index');
-Route::get('your-dashboard', ['as' => 'your-dashboard', 'uses' => 'CustomerController@index']);
-Route::get('all-purchase', ['as' => 'all-purchase', 'uses' => 'CustomerController@allPurchase']);
-Route::get('all-purchased-list/{id}','CustomerController@allPurchasedList');
-Route::get('all-purchase-images/{id}', ['as' => 'all-purchase-images', 'uses' => 'CustomerController@allPurchaseImages']);
-Route::get('preview-invoice/{id}', 'CustomerController@previewInvoice');
-Route::get('purchased-list', ['as' => 'purchased-list', 'uses' => 'CustomerController@getPurchasedInfo']);
-Route::get('customer-profile', ['as' => 'customer-profile', 'uses' => 'CustomerController@profile']);
-Route::put('customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'CustomerController@edit_profile']);
-Route::get('wishlist', ['as' => 'wishlist', 'uses' => 'CustomerController@wishlist']);
 
-Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
+
 
 Route::get('promocodes', ['as' => 'promocode', 'uses' => 'CustomerController@promocode']);
 //Email
@@ -290,11 +281,31 @@ Route::get('/clear', function() {
     Artisan::call('view:clear');
     return "Cleared!";
 });
-
+// Write active account contributor route here
 Route::middleware([IfContributorActive::class])->group(function () {
-    
+  
+   
 });
 
+// Write deactivate account contributor route here
 Route::middleware([IfContributorDeactivate::class])->group(function () {
-    
+ 
+
+});
+Route::get('contributor-uploaded-images',"CustomerController@uploadedImages");
+Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
+// Write customer route here
+
+Route::get('your-dashboard', ['as' => 'your-dashboard', 'uses' => 'CustomerController@index']);
+Route::get('customer-profile', ['as' => 'customer-profile', 'uses' => 'CustomerController@profile']);
+Route::put('customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'CustomerController@edit_profile']);
+
+Route::middleware([IsCustomer::class])->group(function () {
+    Route::get('all-purchase', ['as' => 'all-purchase', 'uses' => 'CustomerController@allPurchase']);
+    Route::get('all-purchased-list/{id}','CustomerController@allPurchasedList');
+    Route::get('all-purchase-images/{id}', ['as' => 'all-purchase-images', 'uses' => 'CustomerController@allPurchaseImages']);
+    Route::get('preview-invoice/{id}', 'CustomerController@previewInvoice');
+    Route::get('purchased-list', ['as' => 'purchased-list', 'uses' => 'CustomerController@getPurchasedInfo']);
+  
+    Route::get('wishlist', ['as' => 'wishlist', 'uses' => 'CustomerController@wishlist']);
 });

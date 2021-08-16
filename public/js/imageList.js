@@ -145,23 +145,7 @@ function editImage(imageId) {
                             emailInput.value = email;
                             headlineInput.value = headline;
                             captionInput.value = caption;
-                            $("#tags").tokenfield('setTokens', keywords);
-                            if(orientation){
-                                orientationInput.value = orientation;
-                            }
-                            if(no_people) {
-                                noPeopleInput.value = no_people;
-                            }
-                            if(people_composition) {
-                                peopleCompositionInput.value = people_composition;
-                            }
-
-                            if(specific_people) {
-                                specificPeopleInput.value = specific_people ?? "";
-                            }
-                            if(location) {
-                                locationInput.value = location;
-                            }
+                            
                             image_id.value = imageId;
                             if(imageUsagePrice.length>0) {
                                 price_0.value = imageUsagePrice[0].price;
@@ -180,6 +164,25 @@ function editImage(imageId) {
                                 price_4.value = "";
                                 price_5.value = "";
                             }
+
+                            $("#tags").tokenfield('setTokens', keywords);
+                            if(orientation){
+                                orientationInput.value = orientation;
+                            }
+                            if(no_people) {
+                                noPeopleInput.value = no_people;
+                            }
+                            if(people_composition) {
+                                peopleCompositionInput.value = people_composition;
+                            }
+
+                            if(specific_people) {
+                                specificPeopleInput.value = specific_people ?? "";
+                            }
+                            if(location) {
+                                locationInput.value = location;
+                            }
+                     
                            
                         });
                 }

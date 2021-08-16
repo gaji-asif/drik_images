@@ -11,7 +11,14 @@
                     <span>{{ Auth::user()->name }}</span>
                 </p>
                 <hr>
-                @include('web.customers.sidemenu')
+                @if(Auth::user()->user_type == 2)
+                    @include('web.customers.sidemenu')
+                @elseif(Auth::user()->user_type == 1 && Auth::user()->active_status == 1) 
+                    @include('web.contributors.sidemenu_active')
+                @elseif(Auth::user()->user_type == 1 && Auth::user()->active_status == 0) 
+                    @include('web.contributors.sidemenu_deactivate')
+                @endif
+            
             </div>
         </div>
     </div>
