@@ -142,18 +142,7 @@ class ImageController extends Controller {
     public function image_list_all() {
         $images = ImageChild::where('id', '>', 1)->paginate(10);
         $total_images = ImageChild::where('id', '>', 1)->get();
-        $imageUsageNames = ImageUsageName::all()->toArray();
-        $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
-   
-        foreach($images as $image) {
-            $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
-            if(count($imageUsagePrice)>0)
-            {
-                $image->imageUsagePrice = $imageUsagePrice;    
-            }
-        }
-
-        // dd($images);
+       
         return view('backEnd.images.index', compact('images', 'total_images'));
     }
     public function imageUsageNameMap($imageUsageNames)
@@ -188,7 +177,11 @@ class ImageController extends Controller {
 
     public function imageDetails($id) {
         $image = ImageChild::find($id);
-        return response()->json(['data'=> $image], 200);
+        $imageUsageNames = ImageUsageName::all()->toArray();
+
+        $imageUsagePrice = ImageUsagPrice::where('image_id', $image->id)->get();
+  
+        return response()->json(['data'=> $image,"imageUsagePrice" => $imageUsagePrice], 200);
     }
 
     public function updateImage(Request $request, $id) {
@@ -258,14 +251,30 @@ class ImageController extends Controller {
 
     public function updateImagePrice(Request $request)
     {
+     
         $imageId = $request->imageId;
         $imagePriceList = json_decode($request->priceList);
  
         foreach($imagePriceList as $key=>$price) {
             $index = $key + 1;
             $updateImagePriceList = ImageUsagPrice::where('image_id', $imageId)->where('usage_purpose', $index)->first();
-            $updateImagePriceList->price = $price;
-            $updateImagePriceList->save();
+    
+            if(isset($updateImagePriceList))
+            {
+                $updateImagePriceList->price = $price;
+                $updateImagePriceList->save();
+
+            }
+            else
+            {
+                $updateImagePriceList = new ImageUsagPrice();
+                $updateImagePriceList->image_id = $imageId;
+                $updateImagePriceList->usage_purpose = $index;
+                $updateImagePriceList->usage_purpose = $index;
+                $updateImagePriceList->price = $price;
+                $updateImagePriceList->save();
+            }
+
         }
 
         return response()->json(['data'=>$imagePriceList], 200);

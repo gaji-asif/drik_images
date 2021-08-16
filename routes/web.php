@@ -11,6 +11,8 @@
 |
 */
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Middleware\IfContributorActive;
+use App\Http\Middleware\IfContributorDeactivate;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -272,9 +274,10 @@ route::post('update_image_price', 'ImageController@updateImagePrice');
 route::get('image_usages_sub_category', 'ImageController@imageUsagesSubCategory');
 
 
-
 //image usages admin panel
 Route::resource('image_use', ImageUsePricesController::class);
+
+
 route::get('about', 'WebController@about');
 route::get('faq', 'WebController@faq');
 route::get('contact', 'WebController@contact');
@@ -288,3 +291,10 @@ Route::get('/clear', function() {
     return "Cleared!";
 });
 
+Route::middleware([IfContributorActive::class])->group(function () {
+    
+});
+
+Route::middleware([IfContributorDeactivate::class])->group(function () {
+    
+});

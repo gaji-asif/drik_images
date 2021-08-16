@@ -41,7 +41,7 @@ class ImageUsePricesController extends Controller
         $sub_cat = imageUsageSubCategorie::where('id', $request->input('sub_cat_id'))
         ->where('category_id', $request->input('cat_id'))
         ->first();
-        $sub_cat->price = $request->input('price');
+        $sub_cat->price = number_format((float)$request->input('price'), 2, '.', '');
         $result = $sub_cat->save();
 
         if ($result) {
@@ -89,7 +89,7 @@ class ImageUsePricesController extends Controller
         $sub_cat = imageUsageSubCategorie::where('id', $request->input('sub_cat_id'))
         ->where('category_id', $request->input('cat_id'))
         ->first();
-        $sub_cat->price = $request->input('price');
+        $sub_cat->price = number_format((float)$request->input('price'), 2, '.', '');
         $result = $sub_cat->save();
 
         if ($result) {

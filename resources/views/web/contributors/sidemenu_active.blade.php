@@ -12,6 +12,18 @@
 
         <a class="nav-link" href="{{ ('contributor-upload') }}">Upload Image</a>
 
+        
+    </li>
+    <li class="nav-item">
+
+        <a class="nav-link" href="{{ ('contributor-upload') }}">Uploaded Images</a>
+
+        
+    </li>
+    <li class="nav-item">
+
+
+
         <a class="nav-link" href="{{ ('promocode') }}">Promo Code</a>
 
     </li>

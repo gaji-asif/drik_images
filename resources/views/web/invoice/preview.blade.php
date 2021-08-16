@@ -189,7 +189,7 @@ body{
                   <address class="m-t-5 m-b-5">
                      @if(isset($purchase->address)){{$purchase->address}}<br>@endif
                      @if(isset($purchase->street)){{$purchase->street}},@endif @if(isset($purchase->zip)){{$purchase->zip}}<br>@endif
-                     Phone: @if(isset($purchase->phone)){{$purchase->phone}},<br>@endif
+                     Phone: @if(isset($purchase->phone)){{$purchase->phone}}<br>@endif
                   </address>
                </address>
             </div>

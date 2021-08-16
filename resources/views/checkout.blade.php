@@ -48,7 +48,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="firstName">Full name</label>
                                         <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="John Doe"
-                                               value="@if(!is_null(auth()->user())){{auth()->user()->name}} @else {{old('customer_name')}} @endif" required>
+                                               value="@if(!is_null(auth()->user())){{auth()->user()->name}}@else{{old('customer_name')}}@endif" required>
                                         <div class="invalid-feedback">
                                             Valid customer name is required.
                                         </div>
@@ -72,7 +72,7 @@
                                 <div class="mb-3">
                                     <label for="email">Email </label>
                                     <input type="email" name="customer_email" class="form-control" id="email"
-                                           placeholder="you@example.com" value="@if(!is_null(auth()->user())){{auth()->user()->email}} @else {{old('customer_email')}} @endif" required>
+                                           placeholder="you@example.com" value="@if(!is_null(auth()->user())){{auth()->user()->email}}@else{{old('customer_email')}} @endif" required>
                                     <div class="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -159,13 +159,17 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="p-1">Name</td>
-                                                <td class="p-1">{{ $details->title }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1205797237</td>
+                                                <td class="p-1">Title:</td>
+                                                <td class="p-1">{{ $details->title }}</td>
                                             </tr>
 
                                             <tr>
-                                                <td class="p-1">Size</td>
-                                                <td class="p-1">4445 x 6668 px</td>
+                                                <td class="p-1">Image Id:</td>
+                                                <td class="p-1">{{ $details->id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1">License type: </td>
+                                                <td class="p-1">{{ $details->id }}</td>
                                             </tr>
                                             <tr>
                                                 <td class="p-1" colspan="2"><b>Qty: 1</b></td>

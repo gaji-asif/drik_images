@@ -96,15 +96,16 @@ industrySectors = function (obj,id){
         $(`#final_price-${id}`).html("");
         $(`#final_price-${id}`).html(`0.0`);
         isComplete = false;
-        final_price = 0.0;
-        final_details_of_use_price = 0.0;
-        final_image_size_price = 0.0;
-        final_print_run_price = 0.0;
-        final_inserts_price = 0.0;
-        final_placement_price = 0.0;
-        final_duration_price = 0.0;
-        final_country_price = 0.0;
-        final_industry_sector_price = 0.0;
+        // final_price = 0.0;
+        // final_details_of_use_price = 0.0;
+        // final_image_size_price = 0.0;
+        // final_print_run_price = 0.0;
+        // final_inserts_price = 0.0;
+        // final_placement_price = 0.0;
+        // final_duration_price = 0.0;
+        // final_country_price = 0.0;
+        // final_industry_sector_price = 0.0;
+       
     }
 };
 

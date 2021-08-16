@@ -12,7 +12,11 @@
                     <span>{{ Auth::user()->name }}</span>
                 </p>
                 <hr>
-                @include('web.conntributors.sidemenu')
+                @if( Auth::user()->active_status == 1)
+                    @include('web.contributors.sidemenu_active')
+                @elseif( Auth::user()->active_status == 0) 
+                    @include('web.contributors.sidemenu_deactivate')
+                @endif
             </div>
         </div>
     </div>

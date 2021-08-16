@@ -11,7 +11,12 @@
                     <span>{{ Auth::user()->name }}</span>
                 </p>
                 <hr>
-                @include('web.conntributors.sidemenu')
+                @if( Auth::user()->active_status == 1)
+                    @include('web.contributors.sidemenu_active')
+                @elseif( Auth::user()->active_status == 0) 
+                    @include('web.contributors.sidemenu_deactivate')
+                @endif
+            
             </div>
         </div>
     </div>
@@ -88,30 +93,6 @@
                         </div>
                     </div>
 
-
-<!--                    <h3>Recent Orders</h3>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Order #</th>
-                                    <th>Placed On</th>
-                                    <th>Items</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>608369042677065</td>
-                                    <td>27/07/2020</td>
-                                    <td></td>
-                                    <td>৳ 850</td>
-                                    <td>Deliver</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>-->
                 </div>
             </div>
         </div>

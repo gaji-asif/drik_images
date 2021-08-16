@@ -72,14 +72,21 @@
         <div class="product-list">
             <table class="table mb-0">
                 <tbody id="drik-cart">
-                @if(session('cart'))
+                    @if(session('cart'))
                     @foreach(session('cart') as $id => $details)
+               
                         <?php $total += $details->price ?>
                         <tr>
                             {{--<td class="v-align-middle w-5">
+                                
                                 <button class="qty_plus_btn"><i class="icofont-simple-up"></i></button>
+                                
                                 <input type="text" class="qty" id="qty" name="" value="0" >
+                                
                                 <button class="qty_minus_btn"><i class="icofont-simple-down"></i></button>
+                            
+                                <button class="qty_minus_btn"><i class="icofont-simple-down"></i></button>
+                            
                             </td>--}}
 
                             <td class="v-align-middle">
@@ -87,22 +94,22 @@
                                     <div class="product-image">
                                         <img class="w-100" src="{{$details["thumbnail_url"]}}" alt="">
                                     </div>
-                                    <div class="product-info">
-                                        <table class="table table-bordered m-0">
+                                    <div class="product-info w-100">
+                                        <table class="table table-bordered  m-0">
                                             <tbody>
                                             <tr>
-                                                <td>Name</td>
-                                                <td>{{$details["title"]}}&nbsp;&nbsp;|&nbsp;&nbsp;1205797237</td>
+                                                <td>Name: </td>
+                                                <td>{{$details["title"]}}</td>
                                             </tr>
 
                                             <tr>
-                                                <td>Size</td>
-                                                <td>4445 x 6668 px (14.82 x 22.23 in.) - 300 dpi - RGB File size on download 15 MB</td>
+                                                <td>Image id: </td>
+                                                <td>{{$details["id"]}}</td>
                                             </tr>
 
                                             <tr>
-                                                <td>License type:</td>
-                                                <td>Royalty-free|View license summaries</td>
+                                                <td>License type: </td>
+                                                <td>{{$details["type"]}}</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -110,7 +117,7 @@
                                 </div>
                             </td>
 
-                            <td class="v-align-middle w-10 text-right">৳ @if(isset($details["price"])) {{$details["price"]}} @endif</td>
+                            <td class="v-align-middle w-10 text-right">{{Config::get('app.curreny')}}  @if(isset($details["price"])) {{$details["price"]}} @endif</td>
                             <td class="v-align-middle w-5 text-right">
                                 <button class="product-minus" onclick="removeFromCart('{{ $id }}')"><i class="icofont-close"></i></button>
                             </td>
