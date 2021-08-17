@@ -57,7 +57,7 @@ class ContributorController extends Controller
         $data->password = Hash::make("123456");
      
         $data->email = $request->email;
-       
+        $data->is_confirm = $request->is_confirm;
         $results = $data->save();
         if ($results) {
             return redirect()->back()->with('message-success', 'Contributer has been added');
@@ -113,6 +113,7 @@ class ContributorController extends Controller
         $data->company_name = $request->company_name;
         $data->job_title = $request->job_title;
         $data->email = $request->email;
+        $data->is_confirm = $request->is_confirm;
         $results = $data->save();
         if ($results) {
             return redirect('contributor')->with('message-success', 'Contributer has been Updated');
@@ -142,6 +143,17 @@ class ContributorController extends Controller
         }
     }
 
+    public function deleteContributor($id)
+    {
+        $data = User::find($id);
+        $results = $data->delete();
+        if ($results) {
+            return redirect('contributor')->with('message-success', 'User has been Deleted');
+        } else {
+            return redirect('contributor')->with('message-danger', 'Something went wrong');
+        }
+    }
+
     public function getContributors()
     {
         $contributors = User::where('user_type', 1)->get();
@@ -154,7 +166,7 @@ class ContributorController extends Controller
         $contributor = User::find($contributorId);
         if($contributor){
             $updated = $contributor->update([
-                'active_status' => 1
+                'is_confirm' => 1
             ]);
 
             if($updated) {

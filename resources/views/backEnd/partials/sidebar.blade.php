@@ -61,7 +61,7 @@
 			</li>
 
 			<li class="document  pcoded-trigger">
-				<a href="#" class="waves-effect waves-dark">
+				<a href="{{url('pending_image_list')}}" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
 					<span class="pcoded-mtext">All Pending Images</span>
 					<span class="pcoded-mcaret"></span>

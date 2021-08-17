@@ -81,8 +81,11 @@ class ImageController extends Controller {
             // db saving
             $image_url = config('app.url').'/public/images/uploaded_images/'.$name;
 
-            if(Auth::user()->user_type == 1 && Auth::user()->active_status == 0) {
+            if(Auth::user()->user_type == 1 && Auth::user()->is_confirm == 0) {
                $is_portfolio = 1;
+            }
+            if(Auth::user()->user_type == 1) {
+               $status = 0;
             }
 
             if(!$masterId) {
@@ -123,7 +126,8 @@ class ImageController extends Controller {
                         'medium_url' => $medium_url,
                         'small_url' => $small_url,
                         'thumbnail_url' => $thumbnail_url,
-                        'is_portfolio' => $is_portfolio
+                        'is_portfolio' => $is_portfolio,
+                        'status' => $status
                     ])->id;
                     $imageUsagePriceItem =[
                         ['image_id'=>$imageChildId, 'usage_purpose'=>1,'price'=>100],
@@ -168,6 +172,7 @@ class ImageController extends Controller {
     }
 
     public function deleteImage(Request $request) {
+
         $imageId = $request->imageId;
         $image = ImageChild::find($imageId);
         $deleted = $image->delete();
@@ -292,5 +297,12 @@ class ImageController extends Controller {
         $getImageUsagesSubCategories = imageUsageSubCategorie::where('category_id',$request->cat_id)->get(['id','sub_cat_name','price'])->toArray();
         $getImageUsagesSubCategories = json_encode($getImageUsagesSubCategories);
         return $getImageUsagesSubCategories;
+    }
+
+    public function pending_image_list() {
+        $images = ImageChild::where('id', '>', 1)->where('status',0)->paginate(10);
+        $total_images = ImageChild::where('id', '>', 1)->where('status',0)->get();
+       
+        return view('backEnd.pending_images.index', compact('images', 'total_images'));
     }
 }

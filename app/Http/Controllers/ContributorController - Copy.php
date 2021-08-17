@@ -26,7 +26,7 @@ class ContributorController extends Controller
         $contributor = User::find($contributorId);
         if($contributor){
             $updated = $contributor->update([
-                'active_status' => 1
+                'is_confirm' => 1
             ]);
 
             if($updated) {

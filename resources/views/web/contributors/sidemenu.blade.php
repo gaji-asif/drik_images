@@ -5,7 +5,7 @@
     <li class="nav-item">
        <a class="nav-link" href="{{ url('profile') }}">My Profile</a>
    </li>
-   @if (Auth::user()->user_type == 1 && Auth::user()->active_status == 1)
+   @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
         <li class="nav-item">
             <a class="nav-link" href="{{ ('wishlist') }}">My Wishlist</a>
         </li>
@@ -24,7 +24,7 @@
         <a class="nav-link" href="{{ ('contributor-upload') }}">Upload Image</a>
     </li>
 
-    @if (Auth::user()->user_type == 1 && Auth::user()->active_status == 1)
+    @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
         <li class="nav-item">
             <a class="nav-link" href="{{ ('promocode') }}">Promo Code</a>
         </li>

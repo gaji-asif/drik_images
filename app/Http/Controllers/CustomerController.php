@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Config;
 
 class CustomerController extends Controller {
     public function index() {
+          if(!Auth::check() || !(Auth::user()->user_type == 1 || Auth::user()->user_type == 2)) {
+            return redirect()->route('user-login');
+        }
         $categories = Category::all();
         $images = ImageChild::all();
         $user = Auth::user();

@@ -46,6 +46,10 @@ class UserController extends Controller {
             $inputs["active_status"] = 1;
         }
 
+        if($userType === "1") {
+            $inputs["is_confirm"] = 0;
+        }
+
         User::create($inputs);
 
         return redirect()->route('user-login');

@@ -90,6 +90,7 @@ function deleteAnImage(imageId) {
         .then((willDelete) => {
             if (willDelete) {
                 let formData = new FormData();
+         
                 formData.append('imageId', imageId);
                 fetch(`${baseUrl}/delete_image`, {
                     method: "POST",
@@ -100,6 +101,7 @@ function deleteAnImage(imageId) {
                 })
                     .then(res => res.json())
                     .then(res => {
+                        alert(imageId);
                         swal("Image has been deleted!", {
                             icon: "success",
                         });

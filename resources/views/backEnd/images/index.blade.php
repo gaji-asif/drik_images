@@ -95,7 +95,7 @@
                 <p class="card-text">{{$image->title}}</p>
                 <button  type="button" class="btn btn-success action-icon"><i class="fa fa-check"></i></button>
                 <button onclick="editImage(<?php echo $image->id?>)" type="button" class="btn btn-success action-icon"><i class="fa fa-edit"></i></button>
-                <button onclick="deleteAnImage(5)" type="button" class="btn btn-danger action-icon"><i class="fa fa-trash-o"></i></button>
+                <button onclick="deleteAnImage({{$image->id}})" type="button" class="btn btn-danger action-icon"><i class="fa fa-trash-o"></i></button>
               <!--   <button onclick="deleteAnImage(5)" type="button" class="btn btn-warning action-icon"><i class=" fa fa-certificate"></i></button> -->
 
             </div>
@@ -351,7 +351,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button id="update_price_btn" onclick="ImagePrice({{$image->id}})" type="button" class="btn btn-primary">Save changes</button>
+                                    <button id="update_price_btn" onclick="ImagePrice()" type="button" class="btn btn-primary">Save changes</button>
                                 </div></div>
                               </div>
                               

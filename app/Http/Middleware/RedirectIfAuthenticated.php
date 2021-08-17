@@ -19,7 +19,8 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             $user = Auth::user();
-
+            
+            // dd($request->route());
             if($request->route()->uri === "user-login") {
                 return redirect('/home');
             } else {

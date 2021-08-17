@@ -31,11 +31,11 @@
                                         <div class="step-box">
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12">
-                                                    @if(Auth::user()->active_status == 1)
+                                                    @if(Auth::user()->is_confirm == 1)
                                                     <div class="col-md-12 text-left">
                                                         <h5 >Upload Images</h5>
                                                     </div>
-                                                    @elseif(Auth::user()->active_status == 0)
+                                                    @elseif(Auth::user()->is_confirm == 0)
                                                     <div class="text-left">
                                                         <h5 >Upload Your Portfolio Images</h5></h6>
                                                     </div>

@@ -189,6 +189,7 @@ Route::get('image_details/{id}', 'ImageController@imageDetails');
 
 
 Route::get('image_list_all', 'ImageController@image_list_all');
+Route::get('pending_image_list', 'ImageController@pending_image_list');
 
 
 Route::resource('category', 'CategoriesController');
@@ -196,6 +197,7 @@ Route::get('delete-category/{id}', 'CategoriesController@deleteCategory');
 
 //Contributor list
 Route::resource('contributor', 'ContributorController');
+Route::get('contributor-delete/{id}', 'ContributorController@deleteContributor');
 Route::get('contributors_old', 'ContributorController@index');
 Route::get('contributor_list', 'ContributorController@getContributors');
 Route::post('approve_contributor', 'ContributorController@approveContributor');
@@ -284,7 +286,7 @@ Route::get('/clear', function() {
     return "Cleared!";
 });
 // Write contributor route here
-Route::middleware([IsContributor::class])->group(function () {
+Route::middleware([IfContributorWeb::class])->group(function () {
     Route::get('contributor-uploaded-images',"CustomerController@uploadedImages");
     Route::get('contributor-uploaded-protfolio-images',"CustomerController@uploadedProtfolioImages");
     Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
