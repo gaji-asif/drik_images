@@ -113,6 +113,40 @@ function deleteAnImage(imageId) {
         });
 }
 
+function ApproveAnImage(imageId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once Approve, This image will be show in gallery",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                let formData = new FormData();
+         
+                formData.append('imageId', imageId);
+                fetch(`${baseUrl}/delete_imagessss`, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+                    },
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        alert(imageId);
+                        swal("Image has been deleted!", {
+                            icon: "success",
+                        });
+                        imageTable.ajax.reload();
+                    })
+            } else {
+                swal("Your image is safe!");
+            }
+        });
+}
+
 function editImage(imageId) {
     if(imageId) {
         editingImageId = imageId;

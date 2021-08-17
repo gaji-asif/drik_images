@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <h5 class="card-title">id#{{$image->id}}</h5>
                     <p class="card-text">{{$image->title}}</p>
-                    <button  type="button" class="btn btn-success action-icon"><i class="fa fa-check"></i></button>
+                    <button  type="button" onclick="ApproveAnImage({{$image->id}})" class="btn btn-success action-icon"><i class="fa fa-check"></i></button>
                     {{-- <button onclick="editImage(<?php echo $image->id?>)" type="button" class="btn btn-success action-icon"><i class="fa fa-edit"></i></button> --}}
                     <button onclick="deleteAnImage({{$image->id}})" type="button" class="btn btn-danger action-icon"><i class="fa fa-trash-o"></i></button>
                     <!--   <button onclick="deleteAnImage(5)" type="button" class="btn btn-warning action-icon"><i class=" fa fa-certificate"></i></button> -->

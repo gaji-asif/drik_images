@@ -13,6 +13,7 @@
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Middleware\IfContributorActive;
 use App\Http\Middleware\IfContributorDeactivate;
+use App\Http\Middleware\IfContributorWeb;
 use App\Http\Middleware\IsContributor;
 use App\Http\Middleware\IsCustomer;
 use Illuminate\Support\Facades\Artisan;
