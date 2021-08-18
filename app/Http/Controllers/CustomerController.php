@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use DataTables;
 use Illuminate\Support\Facades\Config;
+use PhpParser\Node\Expr\FuncCall;
 
 class CustomerController extends Controller {
     public function index() {
@@ -60,6 +61,7 @@ class CustomerController extends Controller {
         $purcharse = Purchase::where('user_id', $id)->get();
         return view('web.customers.all_purchase',compact('images', 'categories', 'user','purcharse'));
     }
+
     public function getPurchasedInfo(Request $request)
     {
         $user = Auth::user();
@@ -93,7 +95,6 @@ class CustomerController extends Controller {
             ->rawColumns(['action', 'payment_status','total'])
             ->make(true);
     }
-
 
     public function profile(){
 
@@ -140,7 +141,7 @@ class CustomerController extends Controller {
         Session::put('users_img', $userss->upload_img);
         }
 
-        return redirect('customer-profile')->with('message-success', 'Profile has been updated');
+        return redirect()->back()->with('message-success', 'Profile has been updated');
     }
 
     public function wishlist() {
@@ -270,13 +271,35 @@ class CustomerController extends Controller {
             ->make(true);
     }
 
-    public function uploadedImages()
+    public function uploadedImages(Request $request)
     {
 
         $user = Auth::user();
         $categories = Category::all();
-        $images = ImageChild::where('user_id',Auth::user()->id)->with('categories','subCategories')->orderBy('id', 'DESC')->get();
-        return view('web.contributors.uploaded_images', compact('images','categories','user'));
+        $images = ImageChild::where('user_id',Auth::user()->id)->with('categories','subCategories')->orderBy('id', 'DESC')->where('is_portfolio',0)->get();
+       
+        $contributor_images = [];
+        $total_sold_images = [];
+        foreach ($images as $key => $value) {
+            $contributor_images[] = $value['id'];
+            $total_sold_images[$value['id']] = 0;
+        }
+  
+        $soldImages = PurchaseDetail::whereIn('image_id',$contributor_images)->where('status',1)->get();
+        
+     
+        foreach ($soldImages as $key => $value) {
+            if(isset($total_sold_images[$value->image_id]))
+            {
+                $total_sold_images[$value->image_id] ++;
+            }
+        }
+      
+        // dd($images);
+        if ($request->ajax()) {
+            return view('web.contributors.all_image_inner_div', compact('images','total_sold_images'));
+        }
+        return view('web.contributors.uploaded_images', compact('images','categories','user','total_sold_images'));
 
 
     }
@@ -286,39 +309,72 @@ class CustomerController extends Controller {
         $user = Auth::user();
         $categories = Category::all();
         $images = ImageChild::where('user_id',Auth::user()->id)->orderBy('id', 'DESC')->where('is_portfolio',1)->get();
+     
+
         return view('web.contributors.uploaded_protfolio_images', compact('images','categories','user'));
 
 
     }
-//    public function send_email(Request $request)
-//    {
-//        $request->validate([
-//            'receiver_id' => 'required',
-//            'msg' => 'required'
-//        ]);
-//
-//        $users_details = User::where('id', '=', $request->receiver_id)->first();
-//
-//        $email = new ErpSendDoc();
-//
-//        $email->receiver_id = $request->receiver_id;
-//        $email->sender_id = Auth::user()->id;
-//        $email->doc_id = $id;
-//        $email->msg = $request->msg;
-//        $result = $email->save();
-//
-//        if ($result) {
-//            $mailData = array(
-//                'email' => $users_details->email,
-//                'receiver_id' => $request->receiver_id,
-//            );
-//            $mailSent = Mail::to($users_details->email)
-//                ->send(new SendEmailToUser($mailData));
-//            if ($mailSent) {
-//                return redirect('preview_doc/' . $id)->with('message-success', 'Document has been send successfully');
-//            } else {
-//                return redirect('preview_doc/' . $id)->with('message-success', 'Document has been send successfully');
-//            }
-//        }
-//    }
+
+    public function getSoldImages(Request $request)
+    {
+        $images = ImageChild::where('user_id',Auth::user()->id)->where('is_portfolio',0)->where('status',1)->get('id')->toArray();
+        $contributor_images = [];
+            foreach ($images as $key => $value) {
+                $contributor_images[] = $value['id'];
+        }
+        $soldImages = PurchaseDetail::whereIn('image_id',$contributor_images)->where('status',1)->get();
+
+        $sold_images = [];
+        foreach ($soldImages as $key => $value) {
+            $sold_images[] = $value->image_id;
+        }
+
+        $user = Auth::user();
+        $categories = Category::all();
+        $images = ImageChild::whereIn('id',$sold_images)->with('categories','subCategories')->orderBy('id', 'DESC')->where('is_portfolio',0)->get();
+
+        return view('web.contributors.all_image_inner_div_sold', compact('images','categories','user'));
+      
+    }
+
+    public function getSoldImagesByDate(Request $request)
+    {
+        $images = ImageChild::where('user_id',Auth::user()->id)->where('is_portfolio',0)->where('status',1)->get('id')->toArray();
+        $contributor_images = [];
+            foreach ($images as $key => $value) {
+                $contributor_images[] = $value['id'];
+        }
+        $from = $request->input('date_from');
+        if(empty($from))
+        {
+            $from = date('Y-m-d');
+        }
+        else
+        {
+            $from = date('Y-m-d', strtotime($from));
+        }
+        $to = $request->input('date_to');
+        if(empty($to))
+        {
+            $to = date('Y-m-d');
+        }
+        else
+        {
+            $to = date('Y-m-d', strtotime($to));
+        }
+        $soldImages = PurchaseDetail::whereIn('image_id',$contributor_images)->whereBetween('created_at', [$from, $to])->where('status',1)->get();
+
+        $sold_images = [];
+        foreach ($soldImages as $key => $value) {
+            $sold_images[] = $value->image_id;
+        }
+
+        $user = Auth::user();
+        $categories = Category::all();
+        $images = ImageChild::whereIn('id',$sold_images)->with('categories','subCategories')->orderBy('id', 'DESC')->where('is_portfolio',0)->get();
+
+        return view('web.contributors.all_image_inner_div_sold', compact('images','categories','user'));
+    }
+
 }

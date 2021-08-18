@@ -88,7 +88,7 @@
                 </ul>
 
                 <div class="header_actions text-right navbar p-0">
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto align-items-center">
 
                         <li class="nav-item dropdown">
                            <!--  <a class="nav-link" href="sign-in.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
 
-                                <div class="actions text-center">
+                                <div class="actions text-center ">
                                     <button class="btn author-action-button"><i class="icofont-like"></i>&nbsp;50</button>
                                     <button class="btn author-action-button"><i class="icofont-star"></i>&nbsp;50</button>
                                     <button class="btn author-action-button"><i class="icofont-share"></i>&nbsp;50</button>

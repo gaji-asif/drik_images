@@ -184,6 +184,7 @@ Route::post('upload_image', 'ImageController@upload_image');
 Route::get('image_list', 'ImageController@imageList');
 Route::get('get_all_images', 'ImageController@getAllImages');
 Route::post('delete_image', 'ImageController@deleteImage');
+Route::post('pending_delete_image', 'ImageController@pendingDeleteImage');
 Route::post('delete_bulk_image', 'ImageController@deleteBulkImage');
 Route::post('update_image/{id}', 'ImageController@updateImage');
 Route::get('image_details/{id}', 'ImageController@imageDetails');
@@ -191,6 +192,8 @@ Route::get('image_details/{id}', 'ImageController@imageDetails');
 
 Route::get('image_list_all', 'ImageController@image_list_all');
 Route::get('pending_image_list', 'ImageController@pending_image_list');
+Route::post('aprove_image', 'ImageController@aproveImage');
+Route::post('get_contributor_images', 'ImageController@getContributorImages');
 
 
 Route::resource('category', 'CategoriesController');
@@ -291,6 +294,8 @@ Route::middleware([IfContributorWeb::class])->group(function () {
     Route::get('contributor-uploaded-images',"CustomerController@uploadedImages");
     Route::get('contributor-uploaded-protfolio-images',"CustomerController@uploadedProtfolioImages");
     Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
+    Route::post('get_sold_images',"CustomerController@getSoldImages");
+    Route::post('get_sold_images_by_date',"CustomerController@getSoldImagesByDate");
 });
 
 

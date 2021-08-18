@@ -80,14 +80,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group first">
                                             <label for="user_first_name">First Name</label>
-                                            <input name="first_name" type="text" class="form-control" id="user_first_name" required="required" />
+                                            <input name="first_name" type="text" class="form-control" value="{{old('first_name')}}" id="user_first_name" required="required" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group first">
                                             <label for="user_last_name">Last Name</label>
-                                            <input name="last_name" type="text" class="form-control" id="user_last_name" />
+                                            <input name="last_name" type="text" class="form-control" value="{{old('last_name')}}" id="user_last_name" />
                                         </div>
                                     </div>
                                 </div>
@@ -97,24 +97,24 @@
                                     <label for="user_type " class="pl-2">Register as - Buyer, Contributer</label>
                                     <select name="user_type" class="form-control " id="user_type" required="required">
                                         <option></option>
-                                        <option value="2">Buyer</option>
-                                        <option value="1">Contributor</option>
+                                        <option @if(old('user_type') == 2) selected @endif value="2">Buyer</option>
+                                        <option  @if(old('user_type') == 1) selected @endif value="1">Contributor</option>
                                     </select>
 
                                 </div>
                                
                                 <div class="form-group last mb-3">
                                     <label for="company_name">Company name (optional)</label>
-                                    <input name="company_name" type="text" class="form-control" id="company_name" required="required" />
+                                    <input name="company_name" type="text" class="form-control" id="company_name" value="{{old('company_name')}}" required="required" />
                                 </div>
 
                                 <div class="form-group last mb-3">
                                     <label for="job_title">Job title <span>(optional)</span></label>
-                                    <input name="job_title" class="form-control" id="job_title" />
+                                    <input name="job_title" class="form-control" id="job_title" value="{{old('job_title')}}" />
                                 </div>
                                 <div class="form-group last mb-3">
                                     <label for="user_email">Email Address</label>
-                                    <input type="email" name="email" class="form-control" id="user_email" />
+                                    <input type="email" name="email" class="form-control" id="user_email" value="{{old('email')}}" />
                                 </div>
                                 <div class="form-group last mb-3">
                                     <label for="password">Password</label>

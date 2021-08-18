@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use PhpOffice\PhpSpreadsheet\Reader\Xls\RC4;
 use Svg\Tag\Image;
 
 class ImageController extends Controller {
@@ -176,7 +177,13 @@ class ImageController extends Controller {
         $imageId = $request->imageId;
         $image = ImageChild::find($imageId);
         $deleted = $image->delete();
-        return response()->json(['data' => $deleted]);
+        // return response()->json(['data' => $deleted]);
+        $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(10);
+        
+        $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
+        $total_images = count($total_images);
+
+        return response()->json(['data'=>$images,'total_images' => $total_images], 200);
     }
 
     public function deleteBulkImage(Request $request)
@@ -299,10 +306,89 @@ class ImageController extends Controller {
         return $getImageUsagesSubCategories;
     }
 
-    public function pending_image_list() {
-        $images = ImageChild::where('id', '>', 1)->where('status',0)->paginate(10);
-        $total_images = ImageChild::where('id', '>', 1)->where('status',0)->get();
-       
-        return view('backEnd.pending_images.index', compact('images', 'total_images'));
+    public function pending_image_list(Request $request) {
+        $contributor = User::where('user_type', 1)->get();
+        $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+        $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
+        if ($request->ajax()) {
+            $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+            return view('backEnd.pending_images.inner_data', compact('images', 'total_images'));
+        }
+        return view('backEnd.pending_images.index', compact('images', 'total_images','contributor'));
     }
+    public function getContributorImages(Request $request) {
+        // dd($request);
+        if(is_null($request->contributor_id)){
+            $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+            $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
+        }
+        else
+        {
+            $images = ImageChild::where('user_id',$request->contributor_id)->where('status',0)->where('is_portfolio',0)->paginate(4);
+            $total_images = ImageChild::where('user_id',$request->contributor_id)->where('status',0)->where('is_portfolio',0)->get();
+          
+        }   
+      
+        if ($request->ajax()) {
+            return view('backEnd.pending_images.inner_data', compact('images', 'total_images'));
+        }
+        return view('backEnd.pending_images.index', compact('images', 'total_images','contributor'));
+    }
+
+    public function aproveImage(Request $request) {
+        
+        $imageId = $request->imageId;
+        
+
+        $image = ImageChild::find($imageId);
+        $image->status = 1;
+        $image->save();
+
+        $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+        
+        $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
+
+        if ($request->ajax()) {
+            return view('backEnd.pending_images.inner_data', compact('images','total_images'));
+        }
+        // return response()->json(['data'=>$images,'total_images' => $total_images], 200);
+
+    }
+
+    public function pendingDeleteImage(Request $request) {
+        $imageId = $request->imageId;
+        
+        $image = ImageChild::find($imageId);
+        $deleted = $image->delete();
+
+        $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+        
+        $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
+
+        if ($request->ajax()) {
+            return view('backEnd.pending_images.inner_data', compact('images','total_images'));
+        }
+    }
+     // public function aproveImage(Request $request) {
+        
+    //     $imageId = $request->imageId;
+        
+    //     $image = ImageChild::find($imageId);
+    //     $image->status = 1;
+    //     $image->save();
+
+    //     $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(10);
+        
+    //     // $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
+    //     // $total_images = count($total_images);
+
+    //     // return response()->json(['data'=>$images,'total_images' => $total_images], 200);
+       
+    //         $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(10);
+               
+    //         if ($request->ajax()) {
+    //          return view('backEnd.pending_images.inner_data', compact('data'));
+    //         }
+               
+    // }
 }

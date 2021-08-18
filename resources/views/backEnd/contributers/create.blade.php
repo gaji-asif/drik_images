@@ -118,22 +118,23 @@
 				                    @endif
 				                </div>
 				            </div>
-							<div class="form-group row">
-				                <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('Confirm') }}</label>
-				                <div class="col-md-6">
-					                <select class="js-example-basic-single col-sm-12 {{ $errors->has('is_confirm') ? ' is-invalid' : '' }}" name="is_confirm" id="is_confirm">
-									<option value="">Select item</option>
-									<option value="1" @if(isset($editData) && $editData->is_confirm == 1) selected @endif>Yes</option>
-									<option value="0" @if(isset($editData) && $editData->is_confirm == 0) selected @endif>No</option>
-									</select>
-									@if ($errors->has('is_confirm'))
-									<span class="invalid-feedback invalid-select" role="alert">
-										<strong>{{ $errors->first('is_confirm') }}</strong>
-									</span>
-									@endif
+							@if(isset($editData) )
+								<div class="form-group row">
+									<label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('Confirm') }}</label>
+									<div class="col-md-6">
+										<select class="js-example-basic-single col-sm-12 {{ $errors->has('is_confirm') ? ' is-invalid' : '' }}" name="is_confirm" id="is_confirm">
+										<option value="">Select a option</option>
+										<option value="1" @if(isset($editData) && $editData->is_confirm == 1) selected @endif>Yes</option>
+										<option value="0" @if(isset($editData) && $editData->is_confirm == 0) selected @endif>No</option>
+										</select>
+										@if ($errors->has('is_confirm'))
+										<span class="invalid-feedback invalid-select" role="alert">
+											<strong>{{ $errors->first('is_confirm') }}</strong>
+										</span>
+										@endif
+									</div>
 								</div>
-				            </div>
-				           
+				           @endif
 
 						</div>
 					</div>

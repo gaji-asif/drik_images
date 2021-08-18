@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{asset('public/css/drik/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/drik/css/sidebar.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{{asset('public/js/dev_moin.js')}}"></script>
 
 </head>
 
@@ -285,5 +286,6 @@
 </script>
 
 <script src="{{asset('public/js/image_usage_calculator.js')}}"></script>
+<script src="{{asset('public/js/dev_moin.js')}}"></script>
 </body>
 </html>

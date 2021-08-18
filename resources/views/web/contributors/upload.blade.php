@@ -224,6 +224,7 @@
                                                                                                 <input class="creation-date form-control" type="text" class="form-control">
                                                                                             </div>
                                                                                         </div>
+
                                                                                         <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center tags-input-container">
                                                                                             <label>Keywords</label>
                                                                                             <input type="text" class="form-control tags-input" id="tags" value="" />

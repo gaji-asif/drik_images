@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="{{asset('public/css/drik/css/sidebar.css')}}">
     <script src="{{asset('public/js/imagesLoaded.js')}}"></script>
     <script src="{{asset('public/js/common.js')}}"></script>
+<script src="{{asset('public/js/dev_moin.js')}}"></script>
+
 </head>
 
 <body>

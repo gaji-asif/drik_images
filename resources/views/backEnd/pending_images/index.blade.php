@@ -22,67 +22,31 @@
     <div class="container" style="margin: 0 auto;">
 
 
-       <form method="GET" action="{{route('search_image_data')}}">
-        <div class="search_form row" style="padding: 20px 30px;">
-            <div class="col-lg-3"></div>
-            <input name="search_key" type="text" class="form-control col-lg-5" id="" placeholder="Search Images">
-            <button type="submit" class="btn search_submit_button col-lg-1" style="margin-left: 10px;">Search</i></button>
-        </div>
-    </form>
-</div>
-</div>
-
-
-<div class="card">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-lg-3" style="font-size: 21px; font-weight: bold;">All Pending Images ({{count($total_images)}})</div>
-            <div class="col-lg-9" style="float: right;">
-                {{-- <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-2">
-                        <a href="{{url('upload_photo')}}">
-                        <font class="col-lg-2">
-                            <i class="fa fa-plus"></i><br>Add Image
-                        </font>
-                    </a>
-                    </div>
-                    <div class="col-lg-2">
-                        <font class="col-lg-2">
-                            <i class="fa fa-check"></i><br>Select ALL
-                        </font>
-                    </div>
-                    <div class="col-lg-2">
-                        <font class="col-lg-2">
-                            <i class="fa fa-minus-circle"></i><br>Select None
-                        </font>
-                    </div>
-                     <div class="col-lg-2">
-                        <a class="col-lg-2">
-                            <a class="get-all-selected"  data-toggle="modal" data-target="#edit-image-info">
-                            <i class="fa fa-edit"></i><br>Batch Edit
-                        </a>
-                        </a>
-
-                    </div>
-
-                     <div class="col-lg-2">
-                        <a style="cursor: pointer;" class="col-lg-2" onclick="bulkDelete();">
-                            <i class="fa fa-trash-o"></i><br>Delete
-                        </a>
-
-                         <!-- <button type="button" onclick="bulkDelete();">Bulk Delete</button> -->
-
-                        <!-- <button type="button" class="btn btn-danger" id="btn-bulk-delete"  data-toggle="modal">Bulk Delete</button> -->
-                    </div>
-                </div> --}}
+      
+            <div class="search_form row" style="padding: 20px 30px;">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 " style="margin-top:6px">
+                
+                        <select class="js-example-basic-single col-sm-12 {{ $errors->has('role_id') ? ' is-invalid' : '' }}"  id="contributor_id" >
+                            <option value="">Select Contributor</option>
+                            @if(isset($contributor))
+                                @foreach($contributor as $item)
+                                    <option value="{{ $item->id }}" >{{$item->name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                </div>
+                {{-- <input name="search_key" type="text" class="form-control col-lg-5" id="" placeholder="Search Images"> --}}
+                <button type="submit" onclick="getImages()" class="btn col-lg-1" style="margin-left: 10px;">Search</i></button>
             </div>
-        </div>
+     
     </div>
-  @include('backEnd.pending_images.inner_data')
+</div>
+<div id="inner_div">
+    @include('backEnd.pending_images.inner_data')   
 </div>
 
-</div>
+
 <div class="modal fade" id="image-edit-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -397,5 +361,52 @@
 
 <script src={{asset("public/js/imageList.js")}}></script>
 </div>
+
+<script>
+
+    $(window).on('hashchange', function() {
+        if (window.location.hash) {
+            var page = window.location.hash.replace('#', '');
+            if (page == Number.NaN || page <= 0) {
+                return false;
+            }else{
+                getData(page);
+            }
+        }
+    });
+
+    $(document).ready(function()
+    {
+        $(document).on('click', '.pagination a',function(event)
+        {
+            event.preventDefault();
+
+            $('li').removeClass('active');
+            $(this).parent('li').addClass('active');
+
+            var myurl = $(this).attr('href');
+            var page=$(this).attr('href').split('page=')[1];
+
+            getData(page);
+        });
+
+    });
+
+    function getData(page){
+        $.ajax(
+        {
+            url: '?page=' + page,
+            type: "get",
+            datatype: "html"
+        }).done(function(data){
+        
+            $("#inner_div").empty().html(data);
+            location.hash = page;
+        }).fail(function(jqXHR, ajaxOptions, thrownError){
+            alert('No response from server');
+        });
+    }
+
+</script>
 
 @endSection

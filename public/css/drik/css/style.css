@@ -74,7 +74,7 @@ img {
     padding: 6px 22px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .theme-btn:hover{

@@ -101,7 +101,7 @@ function deleteAnImage(imageId) {
                 })
                     .then(res => res.json())
                     .then(res => {
-                        alert(imageId);
+                       
                         swal("Image has been deleted!", {
                             icon: "success",
                         });
@@ -113,10 +113,10 @@ function deleteAnImage(imageId) {
         });
 }
 
-function ApproveAnImage(imageId) {
+function pendinDeleteAnImage(imageId) {
     swal({
         title: "Are you sure?",
-        text: "Once Approve, This image will be show in gallery",
+        text: "Once deleted, you will not be able to recover this image!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -126,21 +126,68 @@ function ApproveAnImage(imageId) {
                 let formData = new FormData();
          
                 formData.append('imageId', imageId);
-                fetch(`${baseUrl}/delete_imagessss`, {
-                    method: "POST",
+                $.ajaxSetup({
                     headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
-                    },
-                    body: formData
-                })
-                    .then(res => res.json())
-                    .then(res => {
-                        alert(imageId);
-                        swal("Image has been deleted!", {
-                            icon: "success",
-                        });
-                        imageTable.ajax.reload();
-                    })
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                  url: `${baseUrl}/pending_delete_image` ,
+                  type: "post",
+                  data: formData,
+                  contentType: false,
+                  processData: false,
+                  datatype: "html",
+                  success: function(data) {
+                    swal("Image has been deleted!", {
+                        icon: "success",
+                    });
+
+                    $("#inner_div").empty().html(data);
+                    location.hash = page;
+
+                  }
+                });
+            } else {
+                swal("Your image is safe!");
+            }
+        });
+}
+
+function approveAnImage(imageId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once Approve, This image will be show in gallery",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willApprove) => {
+            if (willApprove) {
+                let formData = new FormData();
+                formData.append('imageId', imageId);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                  url: `${baseUrl}/aprove_image` ,
+                  type: "post",
+                  data: formData,
+                  contentType: false,
+                  processData: false,
+                  datatype: "html",
+                  success: function( data ) {
+                    swal("Image has been Approved!", {
+                        icon: "success",
+                    });
+                    // console.log(data);
+                    $("#inner_div").empty().html(data);
+                    location.hash = page;
+
+                  }
+                });
             } else {
                 swal("Your image is safe!");
             }
@@ -374,3 +421,61 @@ function ImagePrice()
         })
 
 }
+
+// function imageList(images){
+
+//     images.forEach(image => console.log(image));
+
+// }
+
+function imageList(images){
+
+    $("#inner_div").html('');
+    let innerDiv;
+    images.forEach(image => {
+        innerDiv = 
+        `<div class="card-block col-lg-3">
+            <div class="card">
+                <p style="margin-top: 15px; margin-left: 8px;">
+                    <input type="checkbox" name="id" value="${image.id}">
+                </p>
+                <img class="card-img-top" src="${image.thumbnail_url}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">id#${image.id}</h5>
+                    <p class="card-text">${image.title}</p>
+                    <button  type="button" onclick="approveAnImage(${image.id})" class="btn btn-success action-icon"><i class="fa fa-check"></i></button>
+                    <button onclick="deleteAnImage(${image.id})" type="button" class="btn btn-danger action-icon"><i class="fa fa-trash-o"></i></button>
+                </div>
+            </div>
+        </div>`;
+        $("#inner_div").append(innerDiv);
+    })
+};
+
+function getImages()
+{
+    let contributor_id = $("#contributor_id").val();
+    let formData = new FormData();
+    formData.append('contributor_id', contributor_id);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+      url: `${baseUrl}/get_contributor_images` ,
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      datatype: "html",
+      success: function( data ) {
+        $("#inner_div").empty().html(data);
+        location.hash = page;
+
+      }
+    });
+
+}
+  

@@ -97,8 +97,9 @@
 <script type="text/javascript" src="{{asset('public/assets/pages/advance-elements/select2-custom.js')}}"></script>
 <script src="{{asset('public/js/common.js')}}"></script>
 
-<script src="{{asset('public/js/drik_js/main.js')}}"></script>
 
+<script src="{{asset('public/js/drik_js/main.js')}}"></script>
+<script src="{{asset('public/js/dev_moin.js')}}"></script>
 <script>
     function cart_open() {
         document.getElementById("mySidebar").style.marginRight = "0%";

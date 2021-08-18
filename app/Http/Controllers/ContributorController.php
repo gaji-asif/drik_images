@@ -57,7 +57,7 @@ class ContributorController extends Controller
         $data->password = Hash::make("123456");
      
         $data->email = $request->email;
-        $data->is_confirm = $request->is_confirm;
+        $data->is_confirm = 0;
         $results = $data->save();
         if ($results) {
             return redirect()->back()->with('message-success', 'Contributer has been added');
