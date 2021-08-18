@@ -76,6 +76,13 @@
                 </a>
             </li>
             <li class="document  pcoded-trigger">
+                <a href="{{url('admin-withdraw-list')}}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
+                    <span class="pcoded-mtext">Withdraw</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+            <li class="document  pcoded-trigger">
                 <a href="{{url('promocode/create')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
                     <span class="pcoded-mtext">Promocode</span>

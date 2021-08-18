@@ -55,6 +55,8 @@ Route::group(['middleware' => ['revalidate','auth', 'contributor']], function(){
 	//Route::get('/home', 'HomeController@index');
 	Route::get('dashboard', 'HomeController@index');
 
+    Route::get('admin-withdraw-list',"WithdrawController@index");
+    Route::post('admin-withdraw-approve',"WithdrawController@adminWithdrawApprove");
 
 // Role route
 Route::resource('role', 'ErpRoleController');
@@ -296,6 +298,9 @@ Route::middleware([IfContributorWeb::class])->group(function () {
     Route::get('contributor-upload', ['as' => 'contributor-upload', 'uses' => 'CustomerController@upload']);
     Route::post('get_sold_images',"CustomerController@getSoldImages");
     Route::post('get_sold_images_by_date',"CustomerController@getSoldImagesByDate");
+    Route::get('withdraw',"WithdrawController@withdraw");
+    Route::get('withdraw-list',"WithdrawController@withdrawList");
+    Route::Post('submit-withdraw',"WithdrawController@submitWithdraw");
 });
 
 

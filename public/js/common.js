@@ -349,3 +349,39 @@ $(document).ready(function () {
 
    
 });
+
+function approveRequest(id){
+    let formData = new FormData();
+    formData.append('id', id);
+    swal({
+        title: "Are you sure?",
+        text: "Once Approve, This request amount will be withdraw",
+        icon: "warning",
+        buttons: true,
+        warningMode: true,
+    })
+    .then((willApprove) => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+          url: `${baseUrl}/admin-withdraw-approve` ,
+          type: "post",
+          data: formData,
+          contentType: false,
+          processData: false,
+          datatype: "html",
+          success: function( data ) {
+            swal("Image has been Approved!", {
+                icon: "success",
+            });
+            $("#inner_div").empty().html(data);
+         
+    
+          }
+        });
+    });
+ 
+}

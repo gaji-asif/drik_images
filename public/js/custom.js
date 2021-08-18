@@ -110,3 +110,4 @@ $('input[name=debit_credit_amount]').change(function(){
 		$('.credit_div').show();
 	}
 });
+

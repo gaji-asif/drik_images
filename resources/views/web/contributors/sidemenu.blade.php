@@ -12,18 +12,24 @@
         <a class="nav-link" href="{{ url('contributor-uploaded-protfolio-images') }}">Uploaded protfolio images</a>
     </li>
 
+
     @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
         <li class="nav-item">
             <a class="nav-link" href="{{ url('contributor-uploaded-images') }}">All images</a>
         </li>   
     @endif
 
+
     <li class="nav-item">
         <a class="nav-link" href="{{ ('contributor-upload') }}">Upload Image</a>
     </li>
 
 
-   
+    @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('withdraw-list') }}">Withdraw</a>
+    </li>   
+@endif
     <li class="nav-item">
        <a class="nav-link" href="{{ url('user-logout') }}">Log Out</a>
    </li>

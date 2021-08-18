@@ -377,4 +377,6 @@ class CustomerController extends Controller {
         return view('web.contributors.all_image_inner_div_sold', compact('images','categories','user'));
     }
 
+  
+
 }
