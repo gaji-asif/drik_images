@@ -57,6 +57,7 @@ class ImageController extends Controller {
         $contributor = $request["contributor"];
         $masterId = $request["masterId"];
         $is_portfolio = 0;
+        $status = 1;
         try{
             $width = $request["width"];
             $height = $request["height"];
