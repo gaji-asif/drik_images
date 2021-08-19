@@ -374,7 +374,7 @@ function approveRequest(id){
           processData: false,
           datatype: "html",
           success: function( data ) {
-            swal("Image has been Approved!", {
+            swal("Withdraw request has been approved!", {
                 icon: "success",
             });
             $("#inner_div").empty().html(data);
