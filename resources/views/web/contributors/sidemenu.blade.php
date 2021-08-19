@@ -1,37 +1,58 @@
+<style>
+    .nav-item .active{
+        color: #0d4444;
+        font-weight: bold;
+    }
+</style>
+
+@php
+ function navActive($url)
+    {
+        if(Request::path() == $url )
+        {
+            return 'active';
+        }
+        else {
+            return " ";
+        }
+    }
+@endphp
 <ul class="navbar-nav mx-auto">
+
+   
     <li class="nav-item">
-       <a class="nav-link active" href="{{ ('your-dashboard') }}">Dashboard</a>
+       <a class="nav-link {{navActive('your-dashboard')}}" href="{{ ('your-dashboard') }}">Dashboard</a>
    </li>
     <li class="nav-item">
-       <a class="nav-link" href="{{ url('profile') }}">My Profile</a>
+       <a class="nav-link {{navActive('profile')}}" href="{{ url('profile') }}">My Profile</a>
    </li>
 
 
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('contributor-uploaded-protfolio-images') }}">Uploaded protfolio images</a>
+        <a class="nav-link  {{navActive('contributor-uploaded-protfolio-images')}}" href="{{ url('contributor-uploaded-protfolio-images') }}">Uploaded protfolio images</a>
     </li>
 
 
     @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('contributor-uploaded-images') }}">All images</a>
+            <a class="nav-link  {{navActive('contributor-uploaded-images')}}" href="{{ url('contributor-uploaded-images') }}">All images</a>
         </li>   
     @endif
 
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ ('contributor-upload') }}">Upload Image</a>
+        <a class="nav-link  {{navActive('contributor-upload')}}" href="{{ ('contributor-upload') }}">Upload Image</a>
     </li>
 
 
     @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('withdraw-list') }}">Withdraw</a>
+        <a class="nav-link {{navActive('withdraw-list')}}" href="{{ url('withdraw-list') }}">Withdraw</a>
     </li>   
 @endif
     <li class="nav-item">
-       <a class="nav-link" href="{{ url('user-logout') }}">Log Out</a>
+       <a class="nav-link {{navActive('user-logout')}}" href="{{ url('user-logout') }}">Log Out</a>
    </li>
 </ul>
 

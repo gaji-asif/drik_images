@@ -3,7 +3,7 @@
 <div class="table-responsive  mt-4 mb-4">          
     <table id="example" class="table table-bordered " style="width:100%">
         <thead>
-            <tr>
+            <tr class="table-primary">
      
                 <th width="5%">Image Id</th>
                 <th width="30%" class="text-center">Image</th>
@@ -38,7 +38,13 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable(
-            "ordering": false
+            {
+                order: [[ 0, "desc" ]],
+                columnDefs: [{
+                    targets: [0],
+                    orderable: false
+                }]
+            }
         );
     });
 </script>

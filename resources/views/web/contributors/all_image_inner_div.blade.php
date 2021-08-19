@@ -2,7 +2,7 @@
 
 <div class="table-responsive  mt-4 mb-4">          
     <table id="example" class="table table-bordered " style="width:100%">
-        <thead>
+        <thead class="table-primary">
             <tr>
      
                 <th width="5%">Image Id</th>
@@ -47,10 +47,13 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable(
-            "columnDefs": [ {
-            "targets": 0,
-            "orderable": false
-            } ]
+            {
+                order: [[ 0, "desc" ]],
+                columnDefs: [{
+                    targets: [0],
+                    orderable: false
+                }]
+            }
         );
     });
 </script>

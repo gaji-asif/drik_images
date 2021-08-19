@@ -69,12 +69,15 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <script>
     $(document).ready(function() {
-        $('#example').DataTable(
-            "columnDefs": [ {
-            "targets": 0,
-            "orderable": false
-            } ]
-        );
+        // $('#example').DataTable(
+        //     {
+        //         order: [[ 0, "desc" ]],
+        //         columnDefs: [{
+        //             targets: [0],
+        //             orderable: false
+        //         }]
+        //     }
+        // );
     });
 </script>
 

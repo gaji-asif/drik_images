@@ -29,11 +29,15 @@
     <div class="col-sm-9">
         <div class="card ">
             <div class="container mt-4">
-                <a href="{{url('withdraw')}}"><button class="btn btn-info mb-2">Withdraw</button></a>
-                <h5>Withdraw Request(@if(isset($withdrawRequest)){{count($withdrawRequest)}}@endif)</h5>
+                <a href="{{url('withdraw')}}"><button class="btn btn-info mb-2">Make New Request</button></a>
+                <div class="row">
+                    <div class="col-lg-4"> <h5>Withdraw Request(@if(isset($withdrawRequest)){{count($withdrawRequest)}}@endif)</h5></div>
+                    <div class="col-lg-6"><h5>Your Total Earnings - 100</h5></div>
+                </div>
+               
                 <div class="table-responsive  mt-4 mb-4">          
                     <table id="example" class="table table-bordered " style="width:100%">
-                        <thead>
+                        <thead class="table-primary">
                             <tr>
                      
                                 <th >Request Id</th>
@@ -78,10 +82,13 @@
     $(document).ready(function() {
  
         $('#example').DataTable(
-            "columnDefs": [ {
-            "targets": 0,
-            "orderable": false
-            } ]
+            {
+                order: [[ 0, "desc" ]],
+                columnDefs: [{
+                    targets: [0],
+                    orderable: false
+                }]
+            }
         );
     });
 

@@ -1,5 +1,9 @@
 @include('web.partials.header')
-
+<style>
+    thead{
+        background-color: #b8daff;
+    }
+</style>
 <div class="row col-md-12" style="min-height: 450px; background-color: #eff0f4; padding-top: 10px; padding-bottom: 5px;">
     <div class="col-sm-3">
         <div class="card">
@@ -21,8 +25,8 @@
                 <h3>My Wishlist</h3>
                 <div class="table-responsive">          
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
+                        <thead class="table-primary">
+                            <tr >
                                 <th>Items</th>
                                 <th>Price</th>
                                 <th>Add to Card</th>
@@ -49,4 +53,5 @@
     $(document).ready(function() {
         $('#example').DataTable();
     });
+    $("#example thead").addClass("table-primary");
 </script>

@@ -247,7 +247,7 @@ const dynamicImageForm = $($.parseHTML('<div class="row dynamic-imgUp">\n' +
     '                                                        <div class="form-group col-lg-4">\n' +
     '\n' +
     '                                                           <label>Location: </label>\n' +
-    '                                                           <input type="text" class="form-control" id="location" value="" />\n' +
+    '                                                           <input type="text" class="form-control" id="location" value="Upload" />\n' +
     '                                                       </div>\n' +
     '                                                   </div>\n' +
     '\n' +

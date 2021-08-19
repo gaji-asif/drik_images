@@ -32,7 +32,7 @@
                 <h5>All Uploaded Protofolio Images (@if(isset($images)){{count($images)}}@else 0 @endif)</h5>
                 <div class="table-responsive  mt-4 mb-4">          
                     <table id="example" class="table table-bordered " style="width:100%">
-                        <thead>
+                        <thead class="table-primary">
                             <tr>
                          
                                 <th>Image Id</th>
@@ -74,6 +74,14 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable(
+            {
+                order: [[ 0, "desc" ]],
+                columnDefs: [{
+                    targets: [0],
+                    orderable: false
+                }]
+            }
+        );
     });
 </script>

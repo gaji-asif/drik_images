@@ -46,3 +46,20 @@
     </div>
     </div>
 </div>
+
+@if(isset($flag))
+<script>
+     $(document).ready(function() {
+        $('#basic-btn').DataTable(
+            {
+                order: [[ 0, "desc" ]],
+                columnDefs: [{
+                    targets: [0],
+                    orderable: false
+                }]
+            }
+        );
+    });
+</script>
+
+@endif

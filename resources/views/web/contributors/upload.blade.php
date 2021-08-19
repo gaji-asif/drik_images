@@ -1,5 +1,7 @@
 @include('web.partials.header')
-
+<style>
+   
+</style>
 <div class="row col-md-12 " style="min-height: 450px; background-color: #eff0f4; padding-top: 10px; padding-bottom: 5px;">
     <input type="hidden" name="contributor_id" id="contributor-id" value="{{$user->id}}">
     <div class="col-sm-3">
@@ -225,7 +227,7 @@
                                                                                             </div>
                                                                                         </div>
 
-                                                                                        <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center tags-input-container">
+                                                                                        <div class="form-group col-sm-12 col-md-12 col-lg-12 text-left form-row align-items-center tags-input-container" >
                                                                                             <label>Keywords</label>
                                                                                             <input type="text" class="form-control tags-input" id="tags" value="" />
                                                                                         </div>

@@ -67,8 +67,9 @@ class WithdrawController extends Controller
         $item = WithdrawRequest::find($request->id);
         $item->status = 1;
         $item->save();
+        $flag = false;
 
         $withdrawRequest = WithdrawRequest::with('paymentMethod','user')->orderBy('id','DESC')->get(); 
-        return view('backEnd.withdraw.inner_div', compact('withdrawRequest'));
+        return view('backEnd.withdraw.inner_div', compact('withdrawRequest','flag'));
     }
 }
