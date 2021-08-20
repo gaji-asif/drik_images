@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
     Route::get('/', 'GalleryController@index')->name('index');
+    Route::get('web_image_details/{id}', 'GalleryController@imageDetails');
     // Route::get('index', 'GalleryController@index')->name('index');
 
 Route::group(['prefix' => 'admin'], function() {

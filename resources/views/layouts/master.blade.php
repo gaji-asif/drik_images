@@ -286,6 +286,6 @@
 </script>
 
 <script src="{{asset('public/js/image_usage_calculator.js')}}"></script>
-<script src="{{asset('public/js/dev_moin.js')}}"></script>
+
 </body>
 </html>

@@ -1,6 +1,9 @@
 @include('web.partials.header')
 <style>
    
+        .tokenfield{
+            height: auto !important;
+        }
 </style>
 <div class="row col-md-12 " style="min-height: 450px; background-color: #eff0f4; padding-top: 10px; padding-bottom: 5px;">
     <input type="hidden" name="contributor_id" id="contributor-id" value="{{$user->id}}">

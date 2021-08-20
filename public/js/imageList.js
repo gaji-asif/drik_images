@@ -289,11 +289,11 @@ function updateImage() {
          caption: captionInput.value,
          headline: headlineInput.value,
          keywords: $("#tags").tokenfield('getTokensList'),
-         orientation: orientationInput.value,
-         no_people: noPeopleInput.value,
-         people_composition: peopleCompositionInput.value,
-         specific_people: specificPeopleInput.value,
-         location: locationInput.value
+        //  orientation: orientationInput.value,
+        //  no_people: noPeopleInput.value,
+        //  people_composition: peopleCompositionInput.value,
+        //  specific_people: specificPeopleInput.value,
+        //  location: locationInput.value
      };
 
      let formData = new FormData();

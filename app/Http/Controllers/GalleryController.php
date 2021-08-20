@@ -16,7 +16,7 @@ class GalleryController extends Controller {
     public function index() {
   
         $categories = Category::all();
-        $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(10);
+        $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(7);
 
         $imageUsageNames = ImageUsageName::all()->toArray();
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
@@ -65,6 +65,26 @@ class GalleryController extends Controller {
             $imageUsageNameMap[$item['id']] = $item['name'];
         }
         return $imageUsageNameMap;
+    }
+
+    public function imageDetails($id) {
+        $image = ImageChild::where('id',$id)->with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->first();
+
+        $imageUsageNames = ImageUsageName::all()->toArray();
+        $image->imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
+
+            $usage_names_price = ImageUsagPrice::where('image_id', $image->id)->get();
+            if(isset($usage_names_price))
+            {
+                $image->usage_names_price = $usage_names_price;
+            }
+            else
+            {
+                $image->usage_names_price = [];
+            }
+       
+        
+        return response()->json(['data'=>$image], 200);
     }
   
 
