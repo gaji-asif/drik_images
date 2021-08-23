@@ -194,9 +194,12 @@ Route::get('image_details/{id}', 'ImageController@imageDetails');
 
 
 Route::get('image_list_all', 'ImageController@image_list_all');
+Route::get('sold-details/{id}', 'ImageController@soldDetails');
 Route::get('pending_image_list', 'ImageController@pending_image_list');
+Route::get('portfolio_image_list', 'ImageController@portfolio_image_list');
 Route::post('aprove_image', 'ImageController@aproveImage');
 Route::post('get_contributor_images', 'ImageController@getContributorImages');
+Route::post('get_contributor_portfolio_images', 'ImageController@getContributorProtfolioImages');
 
 
 Route::resource('category', 'CategoriesController');

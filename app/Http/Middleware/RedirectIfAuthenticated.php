@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             
             // dd($request->route());
             if($request->route()->uri === "user-login") {
-                return redirect('/home');
+                return redirect('/');
             } else {
                 return redirect('/dashboard');
             }

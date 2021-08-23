@@ -19,7 +19,7 @@ class UserController extends Controller {
 
     public function registration(Request $request)
     {
-        
+        // dd($request->all());
         $validated = $request->validate([
             'email' => 'required|email|unique:users'
         ]);
@@ -49,6 +49,7 @@ class UserController extends Controller {
         if($userType === "1") {
             $inputs["is_confirm"] = 0;
         }
+
 
         User::create($inputs);
 

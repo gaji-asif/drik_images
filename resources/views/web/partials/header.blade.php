@@ -100,7 +100,7 @@
                                         <table class="table table-bordered  m-0">
                                             <tbody>
                                             <tr>
-                                                <td>Name: </td>
+                                                <td>Title: </td>
                                                 <td>{{$details["title"]}}</td>
                                             </tr>
 

@@ -10,6 +10,7 @@ use App\ImageChild;
 use App\ImageUsageName;
 use App\imageUsageSubCategorie;
 use App\ImageUsagPrice;
+use App\PurchaseDetail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -152,9 +153,12 @@ class ImageController extends Controller {
     }
 
     public function image_list_all() {
-        $images = ImageChild::where('id', '>', 1)->paginate(10);
+        $images = ImageChild::where('is_portfolio',0)->paginate(10);
         $total_images = ImageChild::where('id', '>', 1)->get();
-       
+        foreach($images as $image) {
+            $soldImages = PurchaseDetail::where('image_id',$image->id)->where('status',1)->get();
+            $image->sold = ($soldImages->count() > 0) ? $soldImages->count() : 0;
+        }
         return view('backEnd.images.index', compact('images', 'total_images'));
     }
     
@@ -309,18 +313,19 @@ class ImageController extends Controller {
 
     public function pending_image_list(Request $request) {
         $contributor = User::where('user_type', 1)->get();
-        $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+        $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(12);
         $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
         if ($request->ajax()) {
-            $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+            // $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(12);
             return view('backEnd.pending_images.inner_data', compact('images', 'total_images'));
         }
         return view('backEnd.pending_images.index', compact('images', 'total_images','contributor'));
     }
+    
     public function getContributorImages(Request $request) {
         // dd($request);
         if(is_null($request->contributor_id)){
-            $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(4);
+            $images = ImageChild::where('status',0)->where('is_portfolio',0)->paginate(12);
             $total_images = ImageChild::where('status',0)->where('is_portfolio',0)->get();
         }
         else
@@ -370,6 +375,43 @@ class ImageController extends Controller {
             return view('backEnd.pending_images.inner_data', compact('images','total_images'));
         }
     }
+
+    public function soldDetails($id)
+    {
+        $image = ImageChild::find($id);
+        $purchaseDetails = PurchaseDetail::where('image_id',$id)->with('purchase')->get();
+        return view('backEnd.images.sold_details', compact('image','purchaseDetails'));
+    }
+
+    public function portfolio_image_list(Request $request) {
+        $contributor = User::where('user_type', 1)->get();
+        $images = ImageChild::where('is_portfolio',1)->paginate(12);
+        $total_images = ImageChild::where('is_portfolio',1)->get();
+        if ($request->ajax()) {
+            return view('backEnd.portfolio_images.inner_data', compact('images', 'total_images'));
+        }
+        return view('backEnd.portfolio_images.index', compact('images', 'total_images','contributor'));
+    }
+
+    public function getContributorProtfolioImages(Request $request) {
+
+        if(is_null($request->contributor_id)){
+            $images = ImageChild::where('is_portfolio',1)->paginate(12);
+            $total_images = ImageChild::where('is_portfolio',1)->get();
+        }
+        else
+        {
+            $images = ImageChild::where('user_id',$request->contributor_id)->where('is_portfolio',1)->paginate(12);
+            $total_images = ImageChild::where('user_id',$request->contributor_id)->where('is_portfolio',1)->get();
+          
+        }   
+      
+        if ($request->ajax()) {
+            return view('backEnd.portfolio_images.inner_data', compact('images', 'total_images'));
+        }
+        return view('backEnd.portfolio_images.index', compact('images', 'total_images','contributor'));
+    }
+
      // public function aproveImage(Request $request) {
         
     //     $imageId = $request->imageId;

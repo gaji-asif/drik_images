@@ -35,7 +35,7 @@
                         <thead class="table-primary">
                             <tr>
                          
-                                <th>Image Id</th>
+                                <th width="5%">Image Id</th>
                                 <th width="30%" class="text-center">Image</th>
                                 <th >Details</th>
                                

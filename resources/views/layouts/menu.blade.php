@@ -40,6 +40,18 @@
         <img width="30%" src="{{asset('public/images/Drik images logo.png')}}">
     </div>
 </div>
+@php
+ function navActive($url)
+    {
+        if(Request::path() == $url )
+        {
+            return 'active';
+        }
+        else {
+            return " ";
+        }
+    }
+@endphp
 <div class="header">
         <nav class="navbar navbar-expand-lg bg-transparent bg-white">
             <a class="navbar-brand" href="index-2.html">
@@ -59,7 +71,7 @@
                     @if(!is_null(auth()->user()))
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('your-dashboard')}}">Dashboard</a>
+                            <a class="nav-link {{navActive('your-dashboard')}}" href="{{route('your-dashboard')}}">Dashboard</a>
                         </li>
                     @endif
                     <li class="nav-item">

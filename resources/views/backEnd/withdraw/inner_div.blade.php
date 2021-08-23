@@ -8,7 +8,7 @@
             <table id="basic-btn" class="table table-striped table-bordered nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th >Request Id</th>
+                        <th width="5%">Request Id</th>
                         <th >Name</th>
                         <th >Amount</th>
                         <th >Payment Type</th>

@@ -478,4 +478,29 @@ function getImages()
     });
 
 }
-  
+function getPortfolioImages()
+{
+    let contributor_id = $("#contributor_portfolio_id").val();
+    let formData = new FormData();
+    formData.append('contributor_id', contributor_id);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+      url: `${baseUrl}/get_contributor_portfolio_images` ,
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      datatype: "html",
+      success: function( data ) {
+        $("#inner_div").empty().html(data);
+        location.hash = page;
+
+      }
+    });
+
+}
