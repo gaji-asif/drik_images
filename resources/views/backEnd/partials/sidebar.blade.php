@@ -59,14 +59,6 @@
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-
-			<li class="document  pcoded-trigger">
-				<a href="{{url('portfolio_image_list')}}" class="waves-effect waves-dark">
-					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
-					<span class="pcoded-mtext">All Portfolio Images</span>
-					<span class="pcoded-mcaret"></span>
-				</a>
-			</li>
 			<li class="document  pcoded-trigger">
 				<a href="{{url('pending_image_list')}}" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
@@ -74,6 +66,14 @@
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
+			<li class="document  pcoded-trigger">
+				<a href="{{url('portfolio_image_list')}}" class="waves-effect waves-dark">
+					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
+					<span class="pcoded-mtext">All Portfolio Images</span>
+					<span class="pcoded-mcaret"></span>
+				</a>
+			</li>
+	
 
             <li class="document  pcoded-trigger">
                 <a href="{{url('contributor')}}" class="waves-effect waves-dark">

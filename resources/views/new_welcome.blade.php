@@ -145,31 +145,29 @@ figure img {
 </style>
 
 <div class="gallery-2">
-<div class="grid are-images-unloaded">
-    @foreach ($images as $image)
-        <figure class="grid-image" style="flex-grow:{{ $image->width * 100 / $image->height }}; flex-basis: {{ $image->width * 240 / $image->height }}px">
-            <a href="#" class="image-popup" data-toggle="modal" onclick="imageDetailsModel({{$image->id}})" data-target={{"#image_details-".$image->id}}>
-            <i style="padding-bottom:{{ $image->height / $image->width * 100}}%"></i>
-            <div class="img">
-                <img src="{{$image->medium_url}}" alt="picture">
+    <div class="grid are-images-unloaded">
+        @foreach ($images as $image)
+            <figure class="grid-image" style="flex-grow:{{ $image->width * 100 / $image->height }}; flex-basis: {{ $image->width * 240 / $image->height }}px">
+                <a href="#" class="image-popup" data-toggle="modal" onclick="imageDetailsModel({{$image->id}})" data-target={{"#image_details-".$image->id}}>
+                <i style="padding-bottom:{{ $image->height / $image->width * 100}}%"></i>
+                <div class="img">
+                    <img src="{{$image->medium_url}}" alt="picture">
 
-                <div class="img-details">
-                    <p class="category-name">{{$image->title}}</p>
-                    <h4 class="image-name">{{$image->author}}</h4>
+                    <div class="img-details">
+                        <p class="category-name">{{$image->title}}</p>
+                        <h4 class="image-name">{{$image->author}}</h4>
+                    </div>
+                    <div class="corner-top"></div>
+                    <div class="corner-bottom"></div>
+                    
                 </div>
-                <div class="corner-top"></div>
-                <div class="corner-bottom"></div>
+            </a>
                 
-            </div>
-         </a>
+            </figure>
             
-        </figure>
         
-      
-    @endforeach
- 
-    
-  </div>
+        @endforeach  
+    </div>
   
   <div class="page-load-status">
     <div class="loader-ellips infinite-scroll-request">
@@ -387,7 +385,7 @@ figure img {
   <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
   <script>
       var elem2 = document.querySelector('.grid');
-      var infScroll = new InfiniteScroll( '.grid', {
+      var infScroll = new InfiniteScroll('.grid', {
         path: '?page=@{{#}}',
         append: 'figure',
         history: false,

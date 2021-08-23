@@ -5,18 +5,7 @@
     }
 </style>
 
-@php
- function navActive($url)
-    {
-        if(Request::path() == $url )
-        {
-            return 'active';
-        }
-        else {
-            return " ";
-        }
-    }
-@endphp
+
 <ul class="navbar-nav mx-auto">
 
    
