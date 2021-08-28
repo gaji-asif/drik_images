@@ -1,3 +1,17 @@
+@php
+ function navActive($url)
+    {
+        if(Request::path() == $url )
+        {
+            return 'active';
+        }
+        else {
+            return " ";
+        }
+    }
+@endphp
+
+
 <nav class="pcoded-navbar">
 		<div class="sidebar_toggle"><a href=""><i class="icon-close icons"></i></a></div>
 		<div class="pcoded-inner-navbar main-menu">
@@ -26,7 +40,7 @@
 
 			<div class="pcoded-navigation-label">Navigation</div>
 			<ul class="pcoded-item pcoded-left-item">
-			<li class="pcoded-hasmenu dashboard active pcoded-trigger">
+			<li class="pcoded-hasmenu dashboard pcoded-trigger {{navActive('dashboard')}}">
 				<a href="{{url('dashboard')}}" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
 					<span class="pcoded-mtext">Dashboard</span>
@@ -52,21 +66,21 @@
 				</a>
 			</li> -->
 
-			<li class="document  pcoded-trigger">
+			<li class="document  pcoded-trigger {{navActive('image_list_all')}}">
 				<a href="{{url('image_list_all')}}" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
 					<span class="pcoded-mtext">Content Management</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-			<li class="document  pcoded-trigger">
+			<li class="document  pcoded-trigger  {{navActive('pending_image_list')}}">
 				<a href="{{url('pending_image_list')}}" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
 					<span class="pcoded-mtext">All Pending Images</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-			<li class="document  pcoded-trigger">
+			<li class="document  pcoded-trigger {{navActive('portfolio_image_list')}}">
 				<a href="{{url('portfolio_image_list')}}" class="waves-effect waves-dark">
 					<span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
 					<span class="pcoded-mtext">All Portfolio Images</span>
@@ -75,21 +89,21 @@
 			</li>
 	
 
-            <li class="document  pcoded-trigger">
+            <li class="document  pcoded-trigger  {{navActive('contributor')}}">
                 <a href="{{url('contributor')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
                     <span class="pcoded-mtext">Contributors</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="document  pcoded-trigger">
+            <li class="document  pcoded-trigger {{navActive('admin-withdraw-list')}}">
                 <a href="{{url('admin-withdraw-list')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
                     <span class="pcoded-mtext">Withdraw</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="document  pcoded-trigger">
+            <li class="document  pcoded-trigger {{navActive('promocode/create')}}">
                 <a href="{{url('promocode/create')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-agenda"></i><b>a</b></span>
                     <span class="pcoded-mtext">Promocode</span>
@@ -121,8 +135,8 @@
 				</a>
 				<ul class="pcoded-submenu">
 					@can('Add User')
-					<li class="user">
-						<a href="{{route('user.create')}}" class="waves-effect waves-dark">
+					<li class="document  pcoded-trigger user {{navActive('user/create')}}">
+						<a href="{{route('user.create')}}" class="waves-effect waves-dark ">
 							<span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
 							<span class="pcoded-mtext">Add User</span>
 						</a>
@@ -130,19 +144,19 @@
 					@endcan
 
 {{--					@can('View User List')--}}
-					<li class="user">
+					<li class="document  pcoded-trigger user  {{navActive('user')}}">
 						<a href="{{url('user')}}" class="waves-effect waves-dark">
 							<span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
 							<span class="pcoded-mtext">Users List</span>
 						</a>
 					</li>
-					<li class="user">
+					<li class="document  pcoded-trigger user  {{navActive('category')}}">
 						<a href="{{route('category.index')}}" class="waves-effect waves-dark">
 							<span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
 							<span class="pcoded-mtext">Category List</span>
 						</a>
 					</li>
-					<li class="user">
+					<li class="document  pcoded-trigger user {{navActive('image_use')}}">
 						<a href="{{url('image_use')}}" class="waves-effect waves-dark">
 							<span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
 							<span class="pcoded-mtext">Image Use prices</span>

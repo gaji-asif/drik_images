@@ -231,6 +231,7 @@ class SslCommerzPaymentController extends Controller
                 {
                     $request->session()->forget('cart');
                 }
+                session()->flash('access', 1);
                 return redirect('/success_page/'.$purchase->id);
            
             } else {
@@ -252,6 +253,8 @@ class SslCommerzPaymentController extends Controller
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
             // echo "Transaction is successfully Completed";
+            session()->flash('access', 1);
+
             return redirect('/success_page/'.$purchase->id);
         } else {
             return redirect('/failed_page');
@@ -286,6 +289,8 @@ class SslCommerzPaymentController extends Controller
             // echo "Transaction is Falied";
         } else if ($order_detials->status == 'Processing' || $order_detials->status == 'Complete') {
             // echo "Transaction is already Successful";
+            session()->flash('access', 1);
+
             return redirect('/success_page/'.$purchase->id);  
         } else {
             // echo "Transaction is Invalid";
@@ -316,6 +321,8 @@ class SslCommerzPaymentController extends Controller
 
                 return redirect('/cancel_page');
         } else if ($order_detials->status == 'Processing' || $order_detials->status == 'Complete') {
+            session()->flash('access', 1);
+          
             return redirect('/success_page/'.$purchase->id);
         } else {
             echo "Transaction is Invalid";

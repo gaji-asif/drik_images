@@ -229,8 +229,9 @@ function editImage(imageId) {
                             headlineInput.value = headline;
                             captionInput.value = caption;
                             
-                            image_id.value = imageId;
+                      
                             if(imageUsagePrice.length>0) {
+                                image_id.value = imageId;
                                 price_0.value = imageUsagePrice[0].price;
                                 price_1.value = imageUsagePrice[1].price;
                                 price_2.value = imageUsagePrice[2].price;

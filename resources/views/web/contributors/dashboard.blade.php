@@ -23,6 +23,15 @@
             <div class="col-lg-12 mt-4">
                 <div class="container">
                     <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+                        @if (auth()->user()->is_confirm == 0)
+                            <div class="col-xl-12 col-md-12">
+                                <div class="alert alert-danger">
+                                  <strong>Admin are reviwing your account. Please wait for approval.And upload your portfolio Images.</strong>
+                                </div>
+                            </div>
+                        @endif
+                        
+
                         <div class="col-xl-3 col-md-6">
                             <div class="card">
                                 <div class="card-block" style="padding: 32px; text-align: center;">

@@ -308,19 +308,21 @@ function getPromoCode(){
         if(data.status == "success"){
             let subTotal = $("#subtotal").text();
             let promocodeAmount = data.data;
+            promocodeAmount = Number(promocodeAmount);
             //add subtotal with promocodeAmount 
-            let total = Number(subTotal) - Number(promocodeAmount);
+            let total = Number(subTotal) - promocodeAmount;
             if(total<=0){
                 total = 0.0;     
             }
             $("#total").text(total.toFixed(2));
             $("#total_input").val(total.toFixed(2));
+            $("#discount").text(promocodeAmount.toFixed(2));
             $("#promo_code_input").val(promoCode);
             if(!$(".invalid_promo_code").hasClass("invalid_promo_code_display_none"))
             {
                 $(".invalid_promo_code").addClass("invalid_promo_code_display_none");
             }
-          
+            toastr.success("Promo code applied Successfully");
         }
         else{
             $(".promo_code_div").addClass("mb-2");

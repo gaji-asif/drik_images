@@ -135,6 +135,26 @@
 									</div>
 								</div>
 				           @endif
+						   @if(isset($editData) )
+						   <div class="form-group row">
+							   <label for="image_sell_percetages" class="col-md-4 col-form-label text-md-right">{{ __('Percentage Ratio') }}</label>
+							   <div class="col-md-6">
+								   <select class="js-example-basic-single col-sm-12 {{ $errors->has('image_sell_percetages') ? ' is-invalid' : '' }}" name="image_sell_percetages" id="image_sell_percetages">
+								   <option value="">Select a option</option>
+									@if(isset($image_sell_percetages))
+										@foreach ($image_sell_percetages as $image_sell_percetage)
+											<option value="{{$image_sell_percetage->id}}" @if($editData->contributor_percentage == $image_sell_percetage->id) selected @endif>{{$image_sell_percetage->name}}</option>
+										@endforeach
+									@endif
+								   </select>
+								   {{-- @if ($errors->has('is_confirm'))
+								   <span class="invalid-feedback invalid-select" role="alert">
+									   <strong>{{ $errors->first('is_confirm') }}</strong>
+								   </span>
+								   @endif --}}
+							   </div>
+						   </div>
+					  @endif
 
 						</div>
 					</div>

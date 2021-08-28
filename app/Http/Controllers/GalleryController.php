@@ -34,7 +34,7 @@ class GalleryController extends Controller {
         $user = Auth::user();
         $home = 'home';
         $imageUsageCategory = imageUsageCategorie::all();
-        return view('new_welcome', compact('images', 'categories','imageUsageCategory','imageUsageNameMap', 'user', 'home'));
+        return view('welcome', compact('images', 'categories','imageUsageCategory','imageUsageNameMap', 'user', 'home'));
     }
     public function shareImage($id) {
        

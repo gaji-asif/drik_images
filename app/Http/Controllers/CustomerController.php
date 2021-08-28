@@ -377,6 +377,12 @@ class CustomerController extends Controller {
         return view('web.contributors.all_image_inner_div_sold', compact('images','categories','user'));
     }
 
+    public function contributorContact()
+    {
+        $categories = Category::all();        
+        $user = Auth::user();
+        return view('web.contributors.contact',compact('categories','user'));
+    }
   
 
 }

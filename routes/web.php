@@ -305,6 +305,7 @@ Route::middleware([IfContributorWeb::class])->group(function () {
     Route::get('withdraw',"WithdrawController@withdraw");
     Route::get('withdraw-list',"WithdrawController@withdrawList");
     Route::Post('submit-withdraw',"WithdrawController@submitWithdraw");
+    Route::get('contributor-contact',"CustomerController@contributorContact");
 });
 
 

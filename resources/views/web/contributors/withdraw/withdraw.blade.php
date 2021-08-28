@@ -36,7 +36,7 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="amount">Withdraw Amount</label>
-                        <input type="number" step="0.1" min="0.1" required class="form-control" id="amount" name="amount" placeholder="0.0" value="0.0">
+                        <input type="number" step="0.1" min="0.1" required class="form-control" id="amount" name="amount" placeholder="0.0" @if (isset($contributorWithdrawInformation)) max="{{$contributorWithdrawInformation->muture_amount}}"@endif>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="paymentMethod">Payment Type</label>
