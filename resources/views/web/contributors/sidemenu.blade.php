@@ -5,18 +5,7 @@
     }
 </style>
 
-@php
- function navActive($url)
-    {
-        if(Request::path() == $url )
-        {
-            return 'active';
-        }
-        else {
-            return " ";
-        }
-    }
-@endphp
+
 <ul class="navbar-nav mx-auto">
 
    
@@ -47,12 +36,16 @@
 
 
     @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 1)
-    <li class="nav-item">
-        <a class="nav-link {{navActive('withdraw-list')}}" href="{{ url('withdraw-list') }}">Withdraw</a>
-    </li>   
-@endif
+        <li class="nav-item">
+            <a class="nav-link {{navActive('withdraw-list')}}" href="{{ url('withdraw-list') }}">Withdraw</a>
+        </li>   
+    @endif
+    @if (Auth::user()->user_type == 1 && Auth::user()->is_confirm == 0)
+        <li class="nav-item">
+            <a class="nav-link {{navActive('contributor-contact')}}" href="{{ url('contributor-contact') }}">Contact</a>
+        </li>   
+    @endif
     <li class="nav-item">
        <a class="nav-link {{navActive('user-logout')}}" href="{{ url('user-logout') }}">Log Out</a>
    </li>
 </ul>
-
