@@ -19,6 +19,9 @@
                             <h5 class="card-title">id#{{$image->id}}</h5>
                             <p class="card-text">{{$image->title}}</p>
                             <button  type="button" onclick="approveAnImage({{$image->id}})" class="btn btn-success action-icon"><i class="fa fa-check"></i></button>
+                            
+                            <button onclick="editImage(<?php echo $image->id; ?>)" type="button"
+                                class="btn btn-success action-icon"><i class="fa fa-edit"></i></button>
                             <button onclick="pendinDeleteAnImage({{$image->id}})" type="button" class="btn btn-danger action-icon"><i class="fa fa-trash-o"></i></button>
                         </div>
                     </div>

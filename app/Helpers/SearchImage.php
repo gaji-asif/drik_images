@@ -21,14 +21,15 @@ class SearchImage {
         $searchKeyWords = array_filter($searchKeyWords, function($elm) {
             return strlen($elm) > 2;
         });
-
-        foreach ($searchKeyWords as $value){
-            if(!isset($searchQuery)) {
-                $searchQuery = ImageChild::where('keywords', 'like', '%' . $value . '%');
-            } else {
-                $searchQuery = $searchQuery->orWhere('keywords', 'like', '%' . $value . '%');
-            }
-        };
+        $searchQuery = DB::Table('all_images_childs')
+        ->select("*")
+        ->where('status',1)
+        ->where('is_portfolio',0)                
+        ->Where(function ($query) use($searchKeyWords) {
+             for ($i = 0; $i < count($searchKeyWords); $i++){
+                $query->orwhere('keywords', 'like',  '%' . $searchKeyWords[$i] .'%');
+             }      
+        });
 
         if($request["sorting"]) {
             if($request["sorting"] === "asc") {

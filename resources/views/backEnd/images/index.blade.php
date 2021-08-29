@@ -92,9 +92,11 @@
                                         <input type="checkbox" name="id" value="{{$image->id}}">
                                     </p> --}}
                                     <p style="margin-top: 15px; text-align:right;margin-right:5px">
-                                      <a href="{{url('sold-details/'.$image->id)}}"><strong>Sold : @if(isset($image->sold)){{$image->sold}} @endif</strong></a>  
+                                        <a href="{{ url('sold-details/' . $image->id) }}"><strong>Sold :
+                                                @if (isset($image->sold)){{ $image->sold }} @endif</strong></a>
                                     </p>
-                                    <img class="card-img-top" src="{{ asset($image->thumbnail_url) }}" alt="Card image cap">
+                                    <img class="card-img-top" src="{{ asset($image->thumbnail_url) }}"
+                                        alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">id#{{ $image->id }}</h5>
                                         <p class="card-text">{{ $image->title }}</p>
@@ -148,8 +150,8 @@
                                         <div class="tab-pane fade active show" id="tabOne">
                                             <div class="form-row">
                                                 <!-- <div class="col-md-12 text-left">
-                                                <h6>IPTC Metadata</h6>
-                                            </div> -->
+                                                    <h6>IPTC Metadata</h6>
+                                                </div> -->
                                                 <div
                                                     class="form-group col-sm-12 col-md-12 col-lg-6 text-left form-row align-items-center">
                                                     <div class="col-sm-3 col-md-2 col-lg-3">
@@ -430,11 +432,11 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <!--  <div class="modal-header">
-                                            <h5 class="modal-title" id="image-edit-modal">Bulk Edit</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div> -->
+                                                <h5 class="modal-title" id="image-edit-modal">Bulk Edit</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div> -->
                     <div class="modal-body">
                         <div class="col-md-12">
                             <div class="card shadow-sm">
@@ -451,7 +453,8 @@
                                                 <option value="">Select Contributor</option>
                                                 @if (isset($contributors))
                                                     @foreach ($contributors as $contributor)
-                                                        <option value="{{ $contributor->id }}">{{ $contributor->name }}
+                                                        <option value="{{ $contributor->id }}">
+                                                            {{ $contributor->name }}
                                                         </option>
                                                     @endforeach
                                                 @endif

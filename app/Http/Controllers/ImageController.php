@@ -240,6 +240,7 @@ class ImageController extends Controller {
 
     public function searchImage(Request $request)
     {
+
         $search = $request->input('search_key');
 
         $searchKeyWords = explode(" ", $search);
@@ -248,18 +249,21 @@ class ImageController extends Controller {
             return strlen($elm) > 2;
         });
 
-        foreach ($searchKeyWords as $value){
-            if(!isset($searchQuery)) {
-                $searchQuery = ImageChild::where('keywords', 'like', '%' . $value . '%');
-            } else {
-                $searchQuery = $searchQuery->orWhere('keywords', 'like', '%' . $value . '%');
-            }
-        };
 
-        $images = $searchQuery->paginate(20);
+        $searchQuery = DB::Table('all_images_childs')
+        ->select("*")
+        ->where('status',1)
+        ->where('is_portfolio',0)                
+        ->Where(function ($query) use($searchKeyWords) {
+             for ($i = 0; $i < count($searchKeyWords); $i++){
+                $query->orwhere('keywords', 'like',  '%' . $searchKeyWords[$i] .'%');
+             }      
+        });
+        $images = $searchQuery->paginate(4);
 
         $categories = Category::all();
         $photographers = User::where('user_type', 1)->get();
+
         return view('filter', compact('images', 'categories', 'photographers'));
     }
 

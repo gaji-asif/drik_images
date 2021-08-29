@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\ContributorWithdrawInformations;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ImageChild;
+use App\ImageSellPercentage;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Validation\Rule;
 // use Validator;
@@ -21,7 +23,9 @@ class ContributorController extends Controller
     {
 
         $users = User::where('user_type', '=', 1)->get();
-        return view('backEnd.contributers.create', compact('users'));
+        $image_sell_percetages = ImageSellPercentage::all();
+        
+        return view('backEnd.contributers.create', compact('users','image_sell_percetages'));
     }
 
     /**
@@ -95,7 +99,9 @@ class ContributorController extends Controller
         //$parent_cat = Category::where('parent_category_id', 0)->get();
         $users = User::where('user_type', '=', 1)->get();
         $editData = User::find($id);
-        return view('backEnd.contributers.create', compact('editData', 'users'));
+        $image_sell_percetages = ImageSellPercentage::all();
+ 
+        return view('backEnd.contributers.create', compact('editData', 'users','image_sell_percetages'));
     }
 
     /**
@@ -108,13 +114,36 @@ class ContributorController extends Controller
     public function update(Request $request, $id)
     {
         //echo "adasd"; exit;
+        
         $data = User::find($id);
+        
+        if($data->is_confirm == 0 && $request->is_confirm == 1)
+        {
+            $contributor_withdraw_information = ContributorWithdrawInformations::where('contributor_id',$id)->first();
+            if(empty($contributor_withdraw_information))
+            {
+          
+                $today = date("Y-m-d");
+                $contributor_withdraw_information = new ContributorWithdrawInformations();
+                $contributor_withdraw_information->	contributor_id = $id;
+                $contributor_withdraw_information->muture_date = date("Y-m-d",strtotime("$today +45 days"));
+                $contributor_withdraw_information->total_amount = "0.0";
+                $contributor_withdraw_information->muture_amount = "0.0"; 
+                $contributor_withdraw_information->save(); 
+            }
+            
+
+        }
+
         $data->name = $request->first_name;
         $data->company_name = $request->company_name;
         $data->job_title = $request->job_title;
         $data->email = $request->email;
         $data->is_confirm = $request->is_confirm;
+        $data->contributor_percentage = $request->image_sell_percetages;
         $results = $data->save();
+      
+
         if ($results) {
             return redirect('contributor')->with('message-success', 'Contributer has been Updated');
         } else {

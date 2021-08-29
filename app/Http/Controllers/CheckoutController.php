@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\ContributorWithdrawInformations;
 use App\ImageChild;
+use App\ImageSellPercentage;
 use App\Promocode;
 use App\Purchase;
 use App\User;
@@ -43,7 +45,28 @@ class CheckoutController extends Controller {
         $pdfPath = 'pdf/invoice-'.time().'-'.$purchase->id.'.pdf';
         $pdf = PDF::loadView('web.invoice.index', compact('purchase','user'))->save(public_path($pdfPath));
 
-        $this->sendMail($user,$purchase,$pdfPath);
+    
+
+        if(session()->has('access') && session()->get('access') == 1) {
+            if(isset($purchase->purchase_details)) {
+                foreach ($purchase->purchase_details as $purchase_detail) {
+                    // get image from image childe table
+                    $imageChild = ImageChild::where('id', $purchase_detail->image_id)->first();
+                    // get contributor from user table
+                    $contributor = User::where('id', $imageChild->user_id)->first();
+                    // get contributor image percentages ratio
+                    $imageSellPercentage = ImageSellPercentage::find($contributor->contributor_percentage);
+                    // process contributor image price
+                    $price = ($purchase_detail->price * $imageSellPercentage->contributor_percentage )/100;
+                    // get contributor withdraw informations and update total amount
+                    $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id', $contributor->id)->first();
+                    $contributorWithdrawInformation->total_amount = $contributorWithdrawInformation->total_amount + $price;
+                    $contributorWithdrawInformation->save();
+                }
+            }
+        }
+        // $this->sendMail($user,$purchase,$pdfPath);
+
         return view('success_page', compact('categories', 'page'));
     }
     public function failed_page() {

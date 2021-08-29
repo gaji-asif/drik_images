@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\ContributorWithdrawInformations;
 use App\Http\Controllers\Controller;
 use App\PaymentMethod;
 use App\WithdrawRequest;
@@ -21,7 +22,8 @@ class WithdrawController extends Controller
         $user = Auth::user();
         $categories = Category::where('parent_category_id', null)->get();
         $paymentMethods = PaymentMethod::all();
-        return view('web.contributors.withdraw.withdraw', compact('categories', 'user','paymentMethods'));
+        $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$user->id)->first();
+        return view('web.contributors.withdraw.withdraw', compact('categories', 'user','paymentMethods','contributorWithdrawInformation'));
     }
 
     public function submitWithdraw(Request $request)
@@ -50,10 +52,20 @@ class WithdrawController extends Controller
             return redirect('your-dashboard');
         }
         $user = Auth::user();
+        $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$user->id)->first();
+        if(strtotime($contributorWithdrawInformation->muture_date) < strtotime(date('Y-m-d')))
+        {
+            $contributorWithdrawInformation->muture_amount = $contributorWithdrawInformation->muture_amount +  $contributorWithdrawInformation->total_amount ;
+            $contributorWithdrawInformation->total_amount ="0.0";
+            $contributorWithdrawInformation->save();
+      
+        }
         $categories = Category::where('parent_category_id', null)->get();
         $paymentMethods = PaymentMethod::all();
         $withdrawRequest = WithdrawRequest::with('paymentMethod')->where('user_id', Auth::user()->id)->orderBy('id','DESC')->get(); 
-        return view('web.contributors.withdraw.withdraw_list', compact('categories', 'user','paymentMethods','withdrawRequest'));
+        $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$user->id)->first();
+      
+        return view('web.contributors.withdraw.withdraw_list', compact('categories', 'user','paymentMethods','withdrawRequest','contributorWithdrawInformation'));
     }
 
     public function index()
@@ -65,11 +77,21 @@ class WithdrawController extends Controller
     public function adminWithdrawApprove(Request $request)
     {
         $item = WithdrawRequest::find($request->id);
-        $item->status = 1;
-        $item->save();
-        $flag = false;
-
-        $withdrawRequest = WithdrawRequest::with('paymentMethod','user')->orderBy('id','DESC')->get(); 
-        return view('backEnd.withdraw.inner_div', compact('withdrawRequest','flag'));
+        $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$item->user_id)->first();
+      
+        if($contributorWithdrawInformation->muture_amount >= $item->amount)
+        {
+            $contributorWithdrawInformation->muture_amount = $contributorWithdrawInformation->muture_amount - $item->amount ;
+            $contributorWithdrawInformation->save();
+     
+            $item->status = 1;
+            $item->save();
+            $flag = false;
+            
+            $withdrawRequest = WithdrawRequest::with('paymentMethod','user')->orderBy('id','DESC')->get(); 
+            return view('backEnd.withdraw.inner_div', compact('withdrawRequest','flag'));
+        }
+       
+  
     }
 }
