@@ -10,11 +10,11 @@ let searchKey = null
 document.addEventListener("DOMContentLoaded", function(){
     let searchParams = new URLSearchParams(window.location.search);
     searchKey = searchParams.get("search_key");
-    $('.grid').imagesLoaded( function() {
-        $grid = $('.grid').masonry({
-            itemSelector: '.grid-item'
-        });
-    });
+    // $('.grid').imagesLoaded( function() {
+    //     $grid = $('.grid').masonry({
+    //         itemSelector: '.grid-item'
+    //     });
+    // });
     $("#sort-menu").on('click', sortImages);
     $("#time-menu").on('click', filterByTime);
     $("#orientation-menu").on('click', filterByOrientation);
@@ -25,12 +25,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
     pagination = document.querySelector(".pagination");
 
-    if(pagination) {
-        [...pagination.querySelectorAll('li')].forEach((item, index) => {
-            item.dataset.page = index.toString();
-        });
-        pagination.onclick = changePage;
-    }
+    // if(pagination) {
+    //     [...pagination.querySelectorAll('li')].forEach((item, index) => {
+    //         item.dataset.page = index.toString();
+    //     });
+    //     pagination.onclick = changePage;
+    // }
 
 });
 
@@ -88,22 +88,24 @@ function filterByPhotographer(event) {
     filterImages();
 }
 
-function reCreatePagination(last_page) {
-    pagination.innerHTML = "";
-    let paginationHtml = '<li class="page-item disabled" aria-disabled="true" aria-label="« Previous" data-page="0">\n' +
-        '                <span class="page-link" aria-hidden="true">‹</span>\n' +
-        '            </li>';
-    for(let i=1; i<=last_page; i++) {
+// function reCreatePagination(last_page) {
+//     baseUrl = $('#base_url').val();
+//     findKey = $('#find_key').val();
+//     pagination.innerHTML = "";
+//     let paginationHtml = '<li class="page-item disabled" aria-disabled="true" aria-label="« Previous" data-page="0">\n' +
+//         '                <span class="page-link" aria-hidden="true">‹</span>\n' +
+//         '            </li>';
+//     for(let i=1; i<=last_page; i++) {
 
-        paginationHtml += `<li class="page-item ${i === 1 ? 'active' : ''}" data-page="${i}"><a class="page-link" href="http://localhost/drik/filter/1?page=${i}">${i}</a></li>`
-    }
+//         paginationHtml += `<li class="page-item ${i === 1 ? 'active' : ''}" data-page="${i}"><a class="page-link" href="${baseUrl}/search?search_key=${findKey}&page=${i}">${i}</a></li>`
+//     }
 
-    paginationHtml += '<li class="page-item" data-page="3">\n' +
-        '                <a class="page-link" href="http://localhost/drik/filter/1?page=2" rel="next" aria-label="Next »">›</a>\n' +
-        '            </li>';
+//     paginationHtml += '<li class="page-item" data-page="3">\n' +
+//         `                <a class="page-link" href="${baseUrl}/search?search_key=${findKey}&page=2" rel="next" aria-label="Next »">›</a>\n` +
+//         '            </li>';
 
-    pagination.innerHTML = paginationHtml;
-}
+//     pagination.innerHTML = paginationHtml;
+// }
 
 function filterImages(pageNumber=1, refreshPagination = false) {
     let formData = new FormData();
@@ -132,37 +134,30 @@ function filterImages(pageNumber=1, refreshPagination = false) {
     if(photographer) {
         formData.append('photographer', photographer);
     }
-    if(orientation) {
 
-    }
-    fetch(baseUrl+"/filter", {
-        method: 'POST',
+ 
+
+    $.ajaxSetup({
         headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
-        },
-        body: formData
-    }).then(res => res.json())
-        .then(res => {
-            //let images = res.images;
-            let response = res.images;
-            let images = response.data;
-            let imageElements = [];
-            let imagesContainerGrid = document.querySelector(".grid");
-            imagesContainerGrid.innerHTML = "";
-            images.forEach(image => {
-                let imageGridElement = imageGrid(image);
-                //imagesContainerGrid.append(imageGridElement);
-                imageElements.push(imageGridElement);
-            });
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+      url: `${baseUrl}/filter` ,
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      datatype: "html",
+      success: function( data ) {
+        //   console.log(data);
+        $("#filter_inner_div").empty().html(data);
+      }
+    });
 
-            let $elems = $( imageElements );
+}   
 
-            $grid.append( $elems ).masonry( 'prepended', $elems );
-            if(refreshPagination) {
-                reCreatePagination(response.last_page);
-            }
-        })
-}
+
 
 function changePage(e) {
     e.preventDefault();
@@ -185,4 +180,66 @@ function makeOptionActive(option)
     }
     option.classList.add('active');
 }
+
+$(document).ready(function()
+{
+    $(document).on('click', '.pagination a',function(event)
+    {
+        event.preventDefault();
+
+       
+        $('li').removeClass('active');
+        $(this).parent('li').addClass('active');
+
+        var myurl = $(this).attr('href');
+        var page=$(this).attr('href').split('page=')[1];
+
+        let formData = new FormData();
+        formData.append("search_key", searchKey);
+        if(sorting) {
+            formData.append('sorting', sorting);
+        }
+        if(time) {
+            formData.append('time', time);
+        }
+        if(orientation)
+        {
+            formData.append('orientation', orientation);
+        }
+        if(people)
+        {
+            formData.append('people', people);
+        }
+        if(composition)
+        {
+            formData.append('composition', composition);
+        }
+        if(page) {
+            formData.append('page', page);
+        }
+        if(photographer) {
+            formData.append('photographer', photographer);
+        }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax(
+        {
+            url: `${baseUrl}/filter`,
+            type: "post",
+            data: formData,
+            datatype: "html",
+            processData: false,
+            contentType: false
+        }).done(function(data){
+            $("#filter_inner_div").empty().html(data);
+            // location.hash = page;
+        }).fail(function(jqXHR, ajaxOptions, thrownError){
+              alert('No response from server');
+        });
+    });
+
+});
 

@@ -15,12 +15,13 @@ class SearchImage {
         $previousPage = $page - 1;
 
         $search = $request->input('search_key');
-
+       
         $searchKeyWords = explode(" ", $search);
 
         $searchKeyWords = array_filter($searchKeyWords, function($elm) {
             return strlen($elm) > 2;
         });
+
         $searchQuery = DB::Table('all_images_childs')
         ->select("*")
         ->where('status',1)
@@ -42,7 +43,9 @@ class SearchImage {
         }
 
         if($request["time"]) {
-            $searchQuery = $searchQuery->where('created_at', '>=', Carbon::now()->subDay($request["time"]));
+            if($request["time"] != "no_time") {
+                $searchQuery = $searchQuery->where('created_at', '>=', Carbon::now()->subDay($request["time"]));
+            }
         }
 
         if($request["photographer"]) {
@@ -56,19 +59,30 @@ class SearchImage {
         }
 
         if($request["orientation"]) {
-            $searchQuery = $searchQuery->where('orientation', $request["orientation"]);
+            if($request["orientation"] != "no_orientation") {
+                $searchQuery = $searchQuery->where('orientation', $request["orientation"]);
+            }
         }
 
-        if($request["people"])
+        if(isset($request["people"]) && $request["people"]>=0)
         {
-            $searchQuery = $searchQuery->where('no_people', $request["people"]);
+            
+            if($request["people"] != "no_people") {
+                $searchQuery = $searchQuery->where('no_people', $request["people"]);
+            }
+        
         }
 
         if($request["composition"])
         {
-            $searchQuery = $searchQuery->where('people_composition', $request["composition"]);
+            if($request["composition"] != "no_compostion") {
+                $searchQuery = $searchQuery->where('people_composition', $request["composition"]);
+            }
         }
 
-        return $searchQuery->skip($previousPage * 1)->take(1)->paginate(20);
+
+        return $searchQuery->skip($previousPage * 1)->take(1)->paginate(2);
+    //    return $searchQuery->paginate(20);
+        
     }
 }

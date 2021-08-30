@@ -41,10 +41,12 @@
                         <thead class="table-primary">
                             <tr>
                      
-                                <th >Request Id</th>
-                                <th >Amount</th>
-                                <th >Payment Type</th>
-                                <th >Request Status</th>
+                                <th width="%5">Request Id</th>
+                                <th width="%5">Amount</th>
+                                <th width="%5">Payment Type</th>
+                                <th width="%5">Request Status</th>
+                                <th width="%5">Approve amount</th>
+                                <th >Message</th>
                               
                             </tr>
                         </thead>
@@ -62,9 +64,15 @@
                                             <span class="badge badge-warning p-2">Pending</span>
                                         @endif
                                     </td>
-                                   
-                                    
-                                  
+                                    @if(!is_null($item->approve_amount))
+                                    <td>{{Config::get('app.curreny')}} {{$item->approve_amount}}</td>
+                                    @else
+                                    <td></td>
+
+                                    @endif
+
+
+                                    <td>{{$item->message}}</td>
                                     
                                 </tr>
                             @endforeach

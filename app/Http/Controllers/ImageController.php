@@ -7,6 +7,7 @@ use App\Helpers\ImageHelper;
 use App\Helpers\SearchImage;
 use App\Http\Controllers\Controller;
 use App\ImageChild;
+use App\imageUsageCategorie;
 use App\ImageUsageName;
 use App\imageUsageSubCategorie;
 use App\ImageUsagPrice;
@@ -98,7 +99,6 @@ class ImageController extends Controller {
             } else {
                 $masterImage = $masterId;
             }
-
                 $imageChildId = ImageChild::create([
                         'master_id' => $masterImage,
                         'image_name' => $name,
@@ -154,7 +154,7 @@ class ImageController extends Controller {
 
     public function image_list_all() {
         $images = ImageChild::where('is_portfolio',0)->paginate(10);
-        $total_images = ImageChild::where('id', '>', 1)->get();
+        $total_images = ImageChild::where('id', '=', 1)->get();
         foreach($images as $image) {
             $soldImages = PurchaseDetail::where('image_id',$image->id)->where('status',1)->get();
             $image->sold = ($soldImages->count() > 0) ? $soldImages->count() : 0;
@@ -215,6 +215,8 @@ class ImageController extends Controller {
             'Author' => $request->author
         ]);
         $image = $image->update([
+            // 'height'=>$request->height,
+            // 'width'=>$request->width,
             'author'=>$request->author,
             'phone'=>$request->phone,
             'country'=>$request->country,
@@ -228,11 +230,11 @@ class ImageController extends Controller {
             'keywords'=>$request->keywords,
             'copy_right'=>$request->copy_right,
             'postal_code'=>$request->postal_code,
-            'orientation' => $request->orientation,
-            'no_people' => $request->no_people,
-            'people_composition' => $request->people_composition,
-            'specific_people' => $request->specific_people,
-            'location' => $request->location
+            // 'orientation' => $request->orientation,
+            // 'no_people' => $request->no_people,
+            // 'people_composition' => $request->people_composition,
+            // 'specific_people' => $request->specific_people,
+            // 'location' => $request->location
 
         ]);
         return response()->json(['data'=>$image], 200);
@@ -259,12 +261,36 @@ class ImageController extends Controller {
                 $query->orwhere('keywords', 'like',  '%' . $searchKeyWords[$i] .'%');
              }      
         });
-        $images = $searchQuery->paginate(4);
+        $images = $searchQuery->paginate(2);
 
-        $categories = Category::all();
         $photographers = User::where('user_type', 1)->get();
 
-        return view('filter', compact('images', 'categories', 'photographers'));
+        // return view('filter', compact('images', 'categories', 'photographers'));
+
+
+
+
+
+        $categories = Category::all();
+     
+        $imageUsageNames = ImageUsageName::all()->toArray();
+        $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
+        foreach( $images as $image) {
+            $usage_names_price = ImageUsagPrice::where('image_id', $image->id)->get();
+            if(isset($usage_names_price))
+            {
+                $image->usage_names_price = $usage_names_price;
+            }
+            else
+            {
+                break;
+            }
+        }
+        $user = Auth::user();
+     
+        $imageUsageCategory = imageUsageCategorie::all();
+      
+        return view('filter', compact('images', 'categories','photographers','imageUsageCategory','imageUsageNameMap', 'user'));
     }
 
     public function searchImageData(Request $request){

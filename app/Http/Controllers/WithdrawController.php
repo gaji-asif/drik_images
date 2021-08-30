@@ -55,6 +55,8 @@ class WithdrawController extends Controller
         $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$user->id)->first();
         if(strtotime($contributorWithdrawInformation->muture_date) < strtotime(date('Y-m-d')))
         {
+            $today = date("Y-m-d");
+            $contributorWithdrawInformation->muture_date =  date("Y-m-d",strtotime("$today +45 days"));
             $contributorWithdrawInformation->muture_amount = $contributorWithdrawInformation->muture_amount +  $contributorWithdrawInformation->total_amount ;
             $contributorWithdrawInformation->total_amount ="0.0";
             $contributorWithdrawInformation->save();
@@ -76,22 +78,31 @@ class WithdrawController extends Controller
 
     public function adminWithdrawApprove(Request $request)
     {
+        // dump($request->all());
         $item = WithdrawRequest::find($request->id);
         $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$item->user_id)->first();
-      
-        if($contributorWithdrawInformation->muture_amount >= $item->amount)
+    //   dd($contributorWithdrawInformation);
+        if($contributorWithdrawInformation->muture_amount >= $item->approve_amount)
         {
-            $contributorWithdrawInformation->muture_amount = $contributorWithdrawInformation->muture_amount - $item->amount ;
+            $contributorWithdrawInformation->muture_amount = $contributorWithdrawInformation->muture_amount - $request->approve_amount ;
             $contributorWithdrawInformation->save();
      
             $item->status = 1;
+            $item->approve_amount = $request->approve_amount;
+            $item->message = $request->message;
+            $item->status = 1;
             $item->save();
-            $flag = false;
+          
             
             $withdrawRequest = WithdrawRequest::with('paymentMethod','user')->orderBy('id','DESC')->get(); 
-            return view('backEnd.withdraw.inner_div', compact('withdrawRequest','flag'));
+            return redirect()->back()->with('message-success','Withdraw Request Approved Successfully');
+        }
+        else
+        {
+            
+            return redirect()->back()->with('message-success','Withdraw Request Approved Filed.You approve him more then this mature amount');
         }
        
-  
+        
     }
 }
