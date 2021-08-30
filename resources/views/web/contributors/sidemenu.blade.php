@@ -49,4 +49,3 @@
        <a class="nav-link {{navActive('user-logout')}}" href="{{ url('user-logout') }}">Log Out</a>
    </li>
 </ul>
-
