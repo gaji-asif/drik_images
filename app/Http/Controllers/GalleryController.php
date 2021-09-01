@@ -16,7 +16,7 @@ class GalleryController extends Controller {
     public function index() {
   
         $categories = Category::all();
-        $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(7);
+        $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(3);
 
         $imageUsageNames = ImageUsageName::all()->toArray();
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
