@@ -122,13 +122,15 @@ class ContributorController extends Controller
             $contributor_withdraw_information = ContributorWithdrawInformations::where('contributor_id',$id)->first();
             if(empty($contributor_withdraw_information))
             {
-          
+                $period = 45;
                 $today = date("Y-m-d");
+           
                 $contributor_withdraw_information = new ContributorWithdrawInformations();
                 $contributor_withdraw_information->	contributor_id = $id;
-                $contributor_withdraw_information->muture_date = date("Y-m-d",strtotime("$today +45 days"));
+                $contributor_withdraw_information->muture_date = date("Y-m-d",strtotime("$today +$period days"));
                 $contributor_withdraw_information->total_amount = "0.0";
                 $contributor_withdraw_information->muture_amount = "0.0"; 
+                $contributor_withdraw_information->muture_period = $period; 
                 $contributor_withdraw_information->save(); 
             }
             

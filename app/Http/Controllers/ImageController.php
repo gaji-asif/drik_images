@@ -252,8 +252,7 @@ class ImageController extends Controller {
         });
 
 
-        $searchQuery = DB::Table('all_images_childs')
-        ->select("*")
+        $searchQuery =ImageChild::with('categories','subCategories')  
         ->where('status',1)
         ->where('is_portfolio',0)                
         ->Where(function ($query) use($searchKeyWords) {

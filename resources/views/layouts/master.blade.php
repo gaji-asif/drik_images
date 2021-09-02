@@ -103,7 +103,7 @@
                                 </div>
                             </td>
 
-                            <td class="v-align-middle w-10 text-right">{{Config::get('app.curreny')}}  @if(isset($details["price"])) {{$details["price"]}} @endif</td>
+                            <td class="v-align-middle w-10 text-right">{{Config::get('app.curreny')}}  @if(isset($details["price"])) {{number_format((float)$details["price"], 2, '.', '')}} @endif</td>
                             <td class="v-align-middle w-5 text-right">
                                 <button class="product-minus" onclick="removeFromCart('{{ $id }}')"><i class="icofont-close"></i></button>
                             </td>

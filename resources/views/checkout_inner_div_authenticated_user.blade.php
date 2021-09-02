@@ -159,6 +159,12 @@
                 </div>
                 <input type="hidden" name="subtotal" value="0" id="subtotal_input">
             </div>
+            <div class="form-row lower">
+                <div class="col text-left">Discount</div>
+                <div class="col text-right ">{{ Config::get('app.curreny') }} <span id="discount">0.0</span>
+                </div>
+               
+            </div>
             <div class="form-row lower promo_code_div">
                 <div class="col text-left">Promo Code</div>
                 <span id="" class="text-danger invalid_promo_code invalid_promo_code_display_none">Please insert

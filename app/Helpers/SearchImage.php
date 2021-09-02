@@ -22,8 +22,7 @@ class SearchImage {
             return strlen($elm) > 2;
         });
 
-        $searchQuery = DB::Table('all_images_childs')
-        ->select("*")
+        $searchQuery =  ImageChild::with('categories','subCategories')    
         ->where('status',1)
         ->where('is_portfolio',0)                
         ->Where(function ($query) use($searchKeyWords) {

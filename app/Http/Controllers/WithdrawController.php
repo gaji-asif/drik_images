@@ -53,10 +53,10 @@ class WithdrawController extends Controller
         }
         $user = Auth::user();
         $contributorWithdrawInformation = ContributorWithdrawInformations::where('contributor_id',$user->id)->first();
-        if(strtotime($contributorWithdrawInformation->muture_date) < strtotime(date('Y-m-d')))
+        if(!empty($contributorWithdrawInformation) && (strtotime($contributorWithdrawInformation->muture_date) < strtotime(date('Y-m-d'))))
         {
             $today = date("Y-m-d");
-            $contributorWithdrawInformation->muture_date =  date("Y-m-d",strtotime("$today +45 days"));
+            $contributorWithdrawInformation->muture_date =  date("Y-m-d",strtotime("$today +$contributorWithdrawInformation days"));
             $contributorWithdrawInformation->muture_amount = $contributorWithdrawInformation->muture_amount +  $contributorWithdrawInformation->total_amount ;
             $contributorWithdrawInformation->total_amount ="0.0";
             $contributorWithdrawInformation->save();

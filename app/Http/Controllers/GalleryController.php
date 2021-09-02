@@ -15,6 +15,7 @@ use function React\Promise\reduce;
 class GalleryController extends Controller {
     public function index() {
   
+       
         $categories = Category::all();
         $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(3);
 

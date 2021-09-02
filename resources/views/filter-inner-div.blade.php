@@ -41,7 +41,7 @@
                                         <img class="w-100" src="{{$image->thumbnail_url}}" alt="">
                                     </div>
                                     <div class="author-info">
-                                        {{-- <span class="author-name">{{$image->imageAuthor->name}}</span> --}}
+                                        <span class="author-name">{{$image->imageAuthor->name}}</span>
                                     </div>
                                 </div>
 
