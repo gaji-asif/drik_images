@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost/drik";
+// const baseUrl = "https://quizhaat.com/drik";
 const csrf = $('meta[name="csrf-token"]').attr('content');
 const currency = $('meta[name="currency"]').attr('content');
 

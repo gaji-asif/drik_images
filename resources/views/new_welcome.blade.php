@@ -187,7 +187,7 @@ figure img {
                                             <img class="w-100" src="{{$image->thumbnail_url}}" alt="">
                                         </div>
                                         <div class="author-info">
-                                            <span class="author-name">{{$image->imageAuthor->name}}</span>
+                                            <span class="author-name">@if(isset($image->imageAuthor)){{ $image->imageAuthor->name}}@endif</span>
                                         </div>
                                     </div>
     

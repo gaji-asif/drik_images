@@ -13,7 +13,7 @@
        <a class="nav-link {{navActive('your-dashboard')}}" href="{{ ('your-dashboard') }}">Dashboard</a>
    </li>
     <li class="nav-item">
-       <a class="nav-link {{navActive('profile')}}" href="{{ url('profile') }}">My Profile</a>
+       <a class="nav-link {{navActive('user-profile')}}" href="{{ url('user-profile') }}">My Profiless</a>
    </li>
 
 

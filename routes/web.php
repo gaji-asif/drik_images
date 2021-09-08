@@ -312,7 +312,7 @@ Route::middleware([IfContributorWeb::class])->group(function () {
 // Write customer route here
 
 Route::get('your-dashboard', ['as' => 'your-dashboard', 'uses' => 'CustomerController@index']);
-Route::get('profile', ['as' => 'profile', 'uses' => 'CustomerController@profile']);
+Route::get('user-profile', ['as' => 'profile', 'uses' => 'CustomerController@profile']);
 Route::put('customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'CustomerController@edit_profile']);
 
 Route::middleware([IsCustomer::class])->group(function () {
