@@ -80,7 +80,7 @@ class SearchImage {
         }
 
 
-        return $searchQuery->skip($previousPage * 1)->take(1)->paginate(2);
+        return $searchQuery->skip($previousPage * 1)->take(1)->paginate(9);
     //    return $searchQuery->paginate(20);
         
     }

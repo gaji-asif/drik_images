@@ -284,6 +284,7 @@ Route::resource('image_use', ImageUsePricesController::class);
 
 
 route::get('about', 'WebController@about');
+route::get('services', 'WebController@services');
 route::get('faq', 'WebController@faq');
 route::get('contact', 'WebController@contact');
 route::post('submit-contact', 'WebController@submitContact');

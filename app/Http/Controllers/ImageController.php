@@ -260,7 +260,7 @@ class ImageController extends Controller {
                 $query->orwhere('keywords', 'like',  '%' . $searchKeyWords[$i] .'%');
              }      
         });
-        $images = $searchQuery->paginate(2);
+        $images = $searchQuery->paginate(9);
 
         $photographers = User::where('user_type', 1)->get();
 

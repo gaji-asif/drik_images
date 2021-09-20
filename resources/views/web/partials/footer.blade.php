@@ -95,7 +95,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
 <script type="text/javascript" src="{{asset('public/bower_components/select2/js/select2.full.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/assets/pages/advance-elements/select2-custom.js')}}"></script>
-<script src="{{asset('public/js/common.js')}}"></script>
+{{-- <script src="{{asset('public/js/common.js')}}"></script> --}}
 
 
 <script src="{{asset('public/js/drik_js/main.js')}}"></script>

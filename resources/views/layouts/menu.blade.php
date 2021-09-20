@@ -34,6 +34,41 @@
     font-family: sans-serif;
     font-weight: bold;
 }
+.dropbtn {
+  background-color: white;
+  color: black;
+
+  /* font-size: 16px; */
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 <div class="row">
     <div class="top_layer text-center mb-3">
@@ -53,7 +88,7 @@
     }
 @endphp
 <div class="header">
-        <nav class="navbar navbar-expand-lg bg-transparent bg-white">
+        <nav class="navbar navbar-expand-lg bg-transparent bg-white" id="navbar-example2">
             <a class="navbar-brand" href="index-2.html">
                 <img class="w-100" src="images/logo-ts.png" alt="" />
             </a>
@@ -78,10 +113,28 @@
                        <a class="nav-link" href="{{url('/')}}">Home</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="{{url('about')}}">About Us</a>
+                
+                        <div class="dropdown dropbtn">
+                            <a class="nav-link" href="{{url('about')}}">About Us</a>
+                            <div class="dropdown-content">
+                              <a href="{{url('about')}}#drik_images">Drik Images</a>
+                              <a href="{{url('about')}}#team">Team</a>
+                              <a href="{{url('about')}}#usages_policy">Usages Policy</a>
+                            </div>
+                          </div>
+                        
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="#">Services</a>
+                    <div class="dropdown dropbtn">
+                        <a class="nav-link" href="{{url('services')}}">Services</a>
+                        <div class="dropdown-content" style="min-width:185px">
+                          <a href="{{url('services')}}#stock">Stock</a>
+                          <a href="{{url('services')}}#retouch_and_restoration">Retouch and Restoration</a>
+                          <a href="{{url('services')}}#photo_library_setup">Photo Library Setup</a>
+                          <a href="{{url('services')}}#photo_assignment">Photo Assignment</a>
+                          <a href="{{url('services')}}#pricing">Pricing</a>
+                        </div>
+                      </div>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link" href="#">Photoghapers</a>

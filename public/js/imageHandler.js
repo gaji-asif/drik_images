@@ -146,12 +146,13 @@ function imageFormValidationError() {
 
 function readImageMetaData(image, imageForm) {
     //showLoader();
+   
     $('.loader_global').show();
     imageForm = imageForm[0];
     let formData = new FormData();
     formData.append("image", image);
-  
-    fetch(`${baseUrl}/get_image_metas`, {
+ 
+    fetch(`get_image_metas`, {
         method: "POST",
         headers: {
             "X-CSRF-TOKEN": csrf

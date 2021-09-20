@@ -1,4 +1,5 @@
 // const baseUrl = "https://quizhaat.com/drik";
+const baseUrl =  $('meta[name="base-url"]').attr('content');
 const csrf = $('meta[name="csrf-token"]').attr('content');
 const currency = $('meta[name="currency"]').attr('content');
 
