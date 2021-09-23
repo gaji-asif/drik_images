@@ -208,7 +208,7 @@
                 <h4 class="mb-4 mt-4" id="usages_policy">Usages Policy</h4>
                 <div class="col-lg-10">
                    
-                    <p class="font_size_15 font-weight-bold">
+                    <p class="font_size_15 font-weight-bold  pt-2 pb-2">
                         Reservation of Rights: 
                     </p>
                     <p class="font_size_15">

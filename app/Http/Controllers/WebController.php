@@ -23,6 +23,13 @@ class WebController extends Controller
         $page = 'Services';
         return view('web.services',compact('categories','user','page'));
     }
+    public function stock()
+    {
+        $categories = Category::all();
+        $user = Auth::user();
+        $page = 'stock';
+        return view('web.stock',compact('categories','user','page'));
+    }
 
     public function faq()
     {

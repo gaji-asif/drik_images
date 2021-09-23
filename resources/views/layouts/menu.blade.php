@@ -140,13 +140,21 @@
                        <a class="nav-link" href="#">Photoghapers</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="#">Stock</a>
+                    <div class="dropdown dropbtn">
+                        <a class="nav-link" href="{{url('stock')}}">Stock</a>
+                        <div class="dropdown-content" style="min-width:185px">
+                          <a href="{{url('stock')}}#fine_art_sales">Fine Art Sales</a>
+                          <a href="{{url('stock')}}#categories">Categories</a>
+                          <a href="{{url('stock')}}#special_collections">Special Collections</a>
+                        </div>
+                      </div>
+                      
                    </li>
                    <li class="nav-item">
                        <a class="nav-link" href="{{url('contact')}}">Contact</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="#">Faq</a>
+                       <a class="nav-link" href="{{url('faq')}}">Faq</a>
                    </li>
 
 

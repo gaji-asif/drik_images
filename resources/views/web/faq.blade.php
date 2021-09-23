@@ -2,6 +2,10 @@
 
 @section('main-content')
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+
+<!--then bootstrap-->
+
 <style>
     .grid-item img {
         width: 100%;
@@ -77,6 +81,7 @@
         animation-name: reveal;
         animation-direction: reverse;
     }
+
     /* copy share url */
     .copy-text {
         position: relative;
@@ -87,11 +92,12 @@
 
     }
 
-    
+
     .copy-text .share_link {
         /* padding: 10px; */
         font-size: 10px;
-        color: #0d4444;;
+        color: #0d4444;
+        ;
         border: none;
         outline: none;
     }
@@ -109,128 +115,264 @@
         font-size: 8px;
         display: none;
     }
+
     .copy-text .author-action-button:after {
         content: "";
         position: absolute;
         transform: rotate(45deg);
         display: none;
     }
+
     .copy-text.active .author-action-button:before,
     .copy-text.active .author-action-button:after {
         display: block;
     }
-}
-.faq_wrapper{
-    font-family: "Metropolis", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-.font_size_15{
-    font-size: 15px;
-}
+    }
 
+    /* .about_wrapper {
+        font-family: "Metropolis", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    } */
+
+    .font_size_15 {
+        font-size: 15px;
+    }
+
+    /* h2 {
+        font-family: Arial, Verdana;
+        font-weight: 800;
+        font-size: 2.5rem;
+        color: #091f2f;
+        text-transform: uppercase;
+    } */
+
+    .accordion-section .panel-default>.panel-heading {
+        border: 0;
+        background: #f4f4f4;
+        padding: 0;
+    }
+
+    .accordion-section .panel-default .panel-title a {
+        display: block;
+        font-style: italic;
+        font-size: 1.5rem;
+    }
+
+    .accordion-section .panel-default .panel-title a:after {
+        font-family: 'FontAwesome';
+        font-style: normal;
+        font-size: 3rem;
+        content: "\f106";
+        color: #080808;
+        float: right;
+        margin-top: -12px;
+    }
+
+    .accordion-section .panel-default .panel-title a.collapsed:after {
+        content: "\f107";
+    }
+
+    .accordion-section .panel-default .panel-body {
+        font-size: 1.2rem;
+    }
 </style>
 
+<div class="container px-5" style="margin-top: 40px; margin-bottom: 40px;overflow-y: scroll">
+    <div class="about_wrapper">
+        <div class=" gx-5 justify-content-center">
+            <section class="accordion-section clearfix mt-3" aria-label="Question Accordions">
+                <div class="container">
 
-    <div class="container px-5" style="margin-top: 40px; margin-bottom: 40px;">
-        <div class="faq_wrapper"> 
-    
-                        <div class="container px-5">
-                            <div class="d-flex align-items-center mb-5">
-                                <div class="icon-stack icon-stack-lg bg-primary text-white"><i data-feather="users"></i></div>
-                                <div class="ms-3">
-                                    <h2 class="mb-0">Account</h2>
-                                    <p class="lead mb-0">Let's see if we can help.</p>
-                                </div>
-                            </div>
-                            <div class="accordion shadow mb-5" id="accordionAuth">
-                                <div class="accordion-item">
-                                    <div class="d-flex align-items-center justify-content-between px-4 py-5">
-                                        <div class="me-3">
-                                            <h4 class="mb-0">Authentication issues</h4>
-                                            <p class="card-text text-gray-500">Issues related to logging in, registering a new account, and setting your account password</p>
-                                        </div>
-                                        <div class="badge bg-success-soft rounded-pill text-success">3 Answers</div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="accordion-header" id="headingOne"><button class="accordion-button p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">I can't remember my account email address.</button></h5>
-                                    <div class="accordion-collapse collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionAuth"><div class="accordion-body p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="accordion-header" id="headingTwo"><button class="accordion-button p-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Why doesn't my password work?</button></h5>
-                                    <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordionAuth"><div class="accordion-body p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="accordion-header" id="headingThree"><button class="accordion-button p-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Why do I keep getting logged out of my account?</button></h5>
-                                    <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordionAuth"><div class="accordion-body p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div>
-                                </div>
-                            </div>
-                            <div class="accordion shadow mb-5" id="accordionBilling">
-                                <div class="accordion-item">
-                                    <div class="d-flex align-items-center justify-content-between px-4 py-5">
-                                        <div class="me-3">
-                                            <h4 class="mb-0">Billing</h4>
-                                            <p class="card-text text-gray-500">Issues related to logging in, registering a new account, and setting your account password</p>
-                                        </div>
-                                        <div class="badge bg-success-soft rounded-pill text-success">3 Answers</div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="accordion-header" id="headingOne"><button class="accordion-button p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">I can't remember my account email address.</button></h5>
-                                    <div class="accordion-collapse collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionBilling"><div class="accordion-body p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="accordion-header" id="headingTwo"><button class="accordion-button p-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Why doesn't my password work?</button></h5>
-                                    <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordionBilling"><div class="accordion-body p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="accordion-header" id="headingThree"><button class="accordion-button p-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Why do I keep getting logged out of my account?</button></h5>
-                                    <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordionBilling"><div class="accordion-body p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div>
-                                </div>
-                            </div>
-                            <hr class="my-5" />
-                            <div class="row gx-5 text-center">
-                                <div class="col-lg-4 mb-5 mb-lg-0">
-                                    <a class="card card-link border-bottom-0 border-start-0 border-end-0 border-top-lg border-primary h-100 lift" href="#!">
-                                        <div class="card-body p-5">
-                                            <div class="icon-stack icon-stack-lg bg-primary-soft text-primary mb-4"><i data-feather="user"></i></div>
-                                            <h6>Account</h6>
-                                            <p class="card-text">Issues related to logging in, out, or about multiple devices.</p>
-                                        </div>
-                                        <div class="card-footer border-0 bg-transparent pt-0 pb-5"><div class="badge rounded-pill bg-light text-dark fw-normal px-3 py-2">21 Entries</div></div>
+                    <h2 class="pb-3">Frequently Asked Questions </h2>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading0">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">
+                                        Why can't I find the images I'm searching for? 
                                     </a>
-                                </div>
-                                <div class="col-lg-4 mb-5 mb-lg-0">
-                                    <a class="card card-link border-bottom-0 border-start-0 border-end-0 border-top-lg border-green h-100 lift" href="#!">
-                                        <div class="card-body p-5">
-                                            <div class="icon-stack icon-stack-lg bg-green-soft text-green mb-4"><i data-feather="clock"></i></div>
-                                            <h6>Integrations</h6>
-                                            <p class="card-text">Connecting with 3rd party apps to exchange data.</p>
-                                        </div>
-                                        <div class="card-footer border-0 bg-transparent pt-0 pb-5"><div class="badge rounded-pill bg-light text-dark fw-normal px-3 py-2">9 Entries</div></div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-4">
-                                    <a class="card card-link border-bottom-0 border-start-0 border-end-0 border-top-lg border-yellow h-100 lift" href="#!">
-                                        <div class="card-body p-5">
-                                            <div class="icon-stack icon-stack-lg bg-yellow-soft text-yellow mb-4"><i data-feather="clock"></i></div>
-                                            <h6>Billing</h6>
-                                            <p class="card-text">Issues with payments or invoicing.</p>
-                                        </div>
-                                        <div class="card-footer border-0 bg-transparent pt-0 pb-5"><div class="badge rounded-pill bg-light text-dark fw-normal px-3 py-2">14 Entries</div></div>
-                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans:  Try to search the image by typing appropriate keyword or the image id number in the search box. If you are not satisfied with online collection, you can also e-mail us at dpa@drik.net letting us know your requirement. We will come back to you soon. </p>   
                                 </div>
                             </div>
                         </div>
-                        <div class="svg-border-rounded text-dark">
-                            <!-- Rounded SVG Border-->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading1">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        Can I search without being registered? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: You cannot search images without registration, which is free and simple.</p>
+                                </div>
+                            </div>
                         </div>
-                    
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading2">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                        How do I get detailed information about an image? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: Usually the image caption and keywords provide enough information of the image. Besides photographers name and the image id number are also given along with the image. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading4">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                        How can I search the images using Image ID? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: Just put the image id number in the search box and click ‘go’. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading5">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                        Can I pay or place an order online?  
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans. You can click on the ‘add to the light box’ button under the image and forward it to us via e-mail (dpa@drik.net) for pricing.  </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading6">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                                        How do I download images once I have purchased them?  
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: After you have made payments for an image, you will receive a link from where you can download the hi-res version of the image.  </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading7">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                                        What is image licensing?
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: Stock images are sold by purchasing a right to use an image under terms set out in a license, a legally binding agreement between the buyer and the seller. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading8">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8">
+                                        What is meant by Exclusive Rights of Usage? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: The Exclusive Rights of Usage or Rights Managed-Exclusive (RM-E) is a license that is more or less similar to Rights Managed (RM) license, but includes terms restricting the photographer from making sales for a specified period in a specified location or locations. According to the severity of the restrictions there is a premium paid over and above the cost of a traditional RM license. This will give a buyer exclusive use of an image. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading9">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="true" aria-controls="collapse9">
+                                        Can I cancel an image license after I have purchased it?  
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans: At the sole discretion of Drik, a request for a cancellation of a license to reproduce an image may be accepted if made within thirty (30) days of the invoice date, and in such a case Drik may make a cancellation charge of half of the invoiced price(subject to a minimum cancellation charge of US$10 per picture). </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading10">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="true" aria-controls="collapse10">
+                                        How do I determine image prices? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans. After selecting an image you can click on the ‘add to the light box’ button under the image and forward it to us via e-mail (dpa@drik.net) for pricing. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading11">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                                        How can I reuse a purchased image? What are the terms & conditions for multiple usage? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans. Terms and conditions for re-use of a purchased image vary with the type of usage. The best way is to consult us by e-mail at dpa@drik.net. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading p-3 mb-3" role="tab" id="heading12">
+                                <h3 class="panel-title">
+                                    <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="true" aria-controls="collapse12">
+                                        What is the penalty for unauthorized use of an image? 
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                                <div class="panel-body px-3 mb-4">
+                                    <p>Ans.  Any use of images without authorization from Drik will constitute unauthorized use and will be subject to a penalty of triple the current market rate that the particular use of image was put to. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
         </div>
+    </div>
 </div>
 @endsection
-
