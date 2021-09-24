@@ -178,6 +178,7 @@
                 </div>
 
                 {{-- team --}}
+                {{-- team --}}
 
                 <h4 class="mb-4 mt-4" id="team">Team</h4>
                 <div class="col-lg-10">
