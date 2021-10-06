@@ -154,7 +154,7 @@ class ImageController extends Controller {
 
     public function image_list_all() {
         $images = ImageChild::where('is_portfolio',0)->paginate(10);
-        $total_images = ImageChild::where('id', '=', 1)->get();
+        $total_images = ImageChild::all();
         foreach($images as $image) {
             $soldImages = PurchaseDetail::where('image_id',$image->id)->where('status',1)->get();
             $image->sold = ($soldImages->count() > 0) ? $soldImages->count() : 0;
