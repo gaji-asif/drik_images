@@ -169,7 +169,7 @@ figure img {
                             <div class="form-row ">
                                 <div class="col-md-9">
                                     <div class="full-img">
-                                        <img class="w-100" src="{{$image->image_main_url}}" alt="">
+                                        <img class="w-100" src="{{$image->medium_url}}" alt="">
                                     </div>
                                     <div class=" pt-2">
                                         <p><font style=""><strong>Title: </strong></font>{{$image->title}}</p>
