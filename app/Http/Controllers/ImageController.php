@@ -288,8 +288,15 @@ class ImageController extends Controller {
         $user = Auth::user();
      
         $imageUsageCategory = imageUsageCategorie::all();
+        $currentPage = $images->currentPage();
+        $lastPage = $images->lastPage();
+        $nextPageUrl = $images->nextPageUrl();
+        if($request->has('page'))
+        {
+            return view('filter-inner-div', compact('images','currentPage','lastPage','nextPageUrl', 'categories','photographers','imageUsageCategory','imageUsageNameMap', 'user'));
+        }
       
-        return view('filter', compact('images', 'categories','photographers','imageUsageCategory','imageUsageNameMap', 'user'));
+        return view('filter', compact('images', 'categories','currentPage','lastPage','nextPageUrl','photographers','imageUsageCategory','imageUsageNameMap', 'user'));
     }
 
     public function searchImageData(Request $request){

@@ -33,6 +33,10 @@ Route::post('drik-logout', 'Auth\LoginController@logout')->name('drik-logout');
 Route::get('user-logout', 'UserController@logout')->name('user-logout');
 
 Route::middleware(['guest'])->group(function () {
+    Route::post('reset-password', 'UserController@forgotPassword');
+    Route::get('user-reset-password/{id}', 'UserController@userResetPassword');
+    Route::get('forgot-password/email', 'UserController@forgotPasswordEmail');
+    Route::post('send-email-forgot-password', 'UserController@sendEmailForgotPassword');
     Route::get('user-login', 'UserController@login')->name('user-login');
     Route::get('user-register', 'UserController@register')->name('user-register');
     Route::post('user-registration', 'UserController@registration')->name('user-registration');
@@ -326,3 +330,6 @@ Route::middleware([IsCustomer::class])->group(function () {
   
     Route::get('wishlist', ['as' => 'wishlist', 'uses' => 'CustomerController@wishlist']);
 });
+
+Route::get('verify_email/{verfiy_url}','UserController@verfiyUrl');
+Route::get('reset_password/{verfiy_url}','UserController@resetPassword');

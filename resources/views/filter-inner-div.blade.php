@@ -1,4 +1,4 @@
-<div class="grid ">
+
 
     @foreach ($images as $image)
         <figure class="grid-image" style="flex-grow:{{ $image->width * 100 / $image->height }}; flex-basis: {{ $image->width * 240 / $image->height }}px">
@@ -218,23 +218,7 @@
                                           
                                         </div>
                                     </div>
-                                    {{-- <div class="enter-promo_code">
-                                        <div class="form-group form-row align-items-center">
-                                            <label for="promo_code" class="col-sm-7 col-form-label">Discount/Promo
-                                                Code&nbsp;&nbsp;:</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="promo_code"
-                                                    placeholder="Promo Code">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-row align-items-center">
-                                            <label for="price" class="col-sm-7 col-form-label">Price (After
-                                                discount)&nbsp;&nbsp;:</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="price" placeholder="0.00">
-                                            </div>
-                                        </div>
-                                    </div> --}}
+              
 
                                     <div class="download mt-2">
                                         <button onclick="addToCart('{{$image->id}}')" class="btn btn-block download-btn"
@@ -250,10 +234,10 @@
         </div>
     @endforeach  
    
-</div>
-<div id="" class="col-lg-12 text-center" style="margin: 0 auto; margin-bottom: 15px;margin-top: 15px;">
-<div style="display: inline-block;">
-    {!! $images->render("pagination::bootstrap-4") !!}
-    {{-- {{ $images->withQueryString()->links()}} --}}
-</div>
-</div>
+    <div class="getValues">
+        <input type="hidden" id="lastPage" value="{{$lastPage}}">
+        <input type="hidden" id="currentPage" value="1">
+        <input type="hidden" id="nextPageUrl" value="{{$nextPageUrl}}">
+    </div>
+
+

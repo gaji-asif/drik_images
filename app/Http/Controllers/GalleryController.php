@@ -6,19 +6,21 @@ use App\ImageChild;
 use App\imageUsageCategorie;
 use App\ImageUsageName;
 use App\ImageUsagPrice;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use PDF;
-
+use Illuminate\Http\Request;
 use function React\Promise\reduce;
 
 class GalleryController extends Controller {
-    public function index() {
+    public function index(Request $request) {
   
-       
+      
         $categories = Category::all();
-        $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(9);
+        $images = ImageChild::with('categories','subCategories')->where('is_portfolio',0)->where('status',1)->paginate(30);
 
+       
         $imageUsageNames = ImageUsageName::all()->toArray();
         $imageUsageNameMap = $this->imageUsageNameMap($imageUsageNames);
         foreach( $images as $image) {
@@ -35,7 +37,14 @@ class GalleryController extends Controller {
         $user = Auth::user();
         $home = 'home';
         $imageUsageCategory = imageUsageCategorie::all();
-        return view('new_welcome', compact('images', 'categories','imageUsageCategory','imageUsageNameMap', 'user', 'home'));
+        $currentPage = $images->currentPage();
+        $lastPage = $images->lastPage();
+        $nextPageUrl = $images->nextPageUrl();
+        if($request->has('page'))
+        {
+            return view('image_gallary', compact('images','currentPage','lastPage','nextPageUrl', 'categories','imageUsageCategory','imageUsageNameMap', 'user', 'home'));
+        }
+        return view('new_welcome', compact('images','currentPage','lastPage','nextPageUrl', 'categories','imageUsageCategory','imageUsageNameMap', 'user', 'home'));
     }
     public function shareImage($id) {
        

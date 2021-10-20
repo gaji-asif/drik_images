@@ -176,6 +176,9 @@
         .card-bodys {
             padding: 5px 10px 10px 5px;
         }
+        #loadMore{
+        font-weight: bold;
+    }
 
     </style>
 @php
@@ -374,12 +377,24 @@ function makeANewUrl()
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <div class="gallery-2 ">
-                    <div id="filter_inner_div">
-                        @include('filter-inner-div')
+                    <div >
+                        <div class="grid " id="filter_inner_div">
+                            @include('filter-inner-div')
+                            
+                        </div>
+                    </div>
+                </div>
+                <div id="" class="col-lg-12 text-center" style="margin: 0 auto; margin-bottom: 15px;margin-top: 15px;">
+                    <div style="display: inline-block;">
+                        <a href="javascript:void(0)" id="loadMore">Load more images . . . . .</a> 
                     </div>
                 </div>
             </div>
             <input type="hidden" id="baseUrl" value="{{url('/')}}">
+
+
+            <input type="hidden" id="appUrl" value="{{url('/')}}">
+            <input type="hidden" id="searchKey" value="{{makeANewUrl()}}">
 
             <script>
                 function cart_open() {
@@ -408,6 +423,59 @@ function makeANewUrl()
                         copyText.classList.remove("active");
                     }, 500);
                 }
+
+                $(document).on('click','#loadMore' , function()
+                {
+                    let searchKey = $('#searchKey').val() ? $('#searchKey').val() :'' ;
+
+                    
+                    let currentPage = $('#currentPage').val() ? parseInt($('#currentPage').val()) : 1;
+                    currentPage += 1;
+                
+                    let nextPage = $('#lastPage').val();
+
+                    let url = $('#appUrl').val();
+                    
+                    if (currentPage <= nextPage)
+                    {
+                        nextPageUrl = `${url}/search?page=${currentPage}`;
+                    
+                        $('#currentPage').val(currentPage);
+
+                        if(currentPage == nextPage)
+                        {
+                            $(this).text('');
+                            // $(this).text('No image available');
+                        }
+                      let getValues = $('.getValues').val();
+                       $.each( getValues, function( key, value ) {
+                            console.log(value);
+                            $(value).html('');
+                        });
+                        $.ajax({
+                            type: "GET",
+                            url: nextPageUrl,
+                            success: function(data) {
+                                $(`#filter_inner_div`).append(data);
+                            }
+                        });
+
+                       
+                    }
+                    
+                });
+
+                $(document).ready(function()
+                {
+                    let currentPage = $('#currentPage').val() ? parseInt($('#currentPage').val()) : 1;
+                    let nextPage = parseInt($('#lastPage').val());
+                    if(currentPage == nextPage)
+                        {
+                            $('#loadMore' ).text('');
+                            // $(this).text('No image available');
+                        }
+
+                });
             </script>
 
 

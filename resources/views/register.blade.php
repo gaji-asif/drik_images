@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('public/css/drik/css/icofont.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/drik/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/drik/css/responsive.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -87,7 +88,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group first">
                                             <label for="user_last_name">Last Name</label>
-                                            <input name="last_name" type="text" class="form-control" value="{{old('last_name')}}" id="user_last_name" />
+                                            <input name="last_name" type="text" class="form-control" value="{{old('last_name')}}" id="user_last_name" required="required"  />
                                         </div>
                                     </div>
                                 </div>
@@ -102,15 +103,27 @@
                                     </select>
 
                                 </div>
-                               
-                                <div class="form-group last mb-3">
+                              
+                                {{-- <div class="form-group last mb-3">
                                     <label for="company_name">Company name (optional)</label>
                                     <input name="company_name" type="text" class="form-control" id="company_name" value="{{old('company_name')}}" required="required" />
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group last mb-3">
                                     <label for="job_title">Job title <span>(optional)</span></label>
                                     <input name="job_title" class="form-control" id="job_title" value="{{old('job_title')}}" />
+                                </div>
+                                <div class="form-group last mb-3">
+                                    <label for="phone">Phone Number<span></span></label>
+                                    <input type="text" name="phone" class="form-control" id="phone" value="{{old('phone')}}" />
+                                </div>
+                                <div class="form-group last p-0">
+                                    <label for="country" class="pl-2">Country</label>
+                                    <select name="country" class="form-control" id="country" >
+                                        <option></option>
+                                      
+                                    </select>
+
                                 </div>
                                 <div class="form-group last mb-3">
                                     <label for="user_email">Email Address</label>
@@ -134,10 +147,25 @@
     </div>
 </div>
 
+<input type="hidden" id="baseUrl" value="{{url('/')}}">
 <script src="{{asset('public/js/drik_js/jquery.min.js')}}"></script>
 <script src="{{asset('public/js/drik_js/bootstrap.min.js')}}"></script>
-<script src="{{asset('public/js/drik_js/main.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+<script src="{{asset('public/js/drik_js/main.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        let baseUrl = $("#baseUrl").val();
+        $.getJSON( `${baseUrl}/public/country.json`, function( data ) {
+            var items = [];
+            $.each( data, function( key, val ) {
+                items.push( "<option value='" + val.name + "'>" + val.name + "</option>" );
+            });
+        
+            $('#country').append(items);
+        });
+    });
+</script>
 
 </body>
 </html>

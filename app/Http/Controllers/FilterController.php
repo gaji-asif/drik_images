@@ -50,12 +50,15 @@ class FilterController extends Controller {
      
         $imageUsageCategory = imageUsageCategorie::all();
 
-   
-        if($request->ajax()  ) {
+        $currentPage = $images->currentPage();
+        $lastPage = $images->lastPage();
+        $nextPageUrl = $images->nextPageUrl();
+
+        if($request->ajax()) {
       
-            return view('filter-inner-div', compact('images', 'categories','imageUsageCategory','imageUsageNameMap', 'user'));
+            return view('filter-inner-div', compact('images','currentPage','lastPage','nextPageUrl', 'categories','imageUsageCategory','imageUsageNameMap', 'user'));
         }
-        return view('filter', compact('images', 'categories','imageUsageCategory','imageUsageNameMap', 'user'));
+        return view('filter', compact('images', 'categories','currentPage','lastPage','nextPageUrl','imageUsageCategory','imageUsageNameMap', 'user'));
     }
 
     public function imageUsageNameMap($imageUsageNames)

@@ -73,13 +73,13 @@
                                     <input type="password" name="password" class="form-control" id="password" required="required" />
                                 </div>
 
-                                {{-- <div class="d-flex mb-5 align-items-center">
-                                    <div class="form-check text-left">
+                                <div class="d-flex mb-5 align-items-center">
+                                    {{-- <div class="form-check text-left">
                                         <input type="checkbox" class="form-check-input" id="remember_me" />
                                         <label class="form-check-label" for="remember_me">Remember Me</label>
-                                    </div>
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
-                                </div> --}}
+                                    </div> --}}
+                                    <span class="ml-auto"><a href="{{url('forgot-password/email')}}" class="forgot-pass">Forgot Password</a></span>
+                                </div>
 
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
