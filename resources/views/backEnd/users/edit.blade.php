@@ -34,6 +34,7 @@
 				                </div>
 				            </div>
 
+							<input type="hidden" id="country_value" value="{{$editData->country}}">
 				            <div class="form-group row">
 				                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -47,7 +48,19 @@
 				                    @endif
 				                </div>
 				            </div>
+							<div class="form-group row">
+				                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
+				                <div class="col-md-6">
+				                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $editData->phone }}" autocomplete="off">
+
+				                    @if ($errors->has('phone'))
+				                        <span class="invalid-feedback" role="alert">
+				                            <strong>{{ $errors->first('phone') }}</strong>
+				                        </span>
+				                    @endif
+				                </div>
+				            </div>
 				            <div class="form-group row">
 				                <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('Role ID') }}</label>
 				                <div class="col-md-6">
@@ -75,6 +88,20 @@
 									@endif
 								</div>
 							</div>
+
+							<div class="form-group row">
+				                <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('country') }}</label>
+				                <div class="col-md-6">
+					                <select class="js-example-basic-single col-sm-12 {{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" id="country">
+									{{-- <option value="">Select Role</option> --}}
+									</select>
+									@if ($errors->has('country'))
+									<span class="invalid-feedback invalid-select" role="alert">
+										<strong>{{ $errors->first('country') }}</strong>
+									</span>
+									@endif
+								</div>
+				            </div>
 							
 							<div class="form-group row">
 				                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('New Password') }}</label>
@@ -139,5 +166,25 @@
 	</div>
 
 </div>
-
+<input type="hidden" id="baseUrl" value="{{url('/')}}">
+<script>
+    $(document).ready(function() {
+		let country_value = $('#country_value').val();
+        let baseUrl = $("#baseUrl").val();
+        $.getJSON( `${baseUrl}/public/country.json`, function( data ) {
+            var items = [];
+            $.each( data, function( key, val ) {
+				if(country_value == val.name){
+                	items.push( "<option selected value='" + val.name + "'>" + val.name + "</option>" );
+				}
+				else
+				{
+                	items.push( "<option value='" + val.name + "'>" + val.name + "</option>" );
+				}
+            });
+        
+            $('#country').append(items);
+        });
+    });
+</script>
 @endSection

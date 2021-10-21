@@ -66,13 +66,17 @@ class ErpUserController extends Controller
             'upload_img'=> 'required|mimes:png,jpg,jpeg',
         ]);
 
+        // dd($request->all());
         $user = new User();
         $user->name = $request->get('name');
         $user->email = $request->get('email');
+        $user->user_type = 1;
+        $user->country = $request->get('country');
+        $user->phone =$request->get('phone');
         $user->assignRole($request->role_id);
         $password = $request->get('password');
         $password_confirmation = $request->get('password_confirmation');
-        
+           $user->phone =$request->get('phone');
         if ($request->hasFile('upload_img')) {
             $upload = $request->file('upload_img');
             $file_type = $upload->getClientOriginalExtension();
@@ -86,6 +90,7 @@ class ErpUserController extends Controller
 
         if($password == $password_confirmation) {
             $user->password = Hash::make( $request->get('password') );
+         
             $user->save();
 
             $user->notify(new AddUserEmail($user, $password));
@@ -152,7 +157,8 @@ class ErpUserController extends Controller
         $user->email = $request->get('email');
         $user->password = $password;
         $user->syncRoles($request->role_id);
-
+        $user->country = $request->get('country');
+        $user->phone =$request->get('phone');
         //This foreach for checking if there are similar email address or not
         foreach ($all_user_email as $key => $value) {
             if( $value == $request->get('email') ) {
