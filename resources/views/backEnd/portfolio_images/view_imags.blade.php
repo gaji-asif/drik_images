@@ -1,3 +1,4 @@
+
 @extends('backEnd.master')
 @section('mainContent')
     <div class="row">
@@ -18,41 +19,15 @@
                 </div>
             @endif
 
-            <div class="card">
-                <div class="container" style="margin: 0 auto;">
-
-
-
-                    <div class="search_form row" style="padding: 20px 30px;">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6 " style="margin-top:6px">
-
-                            <select
-                                class="js-example-basic-single col-sm-12 {{ $errors->has('role_id') ? ' is-invalid' : '' }}"
-                                id="contributor_portfolio_id">
-                                <option value="">Select Contributor</option>
-                                @if (isset($contributors))
-                                    @foreach ($contributors as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                        {{-- <input name="search_key" type="text" class="form-control col-lg-5" id="" placeholder="Search Images"> --}}
-                        <button type="submit" onclick="getPortfolioImages()" class="btn col-lg-1"
-                            style="margin-left: 10px;">Search</i></button>
-                    </div>
-
-                </div>
-            </div>
+         
             <div id="inner_div">
-                @include('backEnd.portfolio_images.inner_data')
+                @include('backEnd.portfolio_images.view_inner_data')
             </div>
 
 
        
 
-            <script src={{ asset('public/js/imageList.js') }}></script>
+            {{-- <script src={{ asset('public/js/imageList.js') }}></script> --}}
         </div>
 
         <script>
@@ -83,7 +58,7 @@
             });
 
             function getData(page) {
-               
+                // alert(page);
                 $.ajax({
                     url: '?page=' + page,
                     type: "get",
@@ -100,3 +75,16 @@
         </script>
 
     @endSection
+
+
+    
+
+
+
+
+
+
+
+
+
+

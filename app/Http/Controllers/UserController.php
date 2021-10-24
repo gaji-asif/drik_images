@@ -32,7 +32,7 @@ class UserController extends Controller {
         $company = $request["company_name"];
         $job = $request["job_title"];
         $phone = $request["phone"];
-        // $country = $request["country"];
+        $country = $request["country"];
         $password = Hash::make($request["password"]);
 
         $encryptedEmail = Hash::make($request->email).strtotime(date('Today'));
@@ -48,7 +48,7 @@ class UserController extends Controller {
             'job_title' => $job,
             'password' => $password,
             'phone' => $phone,
-            // 'country' => $country,
+            'country' => $country,
             'is_verify_url' => 0,
             'verify_url' => $encryptedEmail,
         ];

@@ -192,11 +192,11 @@ class CustomerController extends Controller {
             $purchase_detail->thumbnail = $imageChild->thumbnail_url; 
             $purchase_detail->author = $imageChild->author; 
             $purchase_detail->title = $imageChild->title; 
-        
         }
         $user = User::find($purchase->user_id);
 
-        return view('web.invoice.preview ', compact('purchase','user'));
+        // dd($purchase);
+        return view('web.invoice.preview', compact('purchase','user'));
     }
 
     public function allPurchaseImages($id)

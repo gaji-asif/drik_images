@@ -419,33 +419,43 @@ class ImageController extends Controller {
         return view('backEnd.images.sold_details', compact('image','purchaseDetails'));
     }
 
-    public function portfolio_image_list(Request $request) {
-        $contributor = User::where('user_type', 1)->get();
-        $images = ImageChild::where('is_portfolio',1)->paginate(12);
-        $total_images = ImageChild::where('is_portfolio',1)->get();
+    public function portfolio_image_list(Request $request) 
+    {
+       $contributors = User::where('user_type', 1)->with('protfolioImages')->paginate(12);
+        $total_images = User::where('user_type', 1)->get();
         if ($request->ajax()) {
-            return view('backEnd.portfolio_images.inner_data', compact('images', 'total_images'));
+            return view('backEnd.portfolio_images.inner_data', compact('contributors', 'total_images'));
         }
-        return view('backEnd.portfolio_images.index', compact('images', 'total_images','contributor'));
+        return view('backEnd.portfolio_images.index', compact('contributors','total_images'));
+    }
+    public function viewPortfolioImages(Request $request,$id)
+    {
+        $contributor = User::where('id',$id)->where('user_type', 1)->get();
+        $images = ImageChild::where('user_id',$id)->where('is_portfolio',1)->paginate(12);
+        $total_images = ImageChild::where('user_id',$id)->where('is_portfolio',1)->get();
+        if ($request->ajax()) {
+            return view('backEnd.portfolio_images.view_inner_data', compact('images', 'total_images','contributor'));
+        }
+        return view('backEnd.portfolio_images.view_imags', compact('images', 'total_images','contributor'));
     }
 
     public function getContributorProtfolioImages(Request $request) {
 
         if(is_null($request->contributor_id)){
-            $images = ImageChild::where('is_portfolio',1)->paginate(12);
-            $total_images = ImageChild::where('is_portfolio',1)->get();
+            $contributors = User::where('user_type', 1)->paginate(12);
+            $total_images = User::where('user_type', 1)->get();
         }
         else
         {
-            $images = ImageChild::where('user_id',$request->contributor_id)->where('is_portfolio',1)->paginate(12);
-            $total_images = ImageChild::where('user_id',$request->contributor_id)->where('is_portfolio',1)->get();
+            $contributors = User::where('id',$request->contributor_id)->where('user_type', 1)->paginate(12);
+            $total_images = User::where('id',$request->contributor_id)->where('user_type', 1)->get();
           
         }   
-      
+
         if ($request->ajax()) {
-            return view('backEnd.portfolio_images.inner_data', compact('images', 'total_images'));
+            return view('backEnd.portfolio_images.inner_data', compact('contributors', 'total_images'));
         }
-        return view('backEnd.portfolio_images.index', compact('images', 'total_images','contributor'));
+        return view('backEnd.portfolio_images.index', compact('total_images','contributors'));
     }
 
      // public function aproveImage(Request $request) {

@@ -40,4 +40,26 @@
         </div>
     </div>
 </form>
+<input type="hidden" id="baseUrl" value="{{url('/')}}">
+<script>
+    $(document).ready(function() {
+        let baseUrl = $("#baseUrl").val();
+        let userCountry = $("#user_country").val() ? $("#user_country").val() : "";
+        userCountry = userCountry.trim() ;
+        $.getJSON( `${baseUrl}/public/country.json`, function( data ) {
+            var items = [];
+            $.each( data, function( key, val ) {
+                if(userCountry == val.name){
+                    items.push( "<option selected value='" + val.code + "' selected>" + val.name + "</option>" );
+                }
+                else
+                {
+                    items.push( "<option value='" + val.name + "'>" + val.name + "</option>" );
+                }
+            });
+        
+            $('#country').append(items);
+        });
+    });
+</script>
 @endsection

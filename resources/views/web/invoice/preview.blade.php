@@ -194,6 +194,7 @@ body{
                </address>
             </div>
             <div class="invoice-date">
+               <div class="date text-inverse m-t-5"><h5 style="color: rgb(9, 206, 9)"><strong>Paid</strong></h5></div>
                <div class="date text-inverse m-t-5">Invoice - #{{$purchase->id}}</div>
                <div class="date text-inverse m-t-5">{{date('F d,Y',strtotime($purchase->payment_date))}}</div>
                <div class="invoice-detail">
@@ -247,17 +248,12 @@ body{
             <div class="invoice-price">
                <div class="invoice-price-left">
                   <div class="invoice-price-row">
-                     {{-- <div class="sub-price">
-                        <small>SUBTOTAL</small>
-                        <span class="text-inverse">৳ {{$purchase->sub_total}}</span>
-                     </div> --}}
-                     {{-- <div class="sub-price">
-                        <i class="fa fa-plus text-muted"></i>
-                     </div>
                      <div class="sub-price">
-                        <small>PAYPAL FEE (5.4%)</small>
-                        <span class="text-inverse">$108.00</span>
-                     </div> --}}
+                        <small>Payment By : {{$purchase->payment_method}}</small>
+                        
+                       
+                     </div> 
+         
                   </div>
                </div>
                <div class="invoice-price-right">
@@ -273,6 +269,7 @@ body{
            
                   </div>
                </div>
+               
             </div>
             <!-- end invoice-price -->
          </div>
@@ -291,7 +288,7 @@ body{
             </p>
             <p class="text-center">
                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> drikimages.com</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18192302</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:02-81418172</span>
                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> images@drikimages.com</span>
             </p>
          </div>

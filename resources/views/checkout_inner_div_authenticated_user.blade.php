@@ -14,7 +14,7 @@
         </div>
 
 
-     
+
             <input type="hidden" value="{{ csrf_token() }}" name="_token" />
             <div class="row">
                 <div class="col-md-12 mb-3">
@@ -35,7 +35,7 @@
                         <span class="input-group-text">+88</span>
                     </div>
                     <input type="text" name="customer_mobile" class="form-control" id="mobile"
-                        placeholder="01711xxxxxx" value="{{ old('customer_mobile') }}"   @if (!is_null(auth()->user()))required @endif>
+                        placeholder="01711xxxxxx" value="@if (!is_null(auth()->user())){{ auth()->user()->phone }}@else{{ old('customer_email') }} @endif"   @if (!is_null(auth()->user()))required @endif>
                     <div class="invalid-feedback" style="width: 100%;">
                         Your Mobile number is required.
                     </div>
@@ -60,6 +60,7 @@
                 </div>
             </div>
 
+            <input type="hidden" id="user_country" value="@if(!is_null(auth()->user())){{ auth()->user()->country }} @endif">
 
 
             <div class="row">
@@ -67,7 +68,7 @@
                     <label for="country">Country</label>
                     <select class="custom-select d-block w-100" id="country" name="country"   @if (!is_null(auth()->user()))required @endif>
                         <option value="">Choose...</option>
-                        <option value="Bangladesh">Bangladesh</option>
+                        
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid country.
@@ -190,3 +191,4 @@
         {{-- <p class="text-muted text-center mt-3">Complimentary Shipping & Returns</p> --}}
     </div>
 </div>
+

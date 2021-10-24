@@ -38,4 +38,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function protfolioImages()
+    {
+        return $this->hasMany(ImageChild::class, 'user_id', 'id')->where('is_portfolio',1);
+    }
 }

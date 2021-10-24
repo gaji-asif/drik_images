@@ -65,7 +65,7 @@ class CheckoutController extends Controller {
                 }
             }
         }
-        // $this->sendMail($user,$purchase,$pdfPath);
+        $this->sendMail($user,$purchase,$pdfPath);
 
         return view('success_page', compact('categories', 'page'));
     }
