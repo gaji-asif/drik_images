@@ -12,11 +12,12 @@
                 <div class="col-lg-3">
                     <a href="{{url('view_portfolio_images',$contributor->id)}}">
                         <div class="card">
+                        <img class="card-img-top" src="@if(isset($contributor->protfolioImages)){{asset($contributor->protfolioImages->thumbnail_url)}} @else {{asset('public/no_image_avaliable.jpg')}} @endif" alt="Card image cap">
                             <div class="card-body">
-                                <p><strong>Name: {{$contributor->name}}</strong></p>
-                                <p><strong>Email: {{$contributor->email}}</strong></p>
-                                <p><strong>Country: {{$contributor->country}}</strong></p>
-                                <p><strong>Total Image: @if(isset($contributor->protfolioImages)){{count($contributor->protfolioImages)}} @endif</strong></p>
+                                <p><strong>Name: </strong>{{$contributor->name}}</p>
+                                <p><strong>Email: </strong>{{$contributor->email}}</p>
+                                <p><strong>Country: </strong>{{$contributor->country}}</p>
+
                             </div>
                         </div>
                     </a>

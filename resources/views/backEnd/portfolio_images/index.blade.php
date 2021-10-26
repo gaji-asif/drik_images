@@ -1,5 +1,18 @@
 @extends('backEnd.master')
 @section('mainContent')
+<style>
+    .card-body{
+        background-color: #0d4444;
+        color: #fff;
+    }
+    p{
+        margin-bottom: 0px;
+    }
+    .card-img-top{
+        height: 300px !important;
+        width: 100% !important;
+    }
+</style>
     <div class="row">
         <div class="col-md-12">
             @if (session()->has('message-success'))

@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     public function protfolioImages()
     {
-        return $this->hasMany(ImageChild::class, 'user_id', 'id')->where('is_portfolio',1);
+        return $this->hasOne(ImageChild::class, 'user_id', 'id')->where('is_portfolio',1)->latest();
     }
 }
