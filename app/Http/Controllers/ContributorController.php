@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\ImageChild;
 use App\ImageSellPercentage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 // use Illuminate\Validation\Rule;
 // use Validator;
 
@@ -134,6 +136,7 @@ class ContributorController extends Controller
                 $contributor_withdraw_information->save(); 
             }
             
+            $this->sendMail($data);
 
         }
 
@@ -208,5 +211,17 @@ class ContributorController extends Controller
         }
 
         return response()->json(['status' => 404], 404);
+    }
+    public function sendMail($user) {
+        $data["email"] = $user->email;
+        $data["title"] = "From drikimages team";
+        $data["body"] = $user->firstname." ".$user->lastname;
+
+  
+        Mail::send('emails.congratulations', $data, function($message)use($data) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"]);
+            
+        });
     }
 }

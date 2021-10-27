@@ -334,3 +334,7 @@ Route::middleware([IsCustomer::class])->group(function () {
 
 Route::get('verify_email/{verfiy_url}','UserController@verfiyUrl');
 Route::get('reset_password/{verfiy_url}','UserController@resetPassword');
+
+Route::get('email-template',function(){
+    return view('emails.congratulations');
+});

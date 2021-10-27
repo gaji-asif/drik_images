@@ -7,84 +7,66 @@
 </style>
 <div class="row">
 	<div class="col-xl-3 col-md-6">
-		<div class="card">
-			<div class="card-block" style="padding: 32px; text-align: center;">
-				<a href="{{ url('patient') }}">
-				<div class="row align-items-center m-l-0">
-					<div class="col-auto" style="text-align: center;">
-						
-					</div>
-					<div class="col-auto">
-						<h6 class="text-muted m-b-10">Total Contributers</h6>
-						<h2 class="m-b-0">50</h2>
+		<a href="{{ url('contributor') }}">
+			<div class="card">
+				<div class="card-block" style="padding: 32px;">
+					<div class=" align-items-center">
+						<div class="col-auto text-center">
+							<h6 class="text-muted m-b-10">Total Contributers</h6>
+							<h2 class="m-b-0">50</h2>
+						</div>
 					</div>
 				</div>
-			</a>
 			</div>
-		</div>
-
-		
+		</a>
 	</div>
 
 	<div class="col-xl-3 col-md-6">
-		<div class="card">
-			<div class="card-block" style="padding: 32px; text-align: center;">
-				<a href="{{ url('patient') }}">
-				<div class="row align-items-center m-l-0">
-					<div class="col-auto" style="text-align: center;">
-						
-					</div>
-					<div class="col-auto">
-						<h6 class="text-muted m-b-10">Total Upload Images</h6>
-						<h2 class="m-b-0">5000</h2>
+		<a href="{{ url('image_list_all') }}">
+			<div class="card">
+				<div class="card-block" style="padding: 32px;">
+					<div class=" align-items-center">
+						<div class="col-auto text-center">
+							<h6 class="text-muted m-b-10">Total Upload Images</h6>
+							<h2 class="m-b-0">{{$contributors}}</h2>
+						</div>
 					</div>
 				</div>
-			</a>
 			</div>
-		</div>
-
-		
+		</a>
 	</div>
 
 	<div class="col-xl-3 col-md-6">
-		<div class="card">
-			<div class="card-block" style="padding: 32px; text-align: center;">
-				<a href="{{ url('patient') }}">
-				<div class="row align-items-center m-l-0">
-					<div class="col-auto" style="text-align: center;">
-						
-					</div>
-					<div class="col-auto">
-						<h6 class="text-muted m-b-10">Total Payments</h6>
-						<h2 class="m-b-0">500000</h2>
+		<a href="{{ url('admin-withdraw-list') }}">
+			<div class="card">
+				<div class="card-block" style="padding: 32px;">
+					<div class=" align-items-center">
+						<div class="col-auto text-center">
+							<h6 class="text-muted m-b-10">Total Payments</h6>
+							<h2 class="m-b-0">{{ Config::get('app.curreny')}} {{$totalPayment}}</h2>
+						</div>
 					</div>
 				</div>
-			</a>
 			</div>
-		</div>
-
-		
+		</a>
 	</div>
 
 	<div class="col-xl-3 col-md-6">
-		<div class="card">
-			<div class="card-block" style="padding: 32px; text-align: center;">
-				<a href="{{ url('patient') }}">
-				<div class="row align-items-center m-l-0">
-					<div class="col-auto" style="text-align: center;">
-						
-					</div>
-					<div class="col-auto">
-						<h6 class="text-muted m-b-10">Total Customers</h6>
-						<h2 class="m-b-0">20</h2>
+		<a href="{{ url('user') }}">
+			<div class="card">
+				<div class="card-block" style="padding: 32px;">
+					<div class=" align-items-center">
+						<div class="col-auto text-center">
+							<h6 class="text-muted m-b-10">Total Customer</h6>
+							<h2 class="m-b-0">{{$users}}</h2>
+						</div>
 					</div>
 				</div>
-			</a>
 			</div>
-		</div>
-
-		
+		</a>
 	</div>
+
+	
 
 	
 	

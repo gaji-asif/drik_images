@@ -105,7 +105,7 @@ function deleteAnImage(imageId) {
                         swal("Image has been deleted!", {
                             icon: "success",
                         });
-                        imageTable.ajax.reload();
+                        location.reload();
                     })
             } else {
                 swal("Your image is safe!");

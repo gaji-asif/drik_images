@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\ErpPatient;
 use App\ActivityLog;
 use App\ErpHeader;
+use App\ImageChild;
 use App\PatientDocument;
+use App\Purchase;
 use DB;
 use App\User;
 use Auth;
@@ -40,28 +42,13 @@ class HomeController extends Controller
     public function index()
     {
 
-        // echo "sss"; exit;
-        $Patient = ErpPatient::where('active_status', '=', 1)->get();
-        $Document = PatientDocument::all();
 
-        $users = User::all();
-        $userss = User::where('id', auth::user()->id)->first();
-        Session::put('users_img', $userss->upload_img);
-        $logs = "";
-        $dateS = Carbon::now()->subMonth(1);
-        $dateE = Carbon::now();
-        if(Auth::user()->getRoleNames()->first() == 'Adminstrator'){
-            $logs = ActivityLog::whereBetween('created_at',[$dateS,$dateE])->orderBy('created_at', 'desc')->get();
-        }
-        else
-        {
-            $id = auth::user()->id;
-            $logs = ActivityLog::whereBetween('created_at',[$dateS,$dateE])->where('user_id',$id)->get();
-        }
+        $users = User::all()->count();
+        $contributors = User::where('user_type',1)->count();
+        $totalPayment = Purchase::sum('total');
+        $totalImages = ImageChild::where('is_portfolio',0)->count();
 
-        $dashboard = ErpHeader::find('1');
-
-        return view('backEnd.dashboard', compact('userss', 'Patient', 'logs', 'Document','dashboard'));
+        return view('backEnd.dashboard', compact('users',"contributors","totalPayment",'totalImages'));
     }
 
      public function webIndex() {
