@@ -62,8 +62,9 @@
                 @include('backEnd.portfolio_images.inner_data')
             </div>
 
+            <input type="hidden" id="baseUrl" value="{{url('/')}}">
 
-       
+         
 
             <script src={{ asset('public/js/imageList.js') }}></script>
         </div>
@@ -91,6 +92,47 @@
                     var page = $(this).attr('href').split('page=')[1];
 
                     getData(page);
+                });
+
+                $(document).on('click', '.mark_as_contributor', function() {
+                    
+                    
+                    var id = $(this).attr('data-id');
+                    var baseUrl = $('#baseUrl').val();
+                    $(".overlay-spinner").show();
+                    $.ajax({
+                        url: baseUrl+'/mark-as-contributor/'+ id,
+                        type: "get",
+                        
+                    }).done(function(data) {
+                        if(data.success == true){
+                            $(".overlay-spinner").hide();
+                            location.reload();
+                        }
+                    }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                        alert('No response from server');
+                    });
+                    
+                });
+                $(document).on('click', '.cancel_as_contributor', function() {
+                    
+                    
+                    var id = $(this).attr('data-id');
+                    var baseUrl = $('#baseUrl').val();
+                    $(".overlay-spinner").show();
+                    $.ajax({
+                        url: baseUrl+'/cancel-as-contributor/'+ id,
+                        type: "get",
+                        
+                    }).done(function(data) {
+                        if(data.success == true){
+                            $(".overlay-spinner").hide();
+                            location.reload();
+                        }
+                    }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                        alert('No response from server');
+                    });
+                    
                 });
 
             });

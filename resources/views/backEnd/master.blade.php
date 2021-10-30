@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-
+	<div class="overlay-spinner" style="display:none"></div>
 <div class="d-flex justify-content-center">
     <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>

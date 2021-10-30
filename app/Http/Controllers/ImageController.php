@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Category;
-use App\Helpers\ImageHelper;
-use App\Helpers\SearchImage;
-use App\Http\Controllers\Controller;
+use Svg\Tag\Image;
 use App\ImageChild;
-use App\imageUsageCategorie;
 use App\ImageUsageName;
-use App\imageUsageSubCategorie;
 use App\ImageUsagPrice;
 use App\PurchaseDetail;
-use App\User;
+use App\Helpers\ImageHelper;
+use App\Helpers\SearchImage;
+use App\imageUsageCategorie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\imageUsageSubCategorie;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\Reader\Xls\RC4;
-use Svg\Tag\Image;
 
 class ImageController extends Controller {
     public function get_image_metas(Request $request) {
@@ -458,6 +460,59 @@ class ImageController extends Controller {
         return view('backEnd.portfolio_images.index', compact('total_images','contributors'));
     }
 
+    public function markAsContributor($id) {
+        $user = User::find($id);
+        if(!empty($user) && $user->user_type == 1) {
+            // $user->is_confirm = 1;
+            // $user->save();
+            $this->sendConfirmContributorEmail($user);
+            Session::flash('message-success', 'User marked as contributor successfully');
+            return response()->json(['success' => true], 200);
+
+        }
+        else {
+            Session::flash('error', 'User not found');
+        }
+     
+
+    }
+    public function cancelAsContributor($id) {
+        $user = User::find($id);
+        if(!empty($user) && $user->user_type == 1) {
+            $this->sendCancelContributorEmail($user);
+            Session::flash('message-success', 'User canceled as contributor successfully');
+            return response()->json(['success' => true], 200);
+        }
+        else {
+            Session::flash('error', 'User not found');
+        }
+     
+
+    }
+    public function sendCancelContributorEmail($user) {
+        $data["email"] = $user->email;
+        $data["title"] = "From drikimages team";
+        $data["body"] = $user->name;
+
+  
+        Mail::send('emails.cancelContributor', $data, function($message)use($data) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"]);
+            
+        });
+    }
+    public function sendConfirmContributorEmail($user) {
+        $data["email"] = $user->email;
+        $data["title"] = "From drikimages team";
+        $data["body"] = $user->name;
+
+  
+        Mail::send('emails.congratulations', $data, function($message)use($data) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"]);
+            
+        });
+    }
      // public function aproveImage(Request $request) {
         
     //     $imageId = $request->imageId;

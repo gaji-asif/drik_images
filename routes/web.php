@@ -205,6 +205,8 @@ Route::get('view_portfolio_images/{id}', 'ImageController@viewPortfolioImages');
 Route::post('aprove_image', 'ImageController@aproveImage');
 Route::post('get_contributor_images', 'ImageController@getContributorImages');
 Route::post('get_contributor_portfolio_images', 'ImageController@getContributorProtfolioImages');
+Route::get('mark-as-contributor/{id}', 'ImageController@markAsContributor');
+Route::get('cancel-as-contributor/{id}', 'ImageController@cancelAsContributor');
 
 
 Route::resource('category', 'CategoriesController');

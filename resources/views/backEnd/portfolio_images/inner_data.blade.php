@@ -10,17 +10,20 @@
         @if(isset($contributors))
             @foreach($contributors as $contributor)
                 <div class="col-lg-3">
-                    <a href="{{url('view_portfolio_images',$contributor->id)}}">
                         <div class="card">
-                        <img class="card-img-top" src="@if(isset($contributor->protfolioImages)){{asset($contributor->protfolioImages->thumbnail_url)}} @else {{asset('public/no_image_avaliable.jpg')}} @endif" alt="Card image cap">
+                            <a href="{{url('view_portfolio_images',$contributor->id)}}">
+                                <img class="card-img-top" src="@if(isset($contributor->protfolioImages)){{asset($contributor->protfolioImages->thumbnail_url)}} @else {{asset('public/no_image_avaliable.jpg')}} @endif" alt="Card image cap">
+                            </a>      
                             <div class="card-body">
                                 <p><strong>Name: </strong>{{$contributor->name}}</p>
                                 <p><strong>Email: </strong>{{$contributor->email}}</p>
                                 <p><strong>Country: </strong>{{$contributor->country}}</p>
-
+                                <br>
+                                <button data-id="{{$contributor->id}}" class="btn btn-sm btn-success mark_as_contributor">Mark as Contributor</button>
+                                <button data-id="{{$contributor->id}}" class="btn btn-sm btn-danger cancel_as_contributor">cancel </button>
                             </div>
                         </div>
-                    </a>
+                    
                     
                 </div>
             @endforeach

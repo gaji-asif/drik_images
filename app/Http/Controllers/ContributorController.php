@@ -212,6 +212,7 @@ class ContributorController extends Controller
 
         return response()->json(['status' => 404], 404);
     }
+    
     public function sendMail($user) {
         $data["email"] = $user->email;
         $data["title"] = "From drikimages team";
