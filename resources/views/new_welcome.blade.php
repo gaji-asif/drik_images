@@ -282,12 +282,44 @@ figure img {
                 url: nextPageUrl,
                 success: function(data) {
                     $(`#loadMoreimagesDiv`).append(data);
+                    makeWatermarks();
                 }
             });
         }
         
     });
     
+   $(document).ready(function() {
+        makeWatermarks();
+    });
+
+    function makeWatermarks()
+    {
+        let allImages = $(".img");
+        let logo = baseUrl + '/public/images/drik_images_logo.png';
+        allImages.each(function(index, image) {
+            let imageId = $(image).data('image_id');
+            let isWatermarkDone = $(image).data('is_water_mark_done');
+            let imageUrl = $(image).find('img').attr('src');
+          
+            $("#image_div_"+imageId).attr('data-is_water_mark_done', '1');
+
+            if(isWatermarkDone == 0)
+            {
+                $(image).find('img').attr('src', imageUrl);
+                
+                watermark([imageUrl,logo])
+                .image(watermark.image.lowerRight(0.5))
+                .then(function (img) {
+                    $('#image_main_div_' + imageId).html('');
+                    $('#image_main_div_' + imageId).html(img);
+                    $('#image_main_div_' + imageId).find('img').css('width','100%');
+
+                });
+            }
+           
+        });
+    }
 </script>
 @endsection
 

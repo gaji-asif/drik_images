@@ -1,5 +1,10 @@
 @extends('backEnd.master')
 @section('mainContent')
+<style>
+    .active{
+        color: blue;
+    }
+</style>
     <div class="row">
         <div class="col-md-12">
             @if (session()->has('message-success'))
@@ -33,7 +38,7 @@
                     </form>
                 </div>
             </div>
-
+            <input type="hidden" id="is_select_all" value="0">
 
             <div class="card">
                 <div class="card-header">
@@ -51,14 +56,18 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <font class="col-lg-2">
-                                        <i class="fa fa-check"></i><br>Select ALL
-                                    </font>
+                                    <a href="" id="select_all" >
+                                        <font class="col-lg-2">
+                                            <i class="fa fa-check"></i><br>Select ALL
+                                        </font>
+                                    </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <font class="col-lg-2">
-                                        <i class="fa fa-minus-circle"></i><br>Select None
-                                    </font>
+                                    <a href="" id="select_none">
+                                        <font class="col-lg-2">
+                                            <i class="fa fa-minus-circle"></i><br>Select None
+                                        </font>
+                                    </a>
                                 </div>
                                 <div class="col-lg-2">
                                     <a class="col-lg-2">
@@ -88,10 +97,13 @@
                         @foreach ($images as $image)
                             <div class="card-block col-lg-3">
                                 <div class="card">
-                                    {{-- <p style="margin-top: 15px; margin-left: 8px;">
-                                        <input type="checkbox" name="id" value="{{$image->id}}">
-                                    </p> --}}
-                                    <p style="margin-top: 15px; text-align:right;margin-right:5px">
+                            
+                                    <div style="position:absolute;margin-top:10px;margin-left:5px">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" value="{{$image->id}}" class="selected_image_id" name="selected_image_ids">
+                                          </div>
+                                    </div>
+                                    <p style=" text-align:right;margin-right:5px;margin-top:10px">
                                         <a href="{{ url('sold-details/' . $image->id) }}"><strong>Sold :
                                                 @if (isset($image->sold)){{ $image->sold }} @endif</strong></a>
                                     </p>
@@ -497,6 +509,67 @@
 
 
         <script src={{ asset('public/js/imageList.js') }}></script>
+
+        <script>
+            $(document).ready(function () {
+                $(document).on('click', '#select_all', function (event) {
+                    event.preventDefault();
+                    var is_select_all = $("#is_select_all").val();
+                    if(is_select_all == 0) $("#is_select_all").val(1);
+                    if(!$(this).hasClass('active'))
+                    {
+                        $(this).addClass('active');
+                    }
+                    if($('#select_none').hasClass('active'))
+                    {
+                        $('#select_none').removeClass('active');
+                    }
+                    updateAllCheckboxs('check');
+                });
+                $(document).on('click', '#select_none', function (event) {
+                    event.preventDefault();
+                    var is_select_all = $("#is_select_all").val();
+                    if(is_select_all == 1) $("#is_select_all").val(0);
+                    if(!$(this).hasClass('active'))
+                    {
+                        $(this).addClass('active');
+                    }
+                    if($('#select_all').hasClass('active'))
+                    {
+                        $('#select_all').removeClass('active');
+                    }
+                    updateAllCheckboxs('uncheck');
+                });
+
+                function updateAllCheckboxs(type)
+                {
+                    let allCheckboxes = $('input[type="checkbox"]');
+                    allCheckboxes.each(function(index, element) {
+                        if(type == 'check')
+                        {
+                            $(element).prop('checked',true);
+                        }
+                        else if(type == 'uncheck')
+                        {
+                            $(element).prop('checked', false);
+                        }
+                    });
+                }
+
+                $(document).on('change','input[type="checkbox"]',function(e){
+                    
+                    if($('#select_all').hasClass('active'))
+                    {
+                        $('#select_all').removeClass('active');
+                    }
+                    if($('#select_none').hasClass('active'))
+                    {
+                        $('#select_none').removeClass('active');
+                    }
+                });
+            
+            });
+        </script>
     </div>
 
 @endSection

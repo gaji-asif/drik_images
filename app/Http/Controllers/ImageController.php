@@ -195,10 +195,10 @@ class ImageController extends Controller {
 
     public function deleteBulkImage(Request $request)
     {
-        $imageIds = json_decode($request["imageIds"]);
+        $imageIds = $request["imageIds"];
         ImageChild::whereIn('id', $imageIds)->delete();
 
-        return response()->json(['status' => 200], 200);
+        return response()->json(['success' => true], 200);
     }
 
     public function imageDetails($id) {

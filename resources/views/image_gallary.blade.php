@@ -1,9 +1,9 @@
 
         @foreach ($images as $image)
             <figure class="grid-image" style="flex-grow:{{ $image->width * 100 / $image->height }}; flex-basis: {{ $image->width * 240 / $image->height }}px">
-                <a href="#" class="image-popup" data-toggle="modal" onclick="imageDetailsModel({{$image->id}})" data-target={{"#image_details-".$image->id}}>
+                <a href="#" class="image-popup" data-toggle="modal" onclick="imageDetailsModel(this,{{$image->id}})" data-image_url="{{$image->medium_url}}" data-target={{"#image_details-".$image->id}}>
                 <i style="padding-bottom:{{ $image->height / $image->width * 100}}%"></i>
-                <div class="img">
+                <div class="img" id="image_div_{{$image->id}}" data-image_id="{{$image->id}}" data-is_water_mark_done='0'>
                     <img src="{{$image->medium_url}}" alt="picture">
                     <div class="img-details">
                         <p class="category-name">{{$image->title}}</p>
@@ -21,7 +21,7 @@
                         <div class="modal-body">
                             <div class="form-row ">
                                 <div class="col-md-9">
-                                    <div class="full-img">
+                                    <div class="full-img" id="image_main_div_{{$image->id}}">
                                         <img class="w-100" src="{{$image->medium_url}}" alt="">
                                     </div>
                                     <div class=" pt-2">

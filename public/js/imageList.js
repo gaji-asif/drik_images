@@ -318,26 +318,63 @@ function updateImage() {
 }
 
 function bulkDelete(){
-    let selectedImageIds = [];
-    $("input:checkbox[name=id]:checked").each(function(){
-        selectedImageIds.push($(this).val());
-    });
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this image!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((result) => {
+        if (result) {
+            let selectedImageIds = [];
+            $("input:checkbox[name=selected_image_ids]:checked").each(function(){
+                selectedImageIds.push($(this).val());
+            });
+            console.log(selectedImageIds);
+            if(selectedImageIds.length>0) {
+                $(".overlay-spinner").show();
+                $.ajax({
+                    url: baseUrl+'/delete_bulk_image',
+                    type: "POST",
+                    data: {
+                        imageIds: selectedImageIds,
+                        _token  : $('meta[name="csrf-token"]').attr('content')
+                    }
+                }).done(function(data) {
+                    if(data.success == true){
+                        $(".overlay-spinner").hide();
+                        swal("Image deleted successfully");
+                        location.reload();
+                    }
+                }).fail(function(jqXHR, ajaxOptions, thrownError) {
+                    alert('No response from server');
+                });
+            }
+            else
+            {
+                swal("Please select atleast one image!");
+            }
+        }
 
-    let formData = new FormData();
-    formData.append('imageIds', JSON.stringify(selectedImageIds));
+      })
 
-    fetch(`${baseUrl}/delete_bulk_image`, {
-        method: 'POST',
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
-        },
-        body: formData
-    })
-        .then(res => res.json())
-        .then(res => {
-            swal("Image deleted successfully");
-            imageTable.ajax.reload();
-        });
+ 
+  
+    // let formData = new FormData();
+    // formData.append('imageIds', JSON.stringify(selectedImageIds));
+
+    // fetch(`${baseUrl}/delete_bulk_image`, {
+    //     method: 'POST',
+    //     headers: {
+    //         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+    //     },
+    //     body: formData
+    // })
+        // .then(res => res.json())
+        // .then(res => {
+        //     swal("Image deleted successfully");
+        //     imageTable.ajax.reload();
+        // });
 }
 
 $(document).ready(function () {

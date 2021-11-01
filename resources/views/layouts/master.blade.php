@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <script src="{{asset('public/js/drik_js/jquery.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/watermarkjs@2.1.1/dist/watermark.min.js"></script>
+    
     <script src="{{asset('public/js/imagesLoaded.js')}}"></script>
     <script src="{{asset('public/js/drik_js/masonry.pkgd.min.js')}}"></script>
     <script src="{{asset('public/js/common.js')}}"></script>

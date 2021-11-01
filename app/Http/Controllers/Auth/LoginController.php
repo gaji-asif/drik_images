@@ -27,6 +27,11 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        if(Auth::user()->user_type != 0){
+            Auth::logout();
+            return redirect()->route('login')->with('message-danger', 'You are not authorized to access this page.');
+
+        }
         $user->update([
             'last_login_at' => Carbon::now()->toDateTimeString(),
             'last_login_ip' => $request->getClientIp()

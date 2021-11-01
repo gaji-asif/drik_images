@@ -2,19 +2,18 @@
 
 
 
-function imageDetailsModel(imageId)
+function imageDetailsModel(item,imageId)
 {
-    if(imageId)
-    {
-       
-        editingImageId = imageId;
-        fetch(`${baseUrl}/web_image_details/${imageId}`, {
-            method: 'GET'
-        }).then(res => res.json())
-            .then(res => {
-                console.log(res);
-               
-            });
-        $('#image_details').modal({show:true});
-    }
+    // imageUrl = $(item).data('image_url');
+    // console.log(imageUrl);
+    // logo = baseUrl + '/public/images/drik_images_logo.png';
+
+    // watermark([imageUrl,logo])
+    // .image(watermark.image.lowerRight(0.5))
+    // .then(function (img) {
+    //     $('#image_main_div_' + imageId).html('');
+    //     $('#image_main_div_' + imageId).html(img);
+    //     $('#image_main_div_' + imageId).find('img').css('width','100%');
+
+    // });
 }
