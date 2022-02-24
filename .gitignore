@@ -7,7 +7,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env
 /nbproject/private/
 /public/images/uploaded_images/
 /public/images/images.zip
